@@ -1,6 +1,7 @@
 ---
 import NavBar from "../components/NavBar.astro";
 import Footer from "../components/Footer.astro";
+import "@fontsource-variable/montserrat";
 interface Props {
   title: string;
 }
@@ -9,15 +10,15 @@ const { title } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="es">
+<html lang="es" class="font-sans">
   <head>
     <meta charset="UTF-8" />
     <meta
       name="description"
       content="Ultramarinos El Calvo | Borja García | Estrella Michelín | Un sitio pa’ comer y beber. Pero bien. | Conservas, salazones, chacinas..."
     />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="public/LOGO.jpg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/logo.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
@@ -31,8 +32,7 @@ const { title } = Astro.props;
 </html>
 <style is:global>
   html {
-    font-family: system-ui, sans-serif;
-    background: #f2e6cc;
+    font-family: 'Montserrat Variable', sans-serif;
     overscroll-behavior: none;
   }
   body {
