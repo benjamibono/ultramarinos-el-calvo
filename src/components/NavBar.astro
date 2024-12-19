@@ -1,6 +1,7 @@
 ---
-import Logo from './Logo.astro'
+import Logo from "./Logo.astro";
 ---
+
 <nav class="flex items-center bg-white h-24">
   <Logo />
   <h1 class="pl-20 text-2xl font-thin">Borja García Prieto</h1>
@@ -8,12 +9,26 @@ import Logo from './Logo.astro'
     <li>
       <a href="/">Inicio</a>
     </li>
-    <li>
-      <a href="/la-carta">Carta</a>
-      
+    <li class="relative group" id="menu-carta">
+      <button class="focus:outline-none" id="menu-button">Carta</button>
+      <ul class="absolute left-0 hidden mt-2 w-48 bg-white border border-gray-200 rounded shadow-lg group-hover:block group-focus-within:block">
+        <li>
+          <a href="/la-carta" class="block px-4 py-2 hover:bg-gray-100">Carta de Barreo</a>
+        </li>
+        <li>
+          <a href="/la-carta" class="block px-4 py-2 hover:bg-gray-100">Carta de Mesa</a>
+        </li>
+      </ul>
     </li>
     <li>
       <a href="/contacto">Contacto</a>
     </li>
   </ul>
 </nav>
+
+<style>
+  .group:hover .group-hover\:block,
+  .group:focus-within .group-focus-within\:block {
+    display: block;
+  }
+</style>
