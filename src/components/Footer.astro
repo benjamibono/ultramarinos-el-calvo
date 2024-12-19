@@ -1,44 +1,13 @@
 <footer class="mb-0 bg-white">
-  <div id="contact" class="flex flex-row p-10 space-x-10">
-    <div class="hidden">
-      <form class="flex flex-col space-y-4">
-        <h2 class="text-xl font-bold mb-4">Contacto</h2>
-        <label for="name">Nombre completo</label>
-        <input
-          type="text"
-          id="name"
-          name="name"
-          class="p-2 border border-gray-300 rounded"
-        />
-        <label for="email">Correo Electrónico</label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          class="p-2 border border-gray-300 rounded"
-        />
-        <label for="phone">Teléfono</label>
-        <input
-          type="tel"
-          id="phone"
-          name="phone"
-          class="p-2 border border-gray-300 rounded"
-        />
-        <label for="message">Mensaje</label>
-        <textarea
-          id="message"
-          name="message"
-          class="p-2 border border-gray-300 rounded"></textarea>
-        <button type="submit" class="p-2 bg-blue-500 text-white rounded"
-          >Enviar</button
-        >
-      </form>
-    </div>
-    <div class="w-full grid grid-cols-4 gap-4 text-center">
+  <div
+    id="contact"
+    class="flex flex-col p-2 md:p-10 space-y-10 md:flex-row md:space-x-10 md:space-y-0"
+  >
+    <div class="w-full grid grid-cols-2 gap-4 text-center md:grid-cols-4">
       <div>
-        <h3 class="text-lg font-bold">HORARIO</h3>
-        <p class="border-b-2 border-black w-3/4 mx-auto"></p>
-        <ul>
+        <h3 class="text-xs md:text-lg font-bold">HORARIO</h3>
+        <p class="border-b-2 border-black w-1/2 md:w-3/4 mx-auto"></p>
+        <ul class="text-xs md:text-lg">
           <li>Jueves a Domingo:</li>
           <li>09:00 - 17:00</li>
           <li>20:30 - 23:00</li>
@@ -47,38 +16,39 @@
         </ul>
       </div>
       <div>
-        <h3 class="text-lg font-bold">DIRECCIÓN</h3>
-        <p class="border-b-2 border-black w-3/4 mx-auto"></p>
+        <h3 class="text-xs md:text-lg font-bold">DIRECCIÓN</h3>
+        <p class="border-b-2 border-black w-1/2 md:w-3/4 mx-auto"></p>
         <a
           class="hover:opacity-50 hover:underline"
           href="https://www.google.es/maps/place/Ultramarinos+El+Calvo/@36.5283832,-6.1947154,791m/data=!3m2!1e3!4b1!4m6!3m5!1s0xd0dcdf149feb731:0x9c220b47924f078b!8m2!3d36.5283789!4d-6.1921405!16s%2Fg%2F11yb3l9_83?entry=ttu&g_ep=EgoyMDI0MTIxMS4wIKXMDSoASAFQAw%3D%3D"
           target="_blank"
           rel="noopener noreferrer"
-          ><p>Calle de la Plaza, 149</p>
-          <p>11510 Puerto Real, Cádiz</p></a
+          ><p class="text-xs md:text-lg">Calle de la Plaza, 149</p>
+          <p class="text-xs md:text-lg">11510 Puerto Real, Cádiz</p></a
         >
       </div>
       <div>
-        <h3 class="text-lg font-bold">RESERVAS</h3>
-        <p class="border-b-2 border-black w-3/4 mx-auto"></p>
+        <h3 class="text-xs md:text-lg font-bold">RESERVAS</h3>
+        <p class="border-b-2 border-black w-1/2 md:w-3/4 mx-auto"></p>
         <a class="hover:opacity-50 hover:underline" href="tel:+34956992222"
-          ><p>+34 956 99 22 22</p></a
+          ><p class="text-xs md:text-lg">+34 956 99 22 22</p></a
         >
       </div>
       <div>
-        <h3 class="text-lg font-bold">CONTACTOS</h3>
-        <p class="border-b-2 border-black w-3/4 mx-auto"></p>
+        <h3 class="text-xs md:text-lg font-bold">CONTACTOS</h3>
+        <p class="border-b-2 border-black w-1/2 md:w-3/4 mx-auto"></p>
         <a
           class="hover:opacity-50 hover:underline"
           href="https://www.instagram.com/ultramarinoselcalvo/"
           target="_blank"
-          rel="noopener noreferrer"><p>INSTAGRAM</p></a
+          rel="noopener noreferrer"
+          ><p class="text-xs md:text-lg">INSTAGRAM</p></a
         >
         <a
           class="hover:opacity-50 hover:underline"
           href="mailto:ultramarinoselcalvo@gmail.com"
           target="_blank"
-          rel="noopener noreferrer"><p>E-MAIL</p></a
+          rel="noopener noreferrer"><p class="text-xs md:text-lg">E-MAIL</p></a
         >
       </div>
     </div>

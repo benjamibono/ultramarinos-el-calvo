@@ -1,0 +1,92 @@
+<section class="flex relative z-20 h-auto mb-8">
+  <div class="w-1/2">
+    <img src="/mesa.webp" class="w-full h-full object-cover" />
+  </div>
+  <div class="w-1/2 flex flex-col text-pretty px-10">
+    <h2 class="text-xl font-semibold text-center tracking-[0.25em]">
+      CARTA DE
+    </h2>
+    <h2 class="text-4xl font-semibold text-center pb-1 tracking-[0.25em]">
+      MESA
+    </h2>
+    <p class="border-b-2 border-black"></p>
+    <p
+      class="xs:text-xs xl:text-sm xxl:text-base font-medium text-center tracking-[.25em] py-2 xs:leading-relaxed"
+    >
+      ESTO ESTÁ PENSAO PÁ QUE TU LO DISFRUTES,<br />OLVÍDATE DEL MÓVIL, DE LO
+      MALO, DEL ESTRÉS...<br />DISFRUTA DE TU TIEMPO, DE TU COMPAÑÍA Y DE TI.
+    </p>
+    <div
+      class="mt-4 xs:text-xs xl:text-sm xxl:text-base font-medium tracking-[.25em]"
+    >
+      <p class="underline font-semibold">PA IR PICANDO ...</p>
+      <ul>
+        <li>ENSALADILLA DE BONITO Y HUEVO DURO</li>
+        <li>HUEVAS DE CHOCOS ALIÑÁ</li>
+        <li>PIRIÑACA Y CABALLA SEMICURADA</li>
+        <li>TOMATE ECOLÓGICO Y ACEITE DE AJO</li>
+        <li>ALCAUCILES, CREMA DE YEMA Y PAYOYO</li>
+        <li>CROQUETAS DE JAMÓN JOSELITO (1 UD)</li>
+        <li>NÍSCALOS EMBOTADOS Y SALTEADOS</li>
+        <li>TORTILLITA DE CAMARONES DE ESTERO</li>
+      </ul>
+
+      <p class="underline font-semibold mt-6">QUE NO SE PIERDAN LOS GUISOS...</p>
+      <ul>
+        <li>CARRILLADA AL AMONTILLADO</li>
+        <li>ALBÓNDIGAS DE VACA RETINTA Y SETAS</li>
+        <li>CARNE AL TORO</li>
+        <li>CHOCO EN SU TINTA</li>
+        <li>TOMATE FRITO, PAPAS Y HUEVO DE CORRAL</li>
+        <li>GAMBONES AL AJILLO</li>
+        <li>BERZA "GITANA" Y SU PRINGÁ</li>
+      </ul>
+
+      <p class="underline font-semibold mt-6">PRODUCTO Y ESENCIA...</p>
+      <ul>
+        <li>CHULETA SELECCIÓN "LYO" 120 DÍAS MADURACIÓN</li>
+        <li>LANGOSTINO DE SANLÚCAR Y MANTECA COLORÁ</li>
+        <li>BARRIGA DE ATÚN "GADIRA" Y JUGO DE ENCEBOLLADO</li>
+        <li>POLLO A LA PLANCHA Y SALSA DE AJILLO</li>
+        <li>PARPATANA DE ATÚN, JUGO DE CARNE Y ALMENDRAS</li>
+      </ul>
+
+      <p class="underline font-semibold mt-6">GUARNICIONES ECOLÓGICAS...</p>
+      <ul>
+        <li>PAPAS FRITAS</li>
+        <li>PIMIENTOS ASADOS AL CARBÓN</li>
+        <li>PIPARRAS ENCURTIDAS</li>
+        <li>ENSALADA DE LECHUGA ALIÑÁ</li>
+      </ul>
+
+      <p class="underline font-semibold mt-6">MOLLETES...</p>
+      <ul>
+        <li>COPPA "JOSELITO", TOMATE Y AOVE</li>
+        <li>PALOMETA Y QUESO AZUL DE CABRA</li>
+        <li>BONITO, PIMIENTOS ASADOS Y AJO FRITO</li>
+        <li>CHICHARRONES, QUESO PAYOYO Y LIMA</li>
+        <li>PRINGÁ DE BERZA</li>
+        <li>PRESA IBÉRICA, JAMÓN, PIMIENTOS FRITOS</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<style>
+  .line {
+    position: relative; /* Posición relativa para el pseudo-elemento */
+    white-space: nowrap; /* Evita el salto de línea */
+    overflow: hidden; /* Oculta el desbordamiento */
+    margin-left: 100%; /* Mueve los guiones a la derecha del texto */
+  }
+
+  .line::after {
+    content: "--------------------------------------------";
+    position: absolute;
+    left: 0;
+    width: 100%; /* Ocupa todo el ancho */
+    color: #000; /* Color de los guiones */
+    z-index: 0; /* Envía los guiones detrás del texto */
+    letter-spacing: 2px; /* Espacio entre los guiones */
+  }
+</style>

@@ -1,0 +1,90 @@
+<section class="flex relative z-10 h-auto mx-4 mb-8">
+  <div class="w-1/2 flex flex-col text-pretty px-10">
+    <h2 class="text-xl font-semibold text-center tracking-[0.35em]">
+      CARTA DE
+    </h2>
+    <h2 class="text-4xl font-semibold text-center pb-1">BARREO</h2>
+    <p class="border-b-2 border-black"></p>
+    <p
+      class="xs:text-xs xl:text-sm xxl:text-base font-medium text-center tracking-[.25em] py-2 xs:leading-relaxed"
+    >
+      PÍDELO, PRUÉBALO, PREGÚNTALO, <br /> MÉZCLALO, CÓMETELO, PERO <br /> SOBRETÓ...
+      DISFRÚTALO
+    </p>
+    <div
+      class="mt-4 xs:text-xs xl:text-sm xxl:text-base font-medium tracking-[.25em] space-y-2"
+    >
+      <ul>
+        <li>GUILDA DE ACEITUNA GORDAL</li>
+        <li>HUEVAS DE CHOCO ALIÑADAS</li>
+        <li>ANCHOAS CANTÁBRICAS EN MANTEQUILLA (LATA)</li>
+        <li>TOSTA DE ANCHOA CANTÁBRICA Y MANTEQUILLA (UD)</li>
+        <li>BONITO DEL SUR SEMICURADO</li>
+        <li>MOJAMA CURADA EN CASA</li>
+        <li>MEJILLONES XXL EN ESCABECHE</li>
+        <li>NAVAJA AL NATURAL</li>
+        <li>ZAMBURIÑAS CONFITADAS</li>
+        <li>COCOCHAS AL AJILLO</li>
+        <li>VENTRESCA DE ATÚN ROJO "GADIRA"</li>
+        <li>TOMATE PELAO Y ACEITE DE AJO</li>
+        <li>ENSALADILLA DE BONITO, HUEVO Y PIPARRA</li>
+        <li>PIRINACA Y CABALLA SEMICURADA</li>
+        <li>TORTILLITA DE CAMARONES DE ESTERO</li>
+        <li>CROQUETA DE JAMÓN "JOSELITO"</li>
+        <li>CHICHARRONES ESPECIALES</li>
+        <li>LOMO EN MANTECA</li>
+        <li>JAMÓN 100% IBÉRICO</li>
+        <li>COPPA "JOSELITO"</li>
+        <li>CHORIZO DE PICADA "CASALBA"</li>
+        <li>CHORIZO PICANTITO "LYO"</li>
+        <li>PAPADA CURADA "CASALBA"</li>
+        <li>PANCETA ADOBADA Y CURADA "BUCARITO"</li>
+        <li>CECINA WAGYU "LYO"</li>
+        <li>PICAÑA DE BUEY CURADA "LYO"</li>
+        <li>QUESO AZUL DE CABRA FLORIDA "BUCARITO"</li>
+        <li>QUESO DE LECHE CRUDA "BUCARITO"</li>
+        <li>QUESO "EL BOSQUEÑO" CURADO EN OLOROSO</li>
+      </ul>
+      <p class="border-b-2 border-black pt-4"></p>
+      <h3
+        class="space-y-6 text-center
+      xs:text-xs
+      xl:text-sm
+      xxl:text-base
+      font-medium
+      tracking-[.25em]"
+      >
+        MOLLETES
+      </h3>
+      <ul>
+        <li>JAMON 100% IBERICO, TOMATE Y AOVE</li>
+        <li>PALOMETA Y QUESO AZUL DE CABRA</li>
+        <li>LOMO EN MANTECA, PIMIENTOS ASADOS Y AJO FRITO</li>
+        <li>CHICHARRONES, QUESO PAYOYO Y LIMA</li>
+        <li>PRINGÁ DE BERZA</li>
+        <li>PRESA IBÉRICA, JAMÓN, PIMIENTO FRITO</li>
+      </ul>
+    </div>
+  </div>
+  <div class="w-1/2">
+    <img src="/surtido.webp" class="w-full h-full object-cover" />
+  </div>
+</section>
+<style>
+  .line {
+    position: relative; /* Posición relativa para el pseudo-elemento */
+    white-space: nowrap; /* Evita el salto de línea */
+    overflow: hidden; /* Oculta el desbordamiento */
+    margin-left: 100%; /* Mueve los guiones a la derecha del texto */
+  }
+
+  .line::after {
+    content: "--------------------------------------------";
+    position: absolute;
+    left: 0;
+    width: 100%; /* Ocupa todo el ancho */
+    color: #000; /* Color de los guiones */
+    z-index: 0; /* Envía los guiones detrás del texto */
+    letter-spacing: 2px; /* Espacio entre los guiones */
+  }
+</style>
