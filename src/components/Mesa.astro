@@ -10,12 +10,18 @@
       MESA
     </h2>
     <p class="border-b-2 border-black"></p>
-    <p
-      class="xs:text-xs xl:text-sm xxl:text-base font-medium text-center tracking-[.25em] py-2 xs:leading-relaxed"
+
+    <div
+      class="text-rotator xs:text-xs xl:text-sm xxl:text-base font-medium text-center tracking-[.25em] py-2 xs:leading-relaxed"
     >
-      ESTO ESTÁ PENSAO PÁ QUE TU LO DISFRUTES,<br />OLVÍDATE DEL MÓVIL, DE LO
-      MALO, DEL ESTRÉS...<br />DISFRUTA DE TU TIEMPO, DE TU COMPAÑÍA Y DE TI.
-    </p>
+      <span class="rotating-text">ESTO ESTÁ PENSAO PÁ QUE TU LO DISFRUTES</span>
+      <span class="rotating-text">OLVÍDATE DEL MÓVIL</span>
+      <span class="rotating-text">DE LO MALO</span>
+      <span class="rotating-text">DEL ESTRÉS...</span>
+      <span class="rotating-text"
+        >DISFRUTA DE TU TIEMPO, DE TU COMPAÑÍA Y DE TI.</span
+      >
+    </div>
     <div
       class="mt-4 xs:text-xs xl:text-sm xxl:text-base font-medium tracking-[.25em]"
     >
@@ -31,7 +37,9 @@
         <li>TORTILLITA DE CAMARONES DE ESTERO</li>
       </ul>
 
-      <p class="underline font-semibold mt-6">QUE NO SE PIERDAN LOS GUISOS...</p>
+      <p class="underline font-semibold mt-6">
+        QUE NO SE PIERDAN LOS GUISOS...
+      </p>
       <ul>
         <li>CARRILLADA AL AMONTILLADO</li>
         <li>ALBÓNDIGAS DE VACA RETINTA Y SETAS</li>
@@ -73,20 +81,57 @@
 </section>
 
 <style>
-  .line {
-    position: relative; /* Posición relativa para el pseudo-elemento */
-    white-space: nowrap; /* Evita el salto de línea */
-    overflow: hidden; /* Oculta el desbordamiento */
-    margin-left: 100%; /* Mueve los guiones a la derecha del texto */
+  .text-rotator {
+    position: relative;
+    height: 40px;
+    overflow: hidden;
   }
 
-  .line::after {
-    content: "--------------------------------------------";
+  .rotating-text {
     position: absolute;
+    top: 100%;
     left: 0;
-    width: 100%; /* Ocupa todo el ancho */
-    color: #000; /* Color de los guiones */
-    z-index: 0; /* Envía los guiones detrás del texto */
-    letter-spacing: 2px; /* Espacio entre los guiones */
+    right: 0;
+    text-align: center;
+    animation: rotateText 20s infinite linear;
+    opacity: 0;
+  }
+
+  /* Ajustar tiempos para que el texto se retire antes de la llegada del siguiente */
+  .rotating-text:nth-child(1) {
+    animation-delay: 0s;
+  }
+  .rotating-text:nth-child(2) {
+    animation-delay: 4s;
+  }
+  .rotating-text:nth-child(3) {
+    animation-delay: 6s;
+  }
+  .rotating-text:nth-child(4) {
+    animation-delay: 8s;
+  }
+  .rotating-text:nth-child(5) {
+    animation-delay: 12s;
+  }
+
+
+  @keyframes rotateText {
+    0% {
+      top: 100%;
+      opacity: 0;
+    }
+    10%,
+    15% {
+      top: 0;
+      opacity: 1;
+    }
+    25% {
+      top: -100%;
+      opacity: 0;
+    }
+    100% {
+      top: -100%;
+      opacity: 0;
+    }
   }
 </style>
