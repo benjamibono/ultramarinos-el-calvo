@@ -3,24 +3,24 @@ import Logo from "./Logo.astro";
 ---
 
 <nav
-  class="z-20 flex items-center justify-between bg-white h-16 px-4 sm:px-6 md:px-8 top-0 sticky"
+  class="bg-white flex h-16 items-center justify-between px-4 sticky top-0 xl:h-20 xl:px-10 xxl:h-24 z-20"
 >
   <Logo />
   <h1
-    class="pl-4 text-base sm:text-lg md:text-xl lg:text-2xl font-light md:font-extralight"
+    class="font-thin mx-auto pl-4 text-base sm:text-lg md:font-extralight md:text-xl lg:text-2xl xl:font-light xxl:text-3xl"
   >
     Borja García Prieto
   </h1>
   <ul
-    class="hidden xl:flex items-center text-base lg:text-lg justify-between space-x-8 ml-auto"
+    class="hidden items-center justify-between ml-auto space-x-8 text-base xl:flex sm:text-lg md:text-xl xxl:text-2xl"
   >
     <li>
       <a href="/">INICIO</a>
     </li>
-    <li class="relative group z-50">
+    <li class="group relative z-50">
       <button class="focus:outline-none">CARTA</button>
       <ul
-        class="absolute left-0 hidden mt-2 w-48 bg-white border border-gray-200 rounded shadow-lg group-hover:block group-focus-within:block"
+        class="absolute hidden mt-2 w-48 bg-white border border-gray-200 rounded shadow-lg group-hover:block group-focus-within:block"
       >
         <li>
           <a href="/carta-barreo" class="block px-4 py-2 hover:bg-gray-100"
@@ -34,23 +34,23 @@ import Logo from "./Logo.astro";
         </li>
       </ul>
     </li>
-    <li>
+    <!--<li>
       <a href="/manjares">MANJARES</a>
     </li>
     <li>
       <a href="/eventos">EVENTOS</a>
-    </li>
+    </li> -->
     <li>
-      <a href="/reservas">RESERVAS</a>
+      <a href="tel:+34956992222">RESERVAS</a>
     </li>
     <li>
       <a href="/contacto">CONTACTO</a>
     </li>
   </ul>
-  <div class="xl:hidden ml-auto">
+  <div class="ml-auto xl:hidden">
     <button id="menu-button" class="focus:outline-none">
       <svg
-        class="w-6 h-6"
+        class="h-6 w-6"
         fill="none"
         stroke="currentColor"
         viewBox="0 0 24 24"
@@ -65,47 +65,52 @@ import Logo from "./Logo.astro";
     </button>
     <ul
       id="menu"
-      class="hidden flex-col space-y-1 bg-white border border-gray-200 rounded shadow-lg absolute right-0 top-0"
+      class="absolute right-0 top-18 hidden flex-col space-y-1 bg-white border border-gray-200 rounded shadow-lg"
     >
       <li>
         <a href="/" class="block px-4 py-2 hover:bg-gray-100">INICIO</a>
       </li>
       <li>
         <a href="/carta-barreo" class="block px-4 py-2 hover:bg-gray-100"
-          >BARREO</a
+          >CARTA BARREO</a
         >
       </li>
       <li>
-        <a href="/carta-mesa" class="block px-4 py-2 hover:bg-gray-100">MESA</a>
-        <li>
-          <li>
-            <a href="/manjares" class="block px-4 py-2 hover:bg-gray-100"
-              >MANJARES</a
-            >
-          </li>
-          <li>
-            <a href="/eventos" class="block px-4 py-2 hover:bg-gray-100"
-              >EVENTOS</a
-            >
-            <li>
-              <a href="/reservas" class="block px-4 py-2 hover:bg-gray-100"
-                >RESERVAS</a
-              >
-            </li>
-          </li>
-          <a href="/contacto" class="block px-4 py-2 hover:bg-gray-100"
-            >CONTACTO</a
-          >
-        </li>
+        <a href="/carta-mesa" class="block px-4 py-2 hover:bg-gray-100"
+          >CARTA MESA</a
+        >
+      </li>
+      <!--<li>
+        <a href="/manjares" class="block px-4 py-2 hover:bg-gray-100"
+          >MANJARES</a
+        >
+      </li> 
+      <li>
+        <a href="/eventos" class="block px-4 py-2 hover:bg-gray-100">EVENTOS</a>
+      </li> -->
+      <li>
+        <a href="tel:+3495699222" class="block px-4 py-2 hover:bg-gray-100"
+          >RESERVAS</a
+        >
+      </li>
+      <li>
+        <a href="/contacto" class="block px-4 py-2 hover:bg-gray-100"
+          >CONTACTO</a
+        >
       </li>
     </ul>
   </div>
 
   <script>
-    document.getElementById("menu-button").addEventListener("click", () => {
-      const menu = document.getElementById("menu");
-      menu.classList.toggle("hidden");
-    });
+    const menuButton = document.getElementById("menu-button");
+    if (menuButton) {
+      menuButton.addEventListener("click", () => {
+        const menu = document.getElementById("menu");
+        if (menu) {
+          menu.classList.toggle("hidden");
+        }
+      });
+    }
   </script>
 
   <style>
