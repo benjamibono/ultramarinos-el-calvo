@@ -3,7 +3,18 @@ import Logo from "./Logo.astro";
 ---
 
 <nav
-  class="bg-white flex h-16 items-center justify-between px-4 sticky top-0 xl:h-20 xl:px-10 xxl:h-24 z-20"
+  class="bg-white
+  flex
+  h-16
+  items-center
+  justify-between
+  px-2
+  sticky
+  top-0
+  xl:h-20
+  xl:px-10
+  xxl:h-24
+  z-20"
 >
   <Logo />
   <h1
@@ -14,37 +25,50 @@ import Logo from "./Logo.astro";
   <ul
     class="hidden items-center justify-between ml-auto space-x-8 text-base lg:flex sm:text-lg md:text-xl xxl:text-2xl"
   >
-    <li class="hover:text-slate-300 hover:font-medium">
-      <a href="/">INICIO</a>
+    <li class="hover:text-slate-300">
+      <a
+        href="/"
+        class="block px-2 py-2 transition-transform duration-200 transform hover:scale-105"
+      >
+        INICIO
+      </a>
     </li>
     <li class="group relative z-50">
-      <button class="focus:outline-none">CARTA</button>
+      <button
+        class="focus:outline-none transition-transform duration-200 transform hover:scale-105 hover:text-slate-300"
+      >
+        CARTA
+      </button>
       <ul
         class="absolute hidden mt-2 w-48 bg-white border border-gray-200 rounded shadow-lg group-hover:block group-focus-within:block"
       >
         <li>
-          <a href="/carta-barreo" class="block px-4 py-2 hover:bg-gray-100"
-            >BARREO</a
-          >
+          <a href="/carta-barreo" class="block px-4 py-2 hover:bg-gray-100">
+            BARREO
+          </a>
         </li>
         <li>
-          <a href="/carta-mesa" class="block px-4 py-2 hover:bg-gray-100"
-            >MESA</a
-          >
+          <a href="/carta-mesa" class="block px-4 py-2 hover:bg-gray-100">
+            MESA
+          </a>
         </li>
       </ul>
     </li>
-    <!--<li>
-      <a href="/manjares">MANJARES</a>
+    <li class="hover:text-slate-300">
+      <a
+        href="tel:+34956992222"
+        class="block px-2 py-2 transition-transform duration-200 transform hover:scale-105"
+      >
+        RESERVAS
+      </a>
     </li>
-    <li>
-      <a href="/eventos">EVENTOS</a>
-    </li> -->
-    <li>
-      <a href="tel:+34956992222">RESERVAS</a>
-    </li>
-    <li>
-      <a href="/contacto">CONTACTO</a>
+    <li class="hover:text-slate-300">
+      <a
+        href="/contacto"
+        class="block px-2 py-2 transition-transform duration-200 transform hover:scale-105"
+      >
+        CONTACTO
+      </a>
     </li>
   </ul>
   <div class="ml-auto lg:hidden">
@@ -68,33 +92,33 @@ import Logo from "./Logo.astro";
       class="absolute right-0 top-18 hidden flex-col space-y-1 bg-white border border-gray-200 rounded shadow-lg"
     >
       <li>
-        <a href="/" class="block px-4 py-2 hover:bg-gray-100">INICIO</a>
+        <a href="/" class="block px-2 py-2 hover:bg-gray-100">INICIO</a>
       </li>
       <li>
-        <a href="/carta-barreo" class="block px-4 py-2 hover:bg-gray-100"
+        <a href="/carta-barreo" class="block px-2 py-2 hover:bg-gray-100"
           >CARTA BARREO</a
         >
       </li>
       <li>
-        <a href="/carta-mesa" class="block px-4 py-2 hover:bg-gray-100"
+        <a href="/carta-mesa" class="block px-2 py-2 hover:bg-gray-100"
           >CARTA MESA</a
         >
       </li>
       <!--<li>
-        <a href="/manjares" class="block px-4 py-2 hover:bg-gray-100"
+        <a href="/manjares" class="block px-2 py-2 hover:bg-gray-100"
           >MANJARES</a
         >
       </li> 
       <li>
-        <a href="/eventos" class="block px-4 py-2 hover:bg-gray-100">EVENTOS</a>
+        <a href="/eventos" class="block px-2 py-2 hover:bg-gray-100">EVENTOS</a>
       </li> -->
       <li>
-        <a href="tel:+3495699222" class="block px-4 py-2 hover:bg-gray-100"
+        <a href="tel:+3495699222" class="block px-2 py-2 hover:bg-gray-100"
           >RESERVAS</a
         >
       </li>
       <li>
-        <a href="/contacto" class="block px-4 py-2 hover:bg-gray-100"
+        <a href="/contacto" class="block px-2 py-2 hover:bg-gray-100"
           >CONTACTO</a
         >
       </li>
@@ -117,6 +141,9 @@ import Logo from "./Logo.astro";
     .group:hover .group-hover\:block,
     .group:focus-within .group-focus-within\:block {
       display: block;
+    }
+    .hover\:font-medium:hover {
+      font-weight: 500;
     }
   </style>
 </nav>
