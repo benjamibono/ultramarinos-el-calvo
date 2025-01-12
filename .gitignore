@@ -23,4 +23,20 @@ pnpm-debug.log*
 # jetbrains setting folder
 .idea/
 
+# local environment settings
+.vscode/
 
+# temporary files
+*.tmp
+*.swp
+
+# coverage reports
+coverage/
+
+# build artifacts
+build/
+
+# npm package lock files
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
