@@ -1,6 +1,0 @@
-User-agent: *
-Disallow: /admin/
-Disallow: /login/
-Disallow: /register/
-
-Sitemap: https://www.ultramarinos-el-calvo.com/sitemap.xml
