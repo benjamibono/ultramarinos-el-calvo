@@ -1,8 +1,10 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
 import Intro from "../components/Intro.astro";
 import Description from "../components/Description.astro";
 import Cartas from "../components/Cartas.astro";
+import Footer from "../components/Footer.astro";
 ---
 
 <Layout title="ULTRAMARINOS EL CALVO | BORJA GARCÍA | ESTRELLA MICHELÍN ">
@@ -12,9 +14,11 @@ import Cartas from "../components/Cartas.astro";
   >
     <im src="/logo.webp" alt="Logo" class="logo-animation" />
   </div> -->
+    <Header />
     <Intro />
     <Description />
     <Cartas />
+    <Footer />
 </Layout>
 <!--
 <script src="/src/loader.js"></script>

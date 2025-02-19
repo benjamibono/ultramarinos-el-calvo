@@ -1,0 +1,188 @@
+---
+import Logo from "./Logo.astro";
+---
+
+<header class="sticky top-0 z-50 bg-white">
+  <div class="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
+    <div class="flex h-20 items-center justify-between">
+      <div class="md:flex md:items-center md:gap-12">
+        <a class="block" href="/">
+          <span class="sr-only">Home</span>
+          <Logo />
+        </a>
+      </div>
+      <div class="flex-1 text-center mx-auto">
+        <h1
+          class="text-base sm:text-lg font-extralight lg:text-2xl xl:font-light xxl:text-3xl"
+        >
+          Borja García Prieto
+        </h1>
+      </div>
+      <div class="md:flex md:items-center md:gap-12">
+        <nav aria-label="Global" class="hidden md:block">
+          <ul class="flex items-center gap-4 text-base text-[#2e211c]">
+            <li>
+              <a class="transition hover:text-gray-500/75" href="/"> Inicio </a>
+            </li>
+
+            <li class="group relative z-50">
+              <button
+                class="focus:outline-none transition-transform duration-200 transform hover:scale-105 hover:text-slate-300"
+              >
+                Carta
+              </button>
+              <ul
+                class="absolute hidden mt-2 w-48 bg-white border border-gray-200 rounded shadow-lg group-hover:block group-focus-within:block"
+              >
+                <li>
+                  <a
+                    href="/carta-barreo"
+                    class="block px-4 py-2 hover:bg-gray-100"
+                  >
+                    Barreo
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/carta-mesa"
+                    class="block px-4 py-2 hover:bg-gray-100"
+                  >
+                    Mesa
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li>
+              <a
+                class="transition hover:text-gray-500/75"
+                href="tel:+34956992222"
+              >
+                Reservar
+              </a>
+            </li>
+
+            <li>
+              <a class="transition hover:text-gray-500/75" href="/contacto">
+                Contacto
+              </a>
+            </li>
+            <li class="relative">
+              <button
+                class="text-base leading-5 py-2 px-4 flex items-center space-x-2"
+                id="language-menu-button"
+                type="button"
+                aria-haspopup="true"
+                aria-expanded="false"
+                onclick="document.getElementById('language-menu').classList.toggle('hidden')"
+              >
+                🇪🇸 ▼
+              </button>
+              <div
+                id="language-menu"
+                class="absolute hidden bg-white shadow-lg mt-2 rounded-md"
+              >
+                <a
+                  href="/"
+                  class="block px-4 py-2 text-primary hover:bg-gray-200">🇪🇸</a
+                >
+                <a
+                  href="/en"
+                  class="block px-4 py-2 text-primary hover:bg-gray-200">🇬🇧</a
+                >
+              </div>
+            </li>
+          </ul>
+        </nav>
+
+        <div class="block md:hidden">
+          <button
+            class="rounded p-2 text-gray-600 transition hover:text-gray-600/75"
+            onclick="document.getElementById('mobile-menu').classList.toggle('hidden')"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="size-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+          <div
+            id="mobile-menu"
+            class="absolute right-0 bg-white mt-2 w-48 shadow-lg rounded-md hidden"
+          >
+            <ul
+              class="flex flex-col items-start gap-4 text-base text-[#2e211c] p-4"
+            >
+              <li>
+                <a class="transition hover:text-gray-500/75" href="/">
+                  Inicio
+                </a>
+              </li>
+              <li>
+                <a
+                  class="transition hover:text-gray-500/75"
+                  href="/carta-barreo"
+                >
+                  Carta de Barreo
+                </a>
+              </li>
+              <li>
+                <a class="transition hover:text-gray-500/75" href="/carta-mesa">
+                  Carta de Mesa
+                </a>
+                <li>
+                  <a
+                    class="transition hover:text-gray-500/75"
+                    href="tel:+34956992222"
+                  >
+                    Reservar
+                  </a>
+                </li>
+                <li>
+                  <a class="transition hover:text-gray-500/75" href="/contacto">
+                    Contacto
+                  </a>
+                </li>
+                <li class="relative">
+                  <button
+                    class="text-base leading-5 py-2 px-4 flex items-center space-x-2"
+                    id="language-menu-button-mobile"
+                    type="button"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                    onclick="document.getElementById('language-menu-mobile').classList.toggle('hidden')"
+                  >
+                    🇪🇸 ▼
+                  </button>
+                  <div
+                    id="language-menu-mobile"
+                    class="absolute hidden bg-white shadow-lg mt-2 rounded-md"
+                  >
+                    <a
+                      href="/"
+                      class="block px-4 py-2 text-primary hover:bg-gray-200"
+                      >🇪🇸</a
+                    >
+                    <a
+                      href="/en"
+                      class="block px-4 py-2 text-primary hover:bg-gray-200"
+                      >🇬🇧</a
+                    >
+                  </div>
+                </li>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

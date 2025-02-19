@@ -1,0 +1,139 @@
+<section class="flex relative z-10 h-auto mx-4 my-8">
+  <div class="sm:w-1/2 hidden sm:block">
+    <img
+      src="/mesa.webp"
+      class="w-full h-full object-cover"
+      alt="One of our tables"
+      title="One of our tables"
+    />
+  </div>
+  <div class="sm:w-1/2 flex flex-col text-pretty px-2 sm:px-10">
+    <h2 class="text-xl font-semibold text-center tracking-[0.25em]">
+      TABLE
+    </h2>
+    <h2 class="text-4xl font-semibold text-center pb-1 tracking-[0.25em]">
+      MENU
+    </h2>
+    <p class="border-b-2 border-black"></p>
+
+    <div
+      class="text-rotator xs:text-xs xl:text-sm xxl:text-base font-medium text-center tracking-[.25em] py-2 xs:leading-relaxed"
+    >
+      <span class="rotating-text">THIS IS DESIGNED FOR YOU TO ENJOY</span>
+      <span class="rotating-text">FORGET ABOUT YOUR PHONE</span>
+      <span class="rotating-text">ABOUT THE BAD STUFF</span>
+      <span class="rotating-text">ABOUT THE STRESS...</span>
+      <span class="rotating-text"
+        >ENJOY YOUR TIME, YOUR COMPANY, AND YOURSELF.</span
+      >
+    </div>
+    <div
+      class="mt-4 xs:text-xs xl:text-sm xxl:text-base font-medium tracking-[.25em]"
+    >
+      <p class="underline font-semibold">TO START SNACKING...</p>
+      <ul>
+        <li>TUNA AND HARD-BOILED EGG SALAD</li>
+        <li>MARINATED CUTTLEFISH ROE</li>
+        <li>PIRIÑACA AND SEMI-CURED MACKEREL</li>
+        <li>ORGANIC TOMATO AND GARLIC OIL</li>
+        <li>ARTICHOKES, EGG YOLK CREAM, AND PAYOYO CHEESE</li>
+        <li>JOSELITO HAM CROQUETTES (1 PC)</li>
+        <li>SAUTÉED PRESERVED MUSHROOMS</li>
+        <li>SHRIMP FRITTERS</li>
+      </ul>
+
+      <p class="underline font-semibold mt-6">DON'T MISS THE STEWS...</p>
+      <ul>
+        <li>AMONTILLADO BRAISED PORK CHEEKS</li>
+        <li>RETINTA BEEF AND MUSHROOM MEATBALLS</li>
+        <li>BULL MEAT STEW</li>
+        <li>INKED CUTTLEFISH</li>
+        <li>FRIED TOMATO, POTATOES, AND FREE-RANGE EGG</li>
+        <li>GARLIC SHRIMP</li>
+        <li>"GITANA" STEW AND ITS PRINGÁ</li>
+      </ul>
+
+      <p class="underline font-semibold mt-6">PRODUCT AND ESSENCE...</p>
+      <ul>
+        <li>"LYO" SELECTION CHOP 120 DAYS AGED</li>
+        <li>SANLÚCAR PRAWNS AND RED LARD</li>
+        <li>"GADIRA" TUNA BELLY AND ONION JUICE</li>
+        <li>GRILLED CHICKEN AND GARLIC SAUCE</li>
+        <li>TUNA PARPATANA, MEAT JUICE, AND ALMONDS</li>
+      </ul>
+
+      <p class="underline font-semibold mt-6">ORGANIC SIDES...</p>
+      <ul>
+        <li>FRENCH FRIES</li>
+        <li>CHARCOAL-ROASTED PEPPERS</li>
+        <li>PICKLED PIPARRAS</li>
+        <li>DRESSED LETTUCE SALAD</li>
+      </ul>
+
+      <p class="underline font-semibold mt-6">MOLLETES...</p>
+      <ul>
+        <li>"JOSELITO" COPPA, TOMATO, AND EVOO</li>
+        <li>PALOMETA AND BLUE GOAT CHEESE</li>
+        <li>TUNA, ROASTED PEPPERS, AND FRIED GARLIC</li>
+        <li>PORK CRACKLINGS, PAYOYO CHEESE, AND LIME</li>
+        <li>"BERZA" PRINGÁ</li>
+        <li>IBERIAN PORK SHOULDER, HAM, AND FRIED PEPPERS</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<style>
+  .text-rotator {
+    position: relative;
+    height: 40px;
+    overflow: hidden;
+  }
+
+  .rotating-text {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    text-align: center;
+    animation: rotateText 20s infinite linear;
+    opacity: 0;
+  }
+
+  /* Adjust times so the text disappears before the next one arrives */
+  .rotating-text:nth-child(1) {
+    animation-delay: 0s;
+  }
+  .rotating-text:nth-child(2) {
+    animation-delay: 4s;
+  }
+  .rotating-text:nth-child(3) {
+    animation-delay: 6s;
+  }
+  .rotating-text:nth-child(4) {
+    animation-delay: 8s;
+  }
+  .rotating-text:nth-child(5) {
+    animation-delay: 12s;
+  }
+
+  @keyframes rotateText {
+    0% {
+      top: 100%;
+      opacity: 0;
+    }
+    10%,
+    15% {
+      top: 0;
+      opacity: 1;
+    }
+    25% {
+      top: -100%;
+      opacity: 0;
+    }
+    100% {
+      top: -100%;
+      opacity: 0;
+    }
+  }
+</style>
