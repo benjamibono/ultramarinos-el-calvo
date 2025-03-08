@@ -29,6 +29,9 @@ import Logo from "./Logo.astro";
               <button
                 class="focus:outline-none transition-transform duration-200 transform hover:scale-105 hover:text-slate-300"
                 onclick="document.getElementById('carta-dropdown').classList.toggle('hidden')"
+                aria-label="Menú de carta"
+                aria-expanded="false"
+                aria-controls="carta-dropdown"
               >
                 Carta
               </button>
@@ -74,8 +77,10 @@ import Logo from "./Logo.astro";
                 class="text-base leading-5 py-2 px-4 flex items-center space-x-2"
                 id="language-menu-button"
                 type="button"
+                aria-label="Selector de idioma"
                 aria-haspopup="true"
                 aria-expanded="false"
+                aria-controls="language-menu"
                 onclick="document.getElementById('language-menu').classList.toggle('hidden')"
               >
                 🇪🇸 ▼
@@ -98,6 +103,9 @@ import Logo from "./Logo.astro";
           <button
             class="rounded p-2 text-gray-600 transition hover:text-gray-600/75"
             onclick="document.getElementById('mobile-menu').classList.toggle('hidden')"
+            aria-label="Abrir menú móvil"
+            aria-expanded="false"
+            aria-controls="mobile-menu"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -106,6 +114,7 @@ import Logo from "./Logo.astro";
               viewBox="0 0 24 24"
               stroke="currentColor"
               stroke-width="2"
+              aria-hidden="true"
             >
               <path
                 stroke-linecap="round"
@@ -155,8 +164,10 @@ import Logo from "./Logo.astro";
                     class="text-base leading-5 py-2 px-4 flex items-center space-x-2"
                     id="language-menu-button-mobile"
                     type="button"
+                    aria-label="Selector de idioma móvil"
                     aria-haspopup="true"
                     aria-expanded="false"
+                    aria-controls="language-menu-mobile"
                     onclick="document.getElementById('language-menu-mobile').classList.toggle('hidden')"
                   >
                     🇪🇸 ▼
