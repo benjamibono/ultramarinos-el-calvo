@@ -1,14 +1,22 @@
+---
+import { Image } from "astro:assets";
+---
+
 <section class="bg-[#fafaf2]">
   <div
     class="w-full flex min:h-[1536px] max-w-screen-xxl sm:mx-auto relative z-10 p-8 overflow-hidden bg-[#fafaf2] pb-10"
   >
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 h-[1536px]">
       <div class="row-span-1 flex items-center justify-center">
-        <img
+        <Image
           src="/close-up.webp"
           class="object-cover rounded-lg"
-          alt="A little corner of our place"
-          title="A little corner of our place"
+          alt="A corner of our place"
+          title="A corner of our place"
+          width={800}
+          height={600}
+          quality={85}
+          sizes="(max-width: 640px) 640px, 800px"
         />
       </div>
       <div class="row-span-1 flex flex-col justify-center md:px-16 py-8">
@@ -25,11 +33,15 @@
         </p>
       </div>
       <div class="sm:hidden row-span-1 flex items-center justify-center">
-        <img
+        <Image
           src="/salon-hzt.webp"
           class="object-cover rounded-lg"
           alt="Our dining room"
           title="Our dining room"
+          width={800}
+          height={600}
+          quality={85}
+          sizes="(max-width: 640px) 640px, 800px"
         />
       </div>
       <div class="row-span-1 flex flex-col justify-center md:px-16 py-8">
@@ -47,19 +59,27 @@
         </p>
       </div>
       <div class="hidden row-span-1 sm:flex items-center justify-center">
-        <img
+        <Image
           src="/salon-hzt.webp"
           class="object-cover rounded-lg"
           alt="Our dining room"
           title="Our dining room"
+          width={800}
+          height={600}
+          quality={85}
+          sizes="(max-width: 640px) 640px, 800px"
         />
       </div>
       <div class="row-span-1 flex items-center justify-center">
-        <img
+        <Image
           src="/mesa-hzt.webp"
           class="object-cover rounded-lg"
-          alt="The tables of our place"
-          title="The tables of our place"
+          alt="One of our tables"
+          title="One of our tables"
+          width={800}
+          height={600}
+          quality={85}
+          sizes="(max-width: 640px) 640px, 800px"
         />
       </div>
       <div class="row-span-1 flex flex-col justify-center md:px-16 py-8">

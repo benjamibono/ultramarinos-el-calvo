@@ -5,6 +5,7 @@ import Intro from "../components/Intro.astro";
 import Description from "../components/Description.astro";
 import Cartas from "../components/Cartas.astro";
 import Footer from "../components/Footer.astro";
+import { Image } from "astro:assets";
 ---
 
 <Layout title="ULTRAMARINOS EL CALVO | BORJA GARCÍA | ESTRELLA MICHELÍN ">
@@ -12,13 +13,21 @@ import Footer from "../components/Footer.astro";
     id="loader"
     class="fixed inset-0 bg-white flex items-center justify-center z-50 transition-transform duration-700"
   >
-    <im src="/logo.webp" alt="Logo" class="logo-animation" />
+    <Image
+      src="/logo.webp"
+      alt="Logo"
+      class="logo-animation"
+      width={200}
+      height={200}
+      quality={90}
+      sizes="200px"
+    />
   </div> -->
-    <Header />
-    <Intro />
-    <Description />
-    <Cartas />
-    <Footer />
+  <Header />
+  <Intro />
+  <Description />
+  <Cartas />
+  <Footer />
 </Layout>
 <!--
 <script src="/src/loader.js"></script>

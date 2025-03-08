@@ -1,16 +1,22 @@
+---
+import { Image } from "astro:assets";
+---
+
 <section class="flex relative z-10 h-auto mx-4 my-8">
   <div class="sm:w-1/2 hidden sm:block">
-    <img
+    <Image
       src="/mesa.webp"
       class="w-full h-full object-cover"
       alt="One of our tables"
       title="One of our tables"
+      width={800}
+      height={600}
+      quality={85}
+      sizes="(max-width: 640px) 640px, 800px"
     />
   </div>
   <div class="sm:w-1/2 flex flex-col text-pretty px-2 sm:px-10">
-    <h2 class="text-xl font-semibold text-center tracking-[0.25em]">
-      TABLE
-    </h2>
+    <h2 class="text-xl font-semibold text-center tracking-[0.25em]">TABLE</h2>
     <h2 class="text-4xl font-semibold text-center pb-1 tracking-[0.25em]">
       MENU
     </h2>

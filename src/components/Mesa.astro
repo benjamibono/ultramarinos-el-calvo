@@ -1,7 +1,19 @@
+---
+import { Image } from "astro:assets";
+---
+
 <section class="flex relative z-10 h-auto mx-4 my-8">
   <div class="sm:w-1/2 hidden sm:block">
-    <img src="/mesa.webp" class="w-full h-full object-cover" alt="Una de nuestras mesas"
-    title="Una de nuestras mesas"/>
+    <Image
+      src="/mesa.webp"
+      class="w-full h-full object-cover"
+      alt="Una de nuestras mesas"
+      title="Una de nuestras mesas"
+      width={800}
+      height={600}
+      quality={85}
+      sizes="(max-width: 640px) 640px, 800px"
+    />
   </div>
   <div class="sm:w-1/2 flex flex-col text-pretty px-2 sm:px-10">
     <h2 class="text-xl font-semibold text-center tracking-[0.25em]">
@@ -18,7 +30,7 @@
       <span class="rotating-text">ESTO ESTÁ PENSAO PÁ QUE TU LO DISFRUTES</span>
       <span class="rotating-text">OLVÍDATE DEL MÓVIL</span>
       <span class="rotating-text">DE LO MALO</span>
-      <span class="rotating-text">DEL ESTRÉS...</span> 
+      <span class="rotating-text">DEL ESTRÉS...</span>
       <span class="rotating-text"
         >DISFRUTA DE TU TIEMPO, DE TU COMPAÑÍA Y DE TI.</span
       >

@@ -1,8 +1,10 @@
+---
+import { Image } from "astro:assets";
+---
+
 <section class="flex relative z-10 h-auto mx-4 my-8">
   <div class="sm:w-1/2 flex flex-col text-pretty sm:px-10">
-    <h2 class="text-xl font-semibold text-center tracking-[0.35em]">
-      BAR
-    </h2>
+    <h2 class="text-xl font-semibold text-center tracking-[0.35em]">BAR</h2>
     <h2 class="text-4xl font-semibold text-center pb-1">MENU</h2>
     <!--<a class="text-4xl font-semibold opacity-50 hover:opacity-100 text-center pb-1" href="table-menu"><button>TABLE</button"></a> -->
     <p class="border-b-2 border-black"></p>
@@ -73,11 +75,15 @@
     </div>
   </div>
   <div class="sm:w-1/2 hidden sm:block">
-    <img
+    <Image
       src="/surtido.webp"
       class="w-full h-full object-cover"
-      alt="assorted tapas"
-      title="assorted tapas"
+      alt="assortment of tapas"
+      title="assortment of tapas"
+      width={800}
+      height={600}
+      quality={85}
+      sizes="(max-width: 640px) 640px, 800px"
     />
   </div>
 </section>

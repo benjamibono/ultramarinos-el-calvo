@@ -1,9 +1,29 @@
-<section class="relative w-full h-[55dvh]">
-  <div
-    class="absolute inset-0 bg-cover bg-center"
-    style="background-image: url('/surtido2.webp');"
-  >
-  </div>
+---
+import { Image } from "astro:assets";
+
+// Preload de la imagen para mejorar LCP
+const preloadImage = {
+  src: "/surtido2.webp",
+  as: "image",
+  type: "image/webp",
+  fetchpriority: "high",
+};
+---
+
+<link rel="preload" {...preloadImage} />
+
+<section class="relative w-full h-[85dvh]">
+  <Image
+    src="/surtido2.webp"
+    alt="Assortment of grocery products"
+    class="absolute inset-0 w-full h-full object-cover"
+    width={1920}
+    height={1080}
+    loading="eager"
+    fetchpriority="high"
+    sizes="(max-width: 640px) 640px, (max-width: 768px) 768px, (max-width: 1024px) 1024px, 1920px"
+    quality={85}
+  />
   <div
     class="absolute inset-0 flex flex-col items-center justify-center text-center text-white bg-black/50 sm:space-y-5 md:space-y-10 xl:space-y-20"
   >
@@ -15,7 +35,7 @@
     <h2
       class="text-xs sm:text-base md:text-lg lg:text-xl xxl:text-3xl font-medium"
     >
-      PRESERVES, SALTED FISH, STEWS, PRODUCTS, CURED MEATS…
+      PRESERVES, SALTED PRODUCTS, STEWS, FRESH PRODUCTS, CURED MEATS...
     </h2>
   </div>
 </section>

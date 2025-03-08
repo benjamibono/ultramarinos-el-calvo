@@ -25,14 +25,16 @@ import Logo from "./Logo.astro";
               <a class="transition hover:text-gray-500/75" href="/"> Inicio </a>
             </li>
 
-            <li class="group relative z-50">
+            <li class="relative z-50">
               <button
                 class="focus:outline-none transition-transform duration-200 transform hover:scale-105 hover:text-slate-300"
+                onclick="document.getElementById('carta-dropdown').classList.toggle('hidden')"
               >
                 Carta
               </button>
               <ul
-                class="absolute hidden mt-2 w-48 bg-white border border-gray-200 rounded shadow-lg group-hover:block group-focus-within:block"
+                id="carta-dropdown"
+                class="absolute hidden mt-2 w-48 bg-white border border-gray-200 rounded shadow-lg"
               >
                 <li>
                   <a
@@ -84,7 +86,8 @@ import Logo from "./Logo.astro";
               >
                 <a
                   href="/en"
-                  class="block px-4 py-2 text-primary hover:bg-gray-200 hover:rounded-md">🇬🇧</a
+                  class="block px-4 py-2 text-primary hover:bg-gray-200 hover:rounded-md"
+                  >🇬🇧</a
                 >
               </div>
             </li>

@@ -1,14 +1,22 @@
+---
+import { Image } from "astro:assets";
+---
+
 <section class="bg-[#fafaf2]">
   <div
     class="w-full flex min:h-[1536px] max-w-screen-xxl sm:mx-auto relative z-10 p-8 overflow-hidden bg-[#fafaf2] pb-10"
   >
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 h-[1536px]">
       <div class="row-span-1 flex items-center justify-center">
-        <img
+        <Image
           src="/close-up.webp"
           class="object-cover rounded-lg"
           alt="Un rinconcito de nuestro local"
           title="Un rinconcito de nuestro local"
+          width={600}
+          height={400}
+          quality={80}
+          sizes="(max-width: 640px) 640px, 600px"
         />
       </div>
       <div class="row-span-1 flex flex-col justify-center md:px-16 py-8">
@@ -25,11 +33,15 @@
         </p>
       </div>
       <div class="sm:hidden row-span-1 flex items-center justify-center">
-        <img
+        <Image
           src="/salon-hzt.webp"
           class="object-cover rounded-lg"
           alt="Nuestro salón"
           title="Nuestro salón"
+          width={600}
+          height={400}
+          quality={80}
+          sizes="(max-width: 640px) 640px, 600px"
         />
       </div>
       <div class="row-span-1 flex flex-col justify-center md:px-16 py-8">
@@ -46,19 +58,27 @@
         </p>
       </div>
       <div class="hidden row-span-1 sm:flex items-center justify-center">
-        <img
+        <Image
           src="/salon-hzt.webp"
           class="object-cover rounded-lg"
           alt="Nuestro salón"
           title="Nuestro salón"
+          width={600}
+          height={400}
+          quality={80}
+          sizes="(max-width: 640px) 640px, 600px"
         />
       </div>
       <div class="row-span-1 flex items-center justify-center">
-        <img
+        <Image
           src="/mesa-hzt.webp"
           class="object-cover rounded-lg"
-          alt="Las mesas de nuestro local"
-          title="Las mesas de nuestro local"
+          alt="Una de nuestras mesas"
+          title="Una de nuestras mesas"
+          width={600}
+          height={400}
+          quality={80}
+          sizes="(max-width: 640px) 640px, 600px"
         />
       </div>
       <div class="row-span-1 flex flex-col justify-center md:px-16 py-8">

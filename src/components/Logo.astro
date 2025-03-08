@@ -1,7 +1,16 @@
-<a href=""
-  ><img
-    src="/logonav.svg"
-    alt="Logo de Ultramarinos El Calvo" title="Logo de Ultramarinos El Calvo"
+---
+import { Image } from "astro:assets";
+import logoSvg from "../assets/logonav.svg";
+---
+
+<a href="/">
+  <Image
+    src={logoSvg}
+    loading="eager"
+    alt="Logo de Ultramarinos El Calvo"
+    title="Logo de Ultramarinos El Calvo"
     class="xs:h-12 sm:h-16 xl:h-20 xxl:h-24 animate-fade-in animate-delay-100 animate-duration-1000"
+    width={200}
+    height={200}
   />
 </a>
