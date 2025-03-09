@@ -6,16 +6,17 @@ const preloadImage = {
   src: "/surtido2.webp",
   as: "image",
   type: "image/webp",
-  fetchpriority: "high",
 };
 ---
 
-<link rel="preload" {...preloadImage} />
+<link rel="preload" href="/surtido2.webp" as="image" type="image/webp" />
 
-<section class="relative w-full h-[85dvh]">
+<section
+  class="relative w-full h-[70dvh] sm:h-[75dvh] md:h-[80dvh] lg:h-[85dvh]"
+>
   <Image
     src="/surtido2.webp"
-    alt="Assortment of grocery products"
+    alt="Assortment of delicatessen products"
     class="absolute inset-0 w-full h-full object-cover"
     width={1920}
     height={1080}
@@ -25,17 +26,17 @@ const preloadImage = {
     quality={85}
   />
   <div
-    class="absolute inset-0 flex flex-col items-center justify-center text-center text-white bg-black/50 sm:space-y-5 md:space-y-10 xl:space-y-20"
+    class="absolute inset-0 flex flex-col items-center justify-center text-center text-white bg-black/50 px-4 sm:px-6 md:px-8 space-y-3 sm:space-y-5 md:space-y-8 lg:space-y-10 xl:space-y-16"
   >
     <h1
-      class="text-sm sm:text-lg md:text-2xl lg:text-4xl xxl:text-6xl font-semibold mb-4"
+      class="text-xs xs:text-sm sm:text-lg md:text-2xl lg:text-4xl xxl:text-6xl font-semibold mb-2 sm:mb-4"
     >
       A PLACE TO EAT AND DRINK, BUT WELL.
     </h1>
     <h2
-      class="text-xs sm:text-base md:text-lg lg:text-xl xxl:text-3xl font-medium"
+      class="text-xs xs:text-xs sm:text-base md:text-lg lg:text-xl xxl:text-3xl font-medium"
     >
-      PRESERVES, SALTED PRODUCTS, STEWS, FRESH PRODUCTS, CURED MEATS...
+      PRESERVES, SALTED FISH, STEWS, PRODUCE, CURED MEATS…
     </h2>
   </div>
 </section>

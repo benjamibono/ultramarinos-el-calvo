@@ -2,17 +2,25 @@
 import { Image } from "astro:assets";
 ---
 
-<section class="flex relative z-10 h-auto mx-4 my-8">
-  <div class="sm:w-1/2 flex flex-col text-pretty sm:px-10">
-    <h2 class="text-xl font-semibold text-center tracking-[0.35em]">
+<section
+  class="flex flex-col lg:flex-row relative z-10 h-auto mx-2 xs:mx-3 sm:mx-4 md:mx-6 lg:mx-8 my-4 sm:my-6 md:my-8"
+>
+  <div
+    class="w-full lg:w-1/2 flex flex-col text-pretty px-2 xs:px-3 sm:px-4 md:px-6 lg:px-10"
+  >
+    <h2
+      class="text-lg sm:text-xl md:text-2xl font-semibold text-center tracking-[0.35em]"
+    >
       CARTA DE
     </h2>
-    <h2 class="text-4xl font-semibold text-center pb-1">BARREO</h2>
+    <h2 class="text-2xl sm:text-3xl md:text-4xl font-semibold text-center pb-1">
+      BARREO
+    </h2>
     <!--<a class="text-4xl font-semibold opacity-50 hover:opacity-100 text-center pb-1" href="carta-mesa"><button>MESA</button"></a
     > -->
     <p class="border-b-2 border-black"></p>
     <div
-      class="text-rotator xs:text-xs xl:text-sm xxl:text-base font-medium text-center tracking-[.25em] py-2 xs:leading-relaxed"
+      class="text-rotator text-xs sm:text-sm md:text-base font-medium text-center tracking-[.25em] py-2 leading-relaxed"
     >
       <span class="rotating-text">PÍDELO</span>
       <span class="rotating-text">PRUÉBALO</span>
@@ -23,21 +31,21 @@ import { Image } from "astro:assets";
       <span class="rotating-text">DISFRÚTALO</span>
     </div>
     <div
-      class="mt-4 xs:text-xs xl:text-sm xxl:text-base font-medium tracking-[.25em] space-y-2"
+      class="mt-4 text-xs sm:text-sm md:text-base font-medium tracking-[.25em] space-y-2"
     >
-      <ul>
-        <li>GUILDA DE ACEITUNA GORDAL</li>
-        <li>HUEVAS DE CHOCO ALIÑADAS</li>
-        <li>ANCHOAS CANTÁBRICAS EN MANTEQUILLA (LATA)</li>
-        <li>TOSTA DE ANCHOA CANTÁBRICA Y MANTEQUILLA (UD)</li>
+      <ul class="space-y-1 sm:space-y-2">
+        <li>GILDA DE ACEITUNA GORDAL</li>
+        <li>HUEVAS DE CHOCO ALIÑÁS</li>
+        <li>ANCHOAS DEL CANTÁBRICO EN MANTEQUILLA (LATA)</li>
+        <li>TOSTA DE ANCHOA DEL CANTÁBRICO Y MANTEQUILLA (UNIDAD)</li>
         <li>BONITO DEL SUR SEMICURADO</li>
-        <li>MOJAMA CURADA EN CASA</li>
-        <li>MEJILLONES XXL EN ESCABECHE</li>
-        <li>NAVAJA AL NATURAL</li>
-        <li>ZAMBURIÑAS CONFITADAS</li>
-        <li>COCOCHAS AL AJILLO</li>
+        <li>MOJAMA DE LA CASA</li>
+        <li>MEJILLONES EN ESCABECHE XXL</li>
+        <li>NAVAJAS AL NATURAL</li>
+        <li>ZAMBURIÑAS EN CONFIT</li>
+        <li>KOKOTXAS AL AJILLO</li>
         <li>VENTRESCA DE ATÚN ROJO "GADIRA"</li>
-        <li>TOMATE PELAO Y ACEITE DE AJO</li>
+        <li>TOMATE PELADO AL ACEITE DE AJO</li>
         <li>ENSALADILLA DE BONITO, HUEVO Y PIPARRA</li>
         <li>PIRINACA Y CABALLA SEMICURADA</li>
         <li>TORTILLITA DE CAMARONES DE ESTERO</li>
@@ -58,26 +66,21 @@ import { Image } from "astro:assets";
       </ul>
       <p class="border-b-2 border-black pt-4"></p>
       <h3
-        class="space-y-6 text-center
-      xs:text-xs
-      xl:text-sm
-      xxl:text-base
-      font-medium
-      tracking-[.25em]"
+        class="text-center text-xs sm:text-sm md:text-base font-medium tracking-[.25em] pt-2"
       >
         MOLLETES
       </h3>
-      <ul>
-        <li>JAMON 100% IBERICO, TOMATE Y AOVE</li>
+      <ul class="space-y-1 sm:space-y-2">
+        <li>JAMÓN 100% IBÉRICO, TOMATE Y AOVE</li>
         <li>PALOMETA Y QUESO AZUL DE CABRA</li>
         <li>LOMO EN MANTECA, PIMIENTOS ASADOS Y AJO FRITO</li>
         <li>CHICHARRONES, QUESO PAYOYO Y LIMA</li>
-        <li>PRINGÁ DE BERZA</li>
+        <li>PRINGÁ</li>
         <li>PRESA IBÉRICA, JAMÓN, PIMIENTO FRITO</li>
       </ul>
     </div>
   </div>
-  <div class="sm:w-1/2 hidden sm:block">
+  <div class="w-full lg:w-1/2 hidden lg:block">
     <Image
       src="/surtido.webp"
       class="w-full h-full object-cover"
@@ -86,7 +89,7 @@ import { Image } from "astro:assets";
       width={800}
       height={600}
       quality={85}
-      sizes="(max-width: 640px) 640px, 800px"
+      sizes="(max-width: 1024px) 0, 800px"
     />
   </div>
 </section>

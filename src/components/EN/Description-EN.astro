@@ -4,10 +4,12 @@ import { Image } from "astro:assets";
 
 <section class="bg-[#fafaf2]">
   <div
-    class="w-full flex min:h-[1536px] max-w-screen-xxl sm:mx-auto relative z-10 p-8 overflow-hidden bg-[#fafaf2] pb-10"
+    class="w-full flex min:h-[1536px] max-w-screen-xxl sm:mx-auto relative z-10 p-4 sm:p-6 lg:p-8 overflow-hidden bg-[#fafaf2] pb-6 sm:pb-10"
   >
-    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 h-[1536px]">
-      <div class="row-span-1 flex items-center justify-center">
+    <div
+      class="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-4 lg:gap-6 h-auto sm:h-[1536px]"
+    >
+      <div class="row-span-1 flex items-center justify-center p-2 sm:p-4">
         <Image
           src="/close-up.webp"
           class="object-cover rounded-lg"
@@ -21,20 +23,24 @@ import { Image } from "astro:assets";
           sizes="(max-width: 640px) 100vw, 600px"
         />
       </div>
-      <div class="row-span-1 flex flex-col justify-center md:px-16 py-8">
-        <h2 class="mt-4 font-semibold text-base sm:text-3xl overflow-hidden">
+      <div
+        class="row-span-1 flex flex-col justify-center px-4 sm:px-8 md:px-12 lg:px-16 py-4 sm:py-6 lg:py-8"
+      >
+        <h2
+          class="mt-2 sm:mt-4 font-semibold text-base sm:text-xl md:text-2xl lg:text-3xl overflow-hidden"
+        >
           Soul of the South
         </h2>
         <p
-          class="mt-4 text-base md:text-lg lg:text-xl xl:text-2xl overflow-hidden text-balance"
+          class="mt-2 sm:mt-4 text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl overflow-hidden text-balance"
         >
-          Where every <strong>dish</strong> is a tribute to tradition and
+          Where each <strong>dish</strong> is a tribute to tradition and
           <strong>local produce</strong>. Tapas that combine the flavor of
           immediacy with the depth of time, where simplicity and detail coexist
           in harmony.
         </p>
       </div>
-      <div class="sm:hidden row-span-1 flex items-center justify-center">
+      <div class="sm:hidden row-span-1 flex items-center justify-center p-2">
         <Image
           src="/salon-hzt.webp"
           class="object-cover rounded-lg"
@@ -46,21 +52,26 @@ import { Image } from "astro:assets";
           sizes="(max-width: 640px) 100vw, 600px"
         />
       </div>
-      <div class="row-span-1 flex flex-col justify-center md:px-16 py-8">
-        <h2 class="mt-4 font-semibold text-base sm:text-3xl overflow-hidden">
-          Raw Material
+      <div
+        class="row-span-1 flex flex-col justify-center px-4 sm:px-8 md:px-12 lg:px-16 py-4 sm:py-6 lg:py-8"
+      >
+        <h2
+          class="mt-2 sm:mt-4 font-semibold text-base sm:text-xl md:text-2xl lg:text-3xl overflow-hidden"
+        >
+          Raw Materials
         </h2>
         <p
-          class="mt-4 text-base md:text-lg lg:text-xl xl:text-2xl overflow-hidden text-balance"
+          class="mt-2 sm:mt-4 text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl overflow-hidden text-balance"
         >
-          The <strong>excellence</strong>, carefully selected from small
-          producers, is the undisputed protagonist of each dish.<br /> A menu that
-          follows the
+          <strong>Excellence</strong>, carefully selected from small producers,
+          is the undisputed protagonist of each dish.<br /> A menu that follows the
           <strong>rhythm of the seasons</strong>, respecting each ingredient,
           <strong>without artifice</strong> or excess.
         </p>
       </div>
-      <div class="hidden row-span-1 sm:flex items-center justify-center">
+      <div
+        class="hidden row-span-1 sm:flex items-center justify-center p-2 sm:p-4"
+      >
         <Image
           src="/salon-hzt.webp"
           class="object-cover rounded-lg"
@@ -72,7 +83,7 @@ import { Image } from "astro:assets";
           sizes="(max-width: 640px) 100vw, 600px"
         />
       </div>
-      <div class="row-span-1 flex items-center justify-center">
+      <div class="row-span-1 flex items-center justify-center p-2 sm:p-4">
         <Image
           src="/mesa-hzt.webp"
           class="object-cover rounded-lg"
@@ -84,12 +95,16 @@ import { Image } from "astro:assets";
           sizes="(max-width: 640px) 100vw, 600px"
         />
       </div>
-      <div class="row-span-1 flex flex-col justify-center md:px-16 py-8">
-        <h2 class="mt-4 font-semibold text-base sm:text-3xl overflow-hidden">
+      <div
+        class="row-span-1 flex flex-col justify-center px-4 sm:px-8 md:px-12 lg:px-16 py-4 sm:py-6 lg:py-8"
+      >
+        <h2
+          class="mt-2 sm:mt-4 font-semibold text-base sm:text-xl md:text-2xl lg:text-3xl overflow-hidden"
+        >
           For Everyone
         </h2>
         <p
-          class="mt-4 text-base md:text-lg lg:text-xl xl:text-2xl text-balance"
+          class="mt-2 sm:mt-4 text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-balance"
         >
           The new project by chef <strong>Borja García</strong>, <strong
             >Michelin Star</strong

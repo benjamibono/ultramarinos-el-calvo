@@ -2,79 +2,83 @@
 import { Image } from "astro:assets";
 ---
 
-<section class="flex relative z-10 h-auto mx-4 my-8">
-  <div class="sm:w-1/2 flex flex-col text-pretty sm:px-10">
-    <h2 class="text-xl font-semibold text-center tracking-[0.35em]">BAR</h2>
-    <h2 class="text-4xl font-semibold text-center pb-1">MENU</h2>
-    <!--<a class="text-4xl font-semibold opacity-50 hover:opacity-100 text-center pb-1" href="table-menu"><button>TABLE</button"></a> -->
+<section
+  class="flex flex-col lg:flex-row relative z-10 h-auto mx-2 xs:mx-3 sm:mx-4 md:mx-6 lg:mx-8 my-4 sm:my-6 md:my-8"
+>
+  <div
+    class="w-full lg:w-1/2 flex flex-col text-pretty px-2 xs:px-3 sm:px-4 md:px-6 lg:px-10"
+  >
+    <h2
+      class="text-lg sm:text-xl md:text-2xl font-semibold text-center tracking-[0.35em]"
+    >
+      BAR
+    </h2>
+    <h2 class="text-2xl sm:text-3xl md:text-4xl font-semibold text-center pb-1">
+      MENU
+    </h2>
     <p class="border-b-2 border-black"></p>
     <div
-      class="text-rotator xs:text-xs xl:text-sm xxl:text-base font-medium text-center tracking-[.25em] py-2 xs:leading-relaxed"
+      class="text-rotator text-xs sm:text-sm md:text-base font-medium text-center tracking-[.25em] py-2 leading-relaxed"
     >
       <span class="rotating-text">ORDER IT</span>
       <span class="rotating-text">TRY IT</span>
       <span class="rotating-text">ASK FOR IT</span>
       <span class="rotating-text">MIX IT</span>
       <span class="rotating-text">EAT IT</span>
-      <span class="rotating-text">BUT MOST IMPORTANTLY...</span>
+      <span class="rotating-text">BUT ABOVE ALL...</span>
       <span class="rotating-text">ENJOY IT</span>
     </div>
     <div
-      class="mt-4 xs:text-xs xl:text-sm xxl:text-base font-medium tracking-[.25em] space-y-2"
+      class="mt-4 text-xs sm:text-sm md:text-base font-medium tracking-[.25em] space-y-2"
     >
-      <ul>
-        <li>GORDAL OLIVE GUILDA</li>
+      <ul class="space-y-1 sm:space-y-2">
+        <li>GORDAL OLIVE GILDA</li>
         <li>SEASONED CUTTLEFISH ROE</li>
         <li>CANTABRIAN ANCHOVIES IN BUTTER (TIN)</li>
-        <li>CANTABRIAN ANCHOVY & BUTTER TOAST (UNIT)</li>
-        <li>SEMI-CURED SOUTHERN TUNA</li>
+        <li>CANTABRIAN ANCHOVY AND BUTTER TOAST (UNIT)</li>
+        <li>SEMI-CURED SOUTHERN BONITO</li>
         <li>HOUSE-CURED MOJAMA</li>
-        <li>XXL MUSSELS IN ESCABECHE</li>
+        <li>XXL PICKLED MUSSELS</li>
         <li>NATURAL RAZOR CLAMS</li>
-        <li>CONFIT SCALLOPS</li>
-        <li>GARLIC COCOCHAS</li>
+        <li>CONFIT QUEEN SCALLOPS</li>
+        <li>GARLIC STYLE KOKOTXAS</li>
         <li>BLUEFIN TUNA BELLY "GADIRA"</li>
         <li>PEELED TOMATO WITH GARLIC OIL</li>
-        <li>TUNA, EGG & PICKLED PEPPER SALAD</li>
-        <li>PIRINACA SALAD WITH SEMI-CURED MACKEREL</li>
-        <li>ESTERO SHRIMP FRITTER</li>
+        <li>BONITO, EGG AND PIPARRA RUSSIAN SALAD</li>
+        <li>PIRINACA AND SEMI-CURED MACKEREL</li>
+        <li>ESTUARY SHRIMP FRITTER</li>
         <li>"JOSELITO" HAM CROQUETTE</li>
-        <li>SPECIAL CHICHARRONES</li>
-        <li>PORK LOIN IN LARD</li>
+        <li>SPECIAL PORK RINDS</li>
+        <li>LOIN IN LARD</li>
         <li>100% IBERIAN HAM</li>
         <li>"JOSELITO" COPPA</li>
-        <li>"CASALBA" GROUND CHORIZO</li>
-        <li>SPICY CHORIZO "LYO"</li>
-        <li>"CASALBA" CURED PORK JOWL</li>
-        <li>"BUCARITO" MARINATED & CURED PORK BELLY</li>
+        <li>"CASALBA" MINCED CHORIZO</li>
+        <li>"LYO" SPICY CHORIZO</li>
+        <li>"CASALBA" CURED JOWL</li>
+        <li>"BUCARITO" MARINATED AND CURED BACON</li>
         <li>"LYO" WAGYU CECINA</li>
-        <li>"LYO" CURED OX PICAÑA</li>
-        <li>"BUCARITO" BLUE GOAT CHEESE</li>
+        <li>"LYO" CURED OX PICANHA</li>
+        <li>"BUCARITO" FLORIDA GOAT BLUE CHEESE</li>
         <li>"BUCARITO" RAW MILK CHEESE</li>
-        <li>"EL BOSQUEÑO" CURED CHEESE IN OLOROSO WINE</li>
+        <li>"EL BOSQUEÑO" CHEESE AGED IN OLOROSO</li>
       </ul>
       <p class="border-b-2 border-black pt-4"></p>
       <h3
-        class="space-y-6 text-center
-      xs:text-xs
-      xl:text-sm
-      xxl:text-base
-      font-medium
-      tracking-[.25em]"
+        class="text-center text-xs sm:text-sm md:text-base font-medium tracking-[.25em] pt-2"
       >
-        MOLLETES
+        SOFT ROLLS
       </h3>
-      <ul>
-        <li>100% IBERIAN HAM, TOMATO & EVOO</li>
-        <li>SMOKED PALOMETA & BLUE GOAT CHEESE</li>
-        <li>PORK LOIN IN LARD, ROASTED PEPPERS & FRIED GARLIC</li>
-        <li>CHICHARRONES, PAYOYO CHEESE & LIME</li>
-        <li>BERZA STEW PULLED MEAT</li>
-        <li>IBERIAN PORK SHOULDER, HAM & FRIED PEPPER</li>
+      <ul class="space-y-1 sm:space-y-2">
+        <li>100% IBERIAN HAM, TOMATO AND EVOO</li>
+        <li>POMFRET AND GOAT BLUE CHEESE</li>
+        <li>LOIN IN LARD, ROASTED PEPPERS AND FRIED GARLIC</li>
+        <li>PORK RINDS, PAYOYO CHEESE AND LIME</li>
+        <li>STEWED MEAT</li>
+        <li>IBERIAN PORK SHOULDER, HAM, FRIED PEPPER</li>
       </ul>
     </div>
   </div>
-  <div class="sm:w-1/2 hidden sm:block">
+  <div class="w-full lg:w-1/2 hidden lg:block">
     <Image
       src="/surtido.webp"
       class="w-full h-full object-cover"
@@ -83,7 +87,7 @@ import { Image } from "astro:assets";
       width={800}
       height={600}
       quality={85}
-      sizes="(max-width: 640px) 640px, 800px"
+      sizes="(max-width: 1024px) 0, 800px"
     />
   </div>
 </section>
@@ -105,7 +109,7 @@ import { Image } from "astro:assets";
     opacity: 0;
   }
 
-  /* Adjusting timings so the text disappears before the next one arrives */
+  /* Ajustar tiempos para que el texto se retire antes de la llegada del siguiente */
   .rotating-text:nth-child(1) {
     animation-delay: 0s;
   }
