@@ -43,18 +43,43 @@ const InstagramStories = () => {
           return;
         }
 
-        // Convertir los videos a formato de stories
-        const formattedStories = videos.map((video, index) => ({
-          url: video.url,
-          type: "video",
-          header: {
-            heading: "Ultramarinos El Calvo",
-            subheading: `Video ${index + 1} de ${videos.length}`,
-            profileImage: "/icon.svg",
-          },
-        }));
+        // Títulos personalizados para cada video
+        const videoTitles = {
+          "video1.mp4": "¡Preparando la inauguración! 🍻",
+          "video2.mp4": "Volver a casa para cocinar 🏠👨‍🍳",
+          "video3.mp4": "Team Pacto prueba El Calvo 🍽️",
+          "video4.mp4": "👨‍🍳 Isaac, Cocina con buen rollo",
+          "video5.mp4": "Albóndigas que enamoran 😍",
+          "video6.mp4": "Top 3 platos favoritos 🔥",
+          "video7.mp4": "Detalles que marcan la diferencia ✨",
+          "video8.mp4": "Cocina básica, dicen... 🤔",
+          // Añade más títulos según necesites
+        };
 
-        console.log("Stories formateadas:", formattedStories);
+        // Convertir los videos a formato de stories
+        const formattedStories = videos.map((video, index) => {
+          // Añadir un parámetro de consulta único para evitar problemas de caché
+          const uniqueUrl = `${video.url}?index=${index}&t=${Date.now()}`;
+
+          return {
+            url: uniqueUrl,
+            type: "video",
+            header: {
+              heading: "Ultramarinos El Calvo",
+              subheading:
+                videoTitles[video.name] ||
+                `Video ${index + 1} de ${videos.length}`,
+              profileImage: "/icon.svg",
+            },
+          };
+        });
+
+        console.log(
+          "Orden final de stories:",
+          formattedStories
+            .map((s, i) => `${i + 1}: ${s.url.split("/").pop()}`)
+            .join(", ")
+        );
         setStories(formattedStories);
         console.log(`Videos cargados con éxito: ${formattedStories.length}`);
         console.log(

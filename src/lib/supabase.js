@@ -51,8 +51,8 @@ export async function getAllVideos() {
     // Ordenar los videos por nombre (video1, video2, etc.)
     const sortedData = [...data].sort((a, b) => {
       // Extraer números de los nombres de archivo (video1.mp4 -> 1)
-      const numA = parseInt(a.name.replace(/\D/g, ""));
-      const numB = parseInt(b.name.replace(/\D/g, ""));
+      const numA = parseInt(a.name.replace(/\D/g, "")) || 0;
+      const numB = parseInt(b.name.replace(/\D/g, "")) || 0;
       return numA - numB;
     });
 
