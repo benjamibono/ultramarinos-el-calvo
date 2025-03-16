@@ -1,19 +1,18 @@
 🍽️ Ultramarinos El Calvo - Traditional Spanish Restaurant
 A welcoming and modern web platform for a beloved local restaurant, where a prestigious chef brings exceptional cuisine to everyday dining. Built with Astro and TailwindCSS, this site reflects our commitment to quality food at fair prices, blending traditional Spanish flavors with contemporary touches.
 
-🚧 Project Status: Work in Progress 🚧
 
 ✨ Features
-📋 Daily Menu and Specialties
-🍳 Chef's Signature Dishes
-🌍 Multi-language Support (Spanish/English)
-📱 Fully Responsive Design
-🎨 Modern and Clean Interface
-🏠 Warm, Casual Atmosphere
-📅 Table Reservation System
-🍖 Traditional Spanish Recipes
-💶 Affordable Quality Dining
-🔍 Menu Search and Filters
+- 📋 Daily Menu and Specialties
+- 🍳 Chef's Signature Dishes
+- 🌍 Multi-language Support (Spanish/English)
+- 📱 Fully Responsive Design
+- 🎨 Modern and Clean Interface
+- 🏠 Warm, Casual Atmosphere
+- 📅 Table Reservation System
+- 🍖 Traditional Spanish Recipes
+- 💶 Affordable Quality Dining
+- 🔍 Menu Search and Filters
 
 🚀 Technologies Used
 
