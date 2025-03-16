@@ -1,5 +1,6 @@
 ---
 import Logo from "./Logo.astro";
+import InstagramStories from "./InstagramStories";
 ---
 
 <header class="sticky top-0 z-50 bg-white">
@@ -23,7 +24,10 @@ import Logo from "./Logo.astro";
           <ul
             class="flex items-center gap-2 lg:gap-4 xl:gap-6 text-sm lg:text-base text-[#2e211c]"
           >
-            <li>
+            <li class="flex items-center">
+              <InstagramStories client:idle />
+            </li>
+            <li class="flex items-center">
               <a class="transition hover:text-gray-500/75" href="/"> Inicio </a>
             </li>
 
@@ -131,6 +135,9 @@ import Logo from "./Logo.astro";
             <ul
               class="flex flex-col items-start gap-3 text-sm sm:text-base text-[#2e211c] p-3 sm:p-4"
             >
+              <li class="flex items-center">
+                <InstagramStories client:idle />
+              </li>
               <li>
                 <a class="transition hover:text-gray-500/75" href="/">
                   Inicio
