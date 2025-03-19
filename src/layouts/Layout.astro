@@ -16,7 +16,7 @@ const lang = title.includes("Estrella") ? "es" : "en";
     <meta charset="UTF-8" />
     <meta
       name="description"
-      content="Ultramarinos El Calvo | Borja García | Estrella Michelín | Un sitio pa' comer y beber. Pero bien. | Conservas, salazones, chacinas..."
+      content="Ultramarinos El Calvo | Borja García | Estrella Michelín | Ultramarinos, El Calvo, Borja García, Estrella Michelín, Conservas, Salazones, Chacinas, Comer, Beber."
     />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/icon.svg" />
@@ -26,8 +26,46 @@ const lang = title.includes("Estrella") ? "es" : "en";
       content="Ultramarinos, El Calvo, Borja García, Estrella Michelín, Conservas, Salazones, Chacinas, Comer, Beber"
     />
     <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
+    <title>Ultramarinos El Calvo</title>
+
+    <!-- HTML Meta Tags -->
+    <title>Ultramarinos El Calvo</title>
+    <meta
+      name="description"
+      content="Ultramarinos, El Calvo, Borja García, Estrella Michelín, Conservas, Salazones, Chacinas, Comer, Beber."
+    />
+
+    <!-- Facebook Meta Tags -->
+    <meta property="og:url" content="https://www.ultramarinoselcalvo.com" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Ultramarinos El Calvo" />
+    <meta
+      property="og:description"
+      content="Ultramarinos, El Calvo, Borja García, Estrella Michelín, Conservas, Salazones, Chacinas, Comer, Beber."
+    />
+    <meta
+      property="og:image"
+      content="https://www.ultramarinoselcalvo.com/icon.svg"
+    />
+
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta property="twitter:domain" content="ultramarinoselcalvo.com" />
+    <meta
+      property="twitter:url"
+      content="https://www.ultramarinoselcalvo.com"
+    />
+    <meta name="twitter:title" content="Ultramarinos El Calvo" />
+    <meta
+      name="twitter:description"
+      content=""
+    />
+    <meta
+      name="twitter:image"
+      content="https://www.ultramarinoselcalvo.com/icon.svg"
+    />
   </head>
+
   <body class="min-h-screen mx-auto antialiased">
     <slot />
   </body>
