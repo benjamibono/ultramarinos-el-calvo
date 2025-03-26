@@ -42,16 +42,18 @@ import { Image } from "astro:assets";
           in harmony.
         </p>
       </div>
-      <div class="sm:hidden row-span-1 flex items-center justify-center p-2">
+      <div
+        class="sm:hidden row-span-1 flex items-center justify-center p-2 h-full"
+      >
         <Image
           src="/salon-hzt.webp"
-          class="object-cover rounded-lg"
+          class="object-cover rounded-lg w-full h-full xxxl:max-h-[1200px]"
           alt="Our dining room"
           title="Our dining room"
           width={600}
           height={400}
           quality={75}
-          sizes="(max-width: 640px) 100vw, 600px"
+          sizes="(max-width: 640px) 100vw, (max-width: 2560px) 800px, (max-width: 3840px) 1600px, 2000px"
         />
       </div>
       <div
@@ -72,29 +74,31 @@ import { Image } from "astro:assets";
         </p>
       </div>
       <div
-        class="hidden row-span-1 sm:flex items-center justify-center p-2 sm:p-4"
+        class="hidden row-span-1 sm:flex items-center justify-center p-2 sm:p-4 xxl:p-6 xxxl:p-12 h-full"
       >
         <Image
           src="/salon-hzt.webp"
-          class="object-cover rounded-lg"
+          class="object-cover rounded-lg w-full h-full xxxl:max-h-[1200px]"
           alt="Our dining room"
           title="Our dining room"
           width={600}
           height={400}
           quality={75}
-          sizes="(max-width: 640px) 100vw, 600px"
+          sizes="(max-width: 640px) 100vw, (max-width: 2560px) 800px, (max-width: 3840px) 1600px, 2000px"
         />
       </div>
-      <div class="row-span-1 flex items-center justify-center p-2 sm:p-4">
+      <div
+        class="row-span-1 flex items-center justify-center p-2 sm:p-4 xxl:p-6 xxxl:p-12 h-full"
+      >
         <Image
           src="/mesa-hzt.webp"
-          class="object-cover rounded-lg"
+          class="object-cover rounded-lg w-full h-full xxxl:max-h-[1200px]"
           alt="One of our tables"
           title="One of our tables"
           width={600}
           height={400}
           quality={75}
-          sizes="(max-width: 640px) 100vw, 600px"
+          sizes="(max-width: 640px) 100vw, (max-width: 2560px) 800px, (max-width: 3840px) 1600px, 2000px"
         />
       </div>
       <div
