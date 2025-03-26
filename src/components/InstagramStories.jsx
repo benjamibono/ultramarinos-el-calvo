@@ -53,6 +53,10 @@ const InstagramStories = () => {
           "video6.mp4": "Top 3 platos favoritos 🔥",
           "video7.mp4": "Detalles que marcan la diferencia ✨",
           "video8.mp4": "Cocina básica, dicen... 🤔",
+          "video9.mp4": "Gracias por hacerlo posible ❤️",
+          "video10.mp4": "Producto del bueno, directo del mercado a tu plato 🥘",
+          "video11.mp4": "Lucía, la reina de la sala en El Calvo 👑",
+          "video12.mp4": "La mejor croqueta del mundo 🏆 Un homenaje a @canitasmaite_res 💫",
           // Añade más títulos según necesites
         };
 
