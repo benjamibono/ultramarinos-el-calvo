@@ -4,15 +4,17 @@ import { Image } from "astro:assets";
 
 <section class="bg-[#fafaf2]">
   <div
-    class="w-full flex min:h-[1536px] max-w-screen-xxl sm:mx-auto relative z-10 p-4 sm:p-6 lg:p-8 overflow-hidden bg-[#fafaf2] pb-6 sm:pb-10"
+    class="w-full flex min-h-[1800px] sm:min-h-[2000px] lg:min-h-[2200px] xxl:min-h-[2600px] xxxl:min-h-[3200px] max-w-screen-xxl xxl:max-w-[2000px] xxxl:max-w-[3000px] sm:mx-auto relative z-10 p-4 sm:p-6 lg:p-8 xxl:p-12 xxxl:p-20 overflow-hidden bg-[#fafaf2] pb-6 sm:pb-10"
   >
     <div
-      class="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-4 lg:gap-6 h-auto sm:h-[1536px]"
+      class="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-4 lg:gap-6 xxl:gap-8 xxxl:gap-16 h-auto sm:h-[2000px] lg:h-[2200px] xxl:h-[2600px] xxxl:h-[3200px]"
     >
-      <div class="row-span-1 flex items-center justify-center p-2 sm:p-4">
+      <div
+        class="row-span-1 flex items-center justify-center p-2 sm:p-4 xxl:p-6 xxxl:p-12 h-full"
+      >
         <Image
           src="/close-up.webp"
-          class="object-cover rounded-lg"
+          class="object-cover rounded-lg w-full h-full xxxl:max-h-[1200px]"
           alt="Un rinconcito de nuestro local"
           title="Un rinconcito de nuestro local"
           width={600}
@@ -20,19 +22,19 @@ import { Image } from "astro:assets";
           quality={75}
           fetchpriority="high"
           loading="eager"
-          sizes="(max-width: 640px) 100vw, 600px"
+          sizes="(max-width: 640px) 100vw, (max-width: 2560px) 800px, (max-width: 3840px) 1600px, 2000px"
         />
       </div>
       <div
-        class="row-span-1 flex flex-col justify-center px-4 sm:px-8 md:px-12 lg:px-16 py-4 sm:py-6 lg:py-8"
+        class="row-span-1 flex flex-col justify-center px-4 sm:px-8 md:px-12 lg:px-16 xxl:px-20 xxxl:px-32 py-4 sm:py-6 lg:py-8 xxl:py-10 xxxl:py-16"
       >
         <h2
-          class="mt-2 sm:mt-4 font-semibold text-base sm:text-xl md:text-2xl lg:text-3xl overflow-hidden"
+          class="mt-2 sm:mt-4 font-semibold text-base sm:text-xl md:text-2xl lg:text-3xl xxl:text-4xl xxxl:text-6xl overflow-hidden"
         >
           Alma del sur
         </h2>
         <p
-          class="mt-2 sm:mt-4 text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl overflow-hidden text-balance"
+          class="mt-2 sm:mt-4 text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl xxl:text-3xl xxxl:text-5xl overflow-hidden text-balance"
         >
           Donde cada <strong>plato</strong> es un homenaje a la tradición y al
           <strong>producto local</strong>. Tapas que combinan el sabor de la
@@ -40,28 +42,30 @@ import { Image } from "astro:assets";
           detalle conviven en armonía.
         </p>
       </div>
-      <div class="sm:hidden row-span-1 flex items-center justify-center p-2">
+      <div
+        class="sm:hidden row-span-1 flex items-center justify-center p-2 h-full"
+      >
         <Image
           src="/salon-hzt.webp"
-          class="object-cover rounded-lg"
+          class="object-cover rounded-lg w-full h-full xxxl:max-h-[1200px]"
           alt="Nuestro salón"
           title="Nuestro salón"
           width={600}
           height={400}
           quality={75}
-          sizes="(max-width: 640px) 100vw, 600px"
+          sizes="(max-width: 640px) 100vw, (max-width: 2560px) 800px, (max-width: 3840px) 1600px, 2000px"
         />
       </div>
       <div
-        class="row-span-1 flex flex-col justify-center px-4 sm:px-8 md:px-12 lg:px-16 py-4 sm:py-6 lg:py-8"
+        class="row-span-1 flex flex-col justify-center px-4 sm:px-8 md:px-12 lg:px-16 xxl:px-20 xxxl:px-32 py-4 sm:py-6 lg:py-8 xxl:py-10 xxxl:py-16"
       >
         <h2
-          class="mt-2 sm:mt-4 font-semibold text-base sm:text-xl md:text-2xl lg:text-3xl overflow-hidden"
+          class="mt-2 sm:mt-4 font-semibold text-base sm:text-xl md:text-2xl lg:text-3xl xxl:text-4xl xxxl:text-6xl overflow-hidden"
         >
           Materia Prima
         </h2>
         <p
-          class="mt-2 sm:mt-4 text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl overflow-hidden text-balance"
+          class="mt-2 sm:mt-4 text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl xxl:text-3xl xxxl:text-5xl overflow-hidden text-balance"
         >
           La <strong>excelencia</strong>, seleccionada con mimo de pequeños
           productores, es la protagonista indiscutible de cada plato.<br /> Una carta
@@ -70,41 +74,43 @@ import { Image } from "astro:assets";
         </p>
       </div>
       <div
-        class="hidden row-span-1 sm:flex items-center justify-center p-2 sm:p-4"
+        class="hidden row-span-1 sm:flex items-center justify-center p-2 sm:p-4 xxl:p-6 xxxl:p-12 h-full"
       >
         <Image
           src="/salon-hzt.webp"
-          class="object-cover rounded-lg"
+          class="object-cover rounded-lg w-full h-full xxxl:max-h-[1200px]"
           alt="Nuestro salón"
           title="Nuestro salón"
           width={600}
           height={400}
           quality={75}
-          sizes="(max-width: 640px) 100vw, 600px"
+          sizes="(max-width: 640px) 100vw, (max-width: 2560px) 800px, (max-width: 3840px) 1600px, 2000px"
         />
       </div>
-      <div class="row-span-1 flex items-center justify-center p-2 sm:p-4">
+      <div
+        class="row-span-1 flex items-center justify-center p-2 sm:p-4 xxl:p-6 xxxl:p-12 h-full"
+      >
         <Image
           src="/mesa-hzt.webp"
-          class="object-cover rounded-lg"
+          class="object-cover rounded-lg w-full h-full xxxl:max-h-[1200px]"
           alt="Una de nuestras mesas"
           title="Una de nuestras mesas"
           width={600}
           height={400}
           quality={75}
-          sizes="(max-width: 640px) 100vw, 600px"
+          sizes="(max-width: 640px) 100vw, (max-width: 2560px) 800px, (max-width: 3840px) 1600px, 2000px"
         />
       </div>
       <div
-        class="row-span-1 flex flex-col justify-center px-4 sm:px-8 md:px-12 lg:px-16 py-4 sm:py-6 lg:py-8"
+        class="row-span-1 flex flex-col justify-center px-4 sm:px-8 md:px-12 lg:px-16 xxl:px-20 xxxl:px-32 py-4 sm:py-6 lg:py-8 xxl:py-10 xxxl:py-16"
       >
         <h2
-          class="mt-2 sm:mt-4 font-semibold text-base sm:text-xl md:text-2xl lg:text-3xl overflow-hidden"
+          class="mt-2 sm:mt-4 font-semibold text-base sm:text-xl md:text-2xl lg:text-3xl xxl:text-4xl xxxl:text-6xl overflow-hidden"
         >
           Para todos
         </h2>
         <p
-          class="mt-2 sm:mt-4 text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-balance"
+          class="mt-2 sm:mt-4 text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl xxl:text-3xl xxxl:text-5xl text-balance"
         >
           El nuevo proyecto del chef <strong>Borja García</strong>, <strong
             >Estrella Michelin</strong

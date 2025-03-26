@@ -12,19 +12,21 @@ const preloadImage = {
 <link rel="preload" href="/surtido2.webp" as="image" type="image/webp" />
 
 <section
-  class="relative w-full h-[70dvh] sm:h-[75dvh] md:h-[80dvh] lg:h-[85dvh]"
+  class="relative w-full h-[600px] sm:h-[700px] lg:h-[800px] xxl:h-[1300px] xxxl:h-[1800px]"
 >
-  <Image
-    src="/surtido2.webp"
-    alt="Assortment of delicatessen products"
-    class="absolute inset-0 w-full h-full object-cover"
-    width={1920}
-    height={1080}
-    loading="eager"
-    fetchpriority="high"
-    sizes="(max-width: 640px) 640px, (max-width: 768px) 768px, (max-width: 1024px) 1024px, 1920px"
-    quality={85}
-  />
+  <div class="absolute inset-0 overflow-hidden">
+    <Image
+      src="/surtido2.webp"
+      alt="Assortment of delicatessen products"
+      class="w-full h-full object-cover object-center print:object-contain"
+      width={1920}
+      height={1080}
+      loading="eager"
+      fetchpriority="high"
+      sizes="(max-width: 640px) 640px, (max-width: 768px) 768px, (max-width: 1024px) 1024px, 1920px"
+      quality={85}
+    />
+  </div>
   <div
     class="absolute inset-0 flex flex-col items-center justify-center text-center text-white bg-black/50 px-4 sm:px-6 md:px-8 space-y-3 sm:space-y-5 md:space-y-8 lg:space-y-10 xl:space-y-16"
   >
@@ -40,3 +42,12 @@ const preloadImage = {
     </h2>
   </div>
 </section>
+
+<style>
+  @media print {
+    section {
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+  }
+</style>

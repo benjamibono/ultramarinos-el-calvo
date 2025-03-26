@@ -54,9 +54,11 @@ const InstagramStories = () => {
           "video7.mp4": "Detalles que marcan la diferencia ✨",
           "video8.mp4": "Cocina básica, dicen... 🤔",
           "video9.mp4": "Gracias por hacerlo posible ❤️",
-          "video10.mp4": "Producto del bueno, directo del mercado a tu plato 🥘",
+          "video10.mp4":
+            "Producto del bueno, directo del mercado a tu plato 🥘",
           "video11.mp4": "Lucía, la reina de la sala en El Calvo 👑",
-          "video12.mp4": "La mejor croqueta del mundo 🏆 Un homenaje a @canitasmaite_res 💫",
+          "video12.mp4":
+            "La mejor croqueta del mundo 🏆 Un homenaje a @canitasmaite_res 💫",
           // Añade más títulos según necesites
         };
 
@@ -221,6 +223,20 @@ const InstagramStories = () => {
           padding: 2px;
           margin: 0 8px;
           transition: transform 0.2s ease;
+        }
+
+        @media (min-width: 1536px) {
+          .stories-preview-circle {
+            width: 60px;
+            height: 60px;
+          }
+        }
+
+        @media (min-width: 1920px) {
+          .stories-preview-circle {
+            width: 84px;
+            height: 84px;
+          }
         }
 
         .stories-preview-button:hover .stories-preview-circle {

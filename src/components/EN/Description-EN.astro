@@ -4,15 +4,17 @@ import { Image } from "astro:assets";
 
 <section class="bg-[#fafaf2]">
   <div
-    class="w-full flex min:h-[1536px] max-w-screen-xxl sm:mx-auto relative z-10 p-4 sm:p-6 lg:p-8 overflow-hidden bg-[#fafaf2] pb-6 sm:pb-10"
+    class="w-full flex min-h-[1800px] sm:min-h-[2000px] lg:min-h-[2200px] xxl:min-h-[2600px] xxxl:min-h-[3200px] max-w-screen-xxl xxl:max-w-[2000px] xxxl:max-w-[3000px] sm:mx-auto relative z-10 p-4 sm:p-6 lg:p-8 xxl:p-12 xxxl:p-20 overflow-hidden bg-[#fafaf2] pb-6 sm:pb-10"
   >
     <div
-      class="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-4 lg:gap-6 h-auto sm:h-[1536px]"
+      class="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-4 lg:gap-6 xxl:gap-8 xxxl:gap-16 h-auto sm:h-[2000px] lg:h-[2200px] xxl:h-[2600px] xxxl:h-[3200px]"
     >
-      <div class="row-span-1 flex items-center justify-center p-2 sm:p-4">
+      <div
+        class="row-span-1 flex items-center justify-center p-2 sm:p-4 xxl:p-6 xxxl:p-12 h-full"
+      >
         <Image
           src="/close-up.webp"
-          class="object-cover rounded-lg"
+          class="object-cover rounded-lg w-full h-full xxxl:max-h-[1200px]"
           alt="A corner of our place"
           title="A corner of our place"
           width={600}
@@ -20,7 +22,7 @@ import { Image } from "astro:assets";
           quality={75}
           fetchpriority="high"
           loading="eager"
-          sizes="(max-width: 640px) 100vw, 600px"
+          sizes="(max-width: 640px) 100vw, (max-width: 2560px) 800px, (max-width: 3840px) 1600px, 2000px"
         />
       </div>
       <div

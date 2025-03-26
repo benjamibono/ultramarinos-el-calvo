@@ -4,17 +4,23 @@ import InstagramStories from "./InstagramStories";
 ---
 
 <header class="sticky top-0 z-50 bg-white">
-  <div class="mx-auto max-w-screen-xl px-3 sm:px-4 lg:px-8">
-    <div class="flex h-16 sm:h-20 items-center justify-between">
+  <div
+    class="mx-auto w-full max-w-[2000px] xxxl:max-w-[3000px] px-3 sm:px-4 lg:px-8 xxl:px-20 xxxl:px-40"
+  >
+    <div
+      class="flex h-16 sm:h-20 lg:h-24 xxl:h-32 xxxl:h-48 items-center justify-between"
+    >
       <div class="md:flex md:items-center md:gap-12">
-        <a class="block" href="/">
+        <a class="block w-[120px] xxl:w-[180px] xxxl:w-[400px]" href="/">
           <span class="sr-only">Home</span>
           <Logo />
         </a>
       </div>
-      <div class="flex-1 text-center mx-auto">
+      <div
+        class="flex-1 text-center mx-auto px-4 sm:px-6 lg:px-8 xxl:px-16"
+      >
         <h1
-          class="text-xs sm:text-lg font-extralight lg:text-xl xl:text-2xl xxl:text-3xl"
+          class="text-xs sm:text-lg font-extralight lg:text-xl xl:text-2xl xxl:text-4xl xxxl:text-4xl"
         >
           Borja García Prieto
         </h1>
@@ -22,18 +28,27 @@ import InstagramStories from "./InstagramStories";
       <div class="md:flex md:items-center md:gap-12">
         <nav aria-label="Global" class="hidden md:block">
           <ul
-            class="flex items-center gap-2 lg:gap-4 xl:gap-6 text-sm lg:text-base text-[#2e211c]"
+            class="flex items-center gap-4 lg:gap-6 xl:gap-8 xxl:gap-16 xxxl:gap-32 text-sm lg:text-base xxl:text-2xl xxxl:text-4xl text-[#2e211c]"
           >
-            <li class="flex items-center">
-              <InstagramStories client:load />
+            <li class="flex items-center self-center">
+              <div
+                class="w-[40px] h-[40px] xxl:w-[60px] xxl:h-[60px] xxxl:w-[84px] xxxl:h-[84px] flex items-center justify-center mr-4 lg:mr-6 xl:mr-8 xxl:mr-16 xxxl:mr-32"
+              >
+                <InstagramStories client:load />
+              </div>
             </li>
             <li class="flex items-center">
-              <a class="transition hover:text-gray-500/75" href="/"> Inicio </a>
+              <a
+                class="transition hover:text-gray-500/75 whitespace-nowrap"
+                href="/"
+              >
+                Inicio
+              </a>
             </li>
 
             <li class="relative z-50">
               <button
-                class="focus:outline-none transition-transform duration-200 transform hover:scale-105 hover:text-slate-300"
+                class="focus:outline-none transition-transform duration-200 transform hover:scale-105 hover:text-slate-300 whitespace-nowrap"
                 onclick="document.getElementById('carta-dropdown').classList.toggle('hidden')"
                 aria-label="Menú de carta"
                 aria-expanded="false"
@@ -43,12 +58,12 @@ import InstagramStories from "./InstagramStories";
               </button>
               <ul
                 id="carta-dropdown"
-                class="absolute hidden mt-2 w-48 bg-white border border-gray-200 rounded shadow-lg"
+                class="absolute hidden mt-2 w-48 xxl:w-64 xxxl:w-96 bg-white border border-gray-200 rounded shadow-lg"
               >
                 <li>
                   <a
                     href="/carta-barreo"
-                    class="block px-4 py-2 hover:bg-gray-100"
+                    class="block px-4 py-2 xxl:px-6 xxl:py-4 xxxl:px-10 xxxl:py-8 hover:bg-gray-100 whitespace-nowrap"
                   >
                     Barreo
                   </a>
@@ -56,7 +71,7 @@ import InstagramStories from "./InstagramStories";
                 <li>
                   <a
                     href="/carta-mesa"
-                    class="block px-4 py-2 hover:bg-gray-100"
+                    class="block px-4 py-2 xxl:px-6 xxl:py-4 xxxl:px-10 xxxl:py-8 hover:bg-gray-100 whitespace-nowrap"
                   >
                     Mesa
                   </a>
@@ -66,7 +81,7 @@ import InstagramStories from "./InstagramStories";
 
             <li>
               <a
-                class="transition hover:text-gray-500/75"
+                class="transition hover:text-gray-500/75 whitespace-nowrap"
                 href="tel:+34956992222"
               >
                 Reservar
@@ -74,13 +89,16 @@ import InstagramStories from "./InstagramStories";
             </li>
 
             <li>
-              <a class="transition hover:text-gray-500/75" href="/contacto">
+              <a
+                class="transition hover:text-gray-500/75 whitespace-nowrap"
+                href="/contacto"
+              >
                 Contacto
               </a>
             </li>
             <li class="relative">
               <button
-                class="text-sm lg:text-base leading-5 py-1 sm:py-2 px-2 sm:px-4 flex items-center space-x-2"
+                class="text-sm lg:text-base xxl:text-2xl xxxl:text-4xl leading-5 py-1 sm:py-2 xxl:py-3 xxxl:py-5 px-2 sm:px-3 xxl:px-5 xxxl:px-8 flex items-center space-x-2 whitespace-nowrap"
                 id="language-menu-button"
                 type="button"
                 aria-label="Selector de idioma"
@@ -97,7 +115,7 @@ import InstagramStories from "./InstagramStories";
               >
                 <a
                   href="/en"
-                  class="block px-4 py-2 text-primary hover:bg-gray-200 hover:rounded-md"
+                  class="block px-4 py-2 xxl:px-6 xxl:py-4 xxxl:px-10 xxxl:py-8 text-primary hover:bg-gray-200 hover:rounded-md whitespace-nowrap"
                   >🇬🇧</a
                 >
               </div>
@@ -115,7 +133,7 @@ import InstagramStories from "./InstagramStories";
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              class="size-5"
+              class="size-5 xxl:size-8 xxxl:size-12"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -130,13 +148,15 @@ import InstagramStories from "./InstagramStories";
           </button>
           <div
             id="mobile-menu"
-            class="absolute right-0 bg-white mt-2 w-48 shadow-lg rounded-md hidden z-50"
+            class="absolute right-0 bg-white mt-2 w-48 xxl:w-64 xxxl:w-96 shadow-lg rounded-md hidden z-50"
           >
             <ul
-              class="flex flex-col items-start gap-3 text-sm sm:text-base text-[#2e211c] p-3 sm:p-4"
+              class="flex flex-col items-start gap-3 text-sm sm:text-base xxl:text-2xl xxxl:text-4xl text-[#2e211c] p-3 sm:p-4 xxl:p-6 xxxl:p-10"
             >
               <li class="flex items-center">
-                <InstagramStories client:load />
+                <div class="w-[20px] xxl:w-[32px] xxxl:w-[48px]">
+                  <InstagramStories client:load />
+                </div>
               </li>
               <li>
                 <a class="transition hover:text-gray-500/75" href="/">
@@ -170,7 +190,7 @@ import InstagramStories from "./InstagramStories";
                 </li>
                 <li class="relative">
                   <button
-                    class="text-sm sm:text-base leading-5 py-1 sm:py-2 px-2 sm:px-4 flex items-center space-x-2"
+                    class="text-sm sm:text-base xxl:text-2xl xxxl:text-4xl leading-5 py-1 sm:py-2 xxl:py-3 xxxl:py-5 px-2 sm:px-3 xxl:px-5 xxxl:px-8 flex items-center space-x-2"
                     id="language-menu-button-mobile"
                     type="button"
                     aria-label="Selector de idioma móvil"
@@ -187,7 +207,7 @@ import InstagramStories from "./InstagramStories";
                   >
                     <a
                       href="/en"
-                      class="block px-4 py-2 text-primary hover:bg-gray-200 hover:rounded-md"
+                      class="block px-4 py-2 xxl:px-6 xxl:py-4 xxxl:px-10 xxxl:py-8 text-primary hover:bg-gray-200 hover:rounded-md"
                       >🇬🇧</a
                     >
                   </div>
