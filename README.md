@@ -1,6 +1,28 @@
 🍽️ Ultramarinos El Calvo - Traditional Spanish Restaurant
 A welcoming and modern web platform for a beloved local restaurant, where a prestigious chef brings exceptional cuisine to everyday dining. Built with Astro and TailwindCSS, this site reflects our commitment to quality food at fair prices, blending traditional Spanish flavors with contemporary touches.
 
+<div align="center">
+  <a href="https://astro.build" target="_blank">
+    <img src="https://img.shields.io/badge/Astro-BC52EE?style=for-the-badge&logo=astro&logoColor=white" alt="Astro" />
+  </a>
+  <a href="https://tailwindcss.com" target="_blank">
+    <img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind CSS" />
+  </a>
+  <a href="https://vercel.com" target="_blank">
+    <img src="https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white" alt="Vercel" />
+  </a>
+  <a href="https://supabase.com" target="_blank">
+    <img src="https://img.shields.io/badge/Supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white" alt="Supabase" />
+  </a>
+</div>
+
+<br />
+
+<div align="center">
+  <div style="display: flex; justify-content: center; gap: 20px; margin: 40px 0;">
+    <img src="/public/preview.webp" alt="Ultramarinos El Calvo Desktop Version" width="100%" style="border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);" />
+  </div>
+</div>
 
 ✨ Features
 - 📋 Daily Menu and Specialties
@@ -13,6 +35,7 @@ A welcoming and modern web platform for a beloved local restaurant, where a pres
 - 🍖 Traditional Spanish Recipes
 - 💶 Affordable Quality Dining
 - 🔍 Menu Search and Filters
+- 📼 Video Content Delivery via Supabase
 
 🚀 Technologies Used
 
@@ -20,6 +43,7 @@ A welcoming and modern web platform for a beloved local restaurant, where a pres
 - TailwindCSS
 - Montserrat Font (Variable)
 - Custom Tailwind Animations
+- Supabase
 
 🛠️ Installation
 Clone the repository:
@@ -75,3 +99,4 @@ Benjami Bono - @benjamibono
 - TailwindCSS
 - Montserrat Font
 - Custom Tailwind Animations Library
+- Supabase
