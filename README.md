@@ -24,6 +24,8 @@ A welcoming and modern web platform for a beloved local restaurant, where a pres
   </div>
 </div>
 
+<br />
+
 ✨ Features
 - 📋 Daily Menu and Specialties
 - 🍳 Chef's Signature Dishes
