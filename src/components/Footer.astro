@@ -1,3 +1,7 @@
+---
+import ParkingMap from './ParkingMap.jsx';
+---
+
 <footer class="mb-0 bg-white">
   <div
     id="contact"
@@ -32,11 +36,9 @@
         <ul
           class="text-xs sm:text-sm md:text-base xxl:text-2xl xxxl:text-3xl space-y-2 xxl:space-y-3 xxxl:space-y-4"
         >
-          <li>Jueves a Domingo:</li>
-          <li>09:00 - 17:00 / 20:30 - 23:00</li>
-          <li>Lunes y Martes:</li>
-          <li>09:00 - 17:00</li>
-          <li>Miércoles: Cerrado</li>
+          <li>Martes a Sábado:</li>
+          <li>12:00 - 16:00 / 21:00 - 23:30</li>
+          <li>Domingo y Lunes: Cerrado</li>
         </ul>
       </div>
       <div class="space-y-4 sm:space-y-6 xxl:space-y-8 xxxl:space-y-10">
@@ -101,6 +103,9 @@
         >
           RESERVAS
         </h3>
+        <p class="text-xs sm:text-sm md:text-base xxl:text-2xl xxxl:text-3xl">
+          Realiza tu reserva llamando durante el horario de apertura del restaurante.
+        </p>
         <a
           class="transition-colors hover:scale-110 duration-300 hover:text-green-400 motion-reduce:duration-0"
           href="tel:+34956992222"
@@ -188,6 +193,14 @@
       </div>
     </div>
   </div>
+
+  <!-- Sección del Mapa de Aparcamiento -->
+  <div class="py-8 sm:py-12 md:py-16 lg:py-20 xxl:py-24 xxxl:py-32 px-4 sm:px-6 md:px-8 xxl:px-16 xxxl:px-24">
+    <div class="max-w-6xl mx-auto">
+      <ParkingMap client:load />
+    </div>
+  </div>
+
   <div class="py-4 sm:py-6 xxl:py-8 xxxl:py-12">
     <ul
       class="flex flex-col text-[10px] xs:text-xs sm:text-sm xxl:text-xl xxxl:text-2xl p-3 sm:p-4 md:p-6 xxl:p-8 xxxl:p-12 text-center justify-center lg:flex-row space-y-2 lg:space-y-0 space-x-0 lg:space-x-6 xxl:space-x-8 xxxl:space-x-12"
