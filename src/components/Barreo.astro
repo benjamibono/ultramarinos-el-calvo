@@ -1,5 +1,13 @@
 ---
 import { Image } from "astro:assets";
+import { t } from "../i18n/translations";
+
+interface Props {
+  lang?: string;
+}
+
+const { lang = "es" } = Astro.props;
+const i18n = t(lang);
 ---
 
 <section
@@ -11,62 +19,37 @@ import { Image } from "astro:assets";
     <h2
       class="text-lg sm:text-xl md:text-2xl font-semibold text-center tracking-[0.35em]"
     >
-      CARTA DE
+      {i18n.barMenu.title1}
     </h2>
     <h2 class="text-2xl sm:text-3xl md:text-4xl font-semibold text-center pb-1">
-      BARREO
+      {i18n.barMenu.title2}
     </h2>
-    <!--<a class="text-4xl font-semibold opacity-50 hover:opacity-100 text-center pb-1" href="carta-mesa"><button>MESA</button"></a
-    > -->
     <p class="border-b-2 border-black"></p>
     <div
       class="text-rotator text-xs sm:text-sm md:text-base font-medium text-center tracking-[.25em] py-2 leading-relaxed"
     >
-      <span class="rotating-text">PÍDELO</span>
-      <span class="rotating-text">PRUÉBALO</span>
-      <span class="rotating-text">PREGÚNTALO</span>
-      <span class="rotating-text">MÉZCLALO</span>
-      <span class="rotating-text">CÓMETELO</span>
-      <span class="rotating-text">PERO SOBRETÓ...</span>
-      <span class="rotating-text">DISFRÚTALO</span>
+      {i18n.barMenu.rotatingTexts.map((text: string) => (
+        <span class="rotating-text">{text}</span>
+      ))}
     </div>
     <div
       class="mt-4 text-xs sm:text-sm md:text-base font-medium tracking-[.25em] space-y-2"
     >
       <ul class="space-y-1 sm:space-y-2">
-        <li>GILDA DE ANCHOA</li>
-        <li>HUEVAS DE CHOCO ALIÑÁS</li>
-        <li>TOSTA DE ANCHOA Y MANTEQUILLA</li>
-        <li>MOJAMA CURADA EN CASA</li>
-        <li>TOMATE "SUPER ALIÑAO"</li>
-        <li>ENSALADILLA DE...</li>
-        <li>PIRIÑACA Y TÚNIDO CURADO</li>
-        <li>CROQUETA DE JAMÓN "JOSELITO" (1 UD)</li>
-        <li>CHICHARRONES ESPECIALES</li>
-        <li>CHICHARRONES FRITOS</li>
-        <li>ATÚN MECHAO</li>
-        <li>LOMO EN MANTECA DE CASA</li>
-        <li>COPPA "JOSELITO" (150 GR)</li>
-        <li>CHORIZO PICANTITO "LYO"</li>
-        <li>PICANA DE BUEY 18 MESES "LYO" (100 GR)</li>
-        <li>CECINA DE VACA "LYO" (100 GR)</li>
-        <li>QUESO AZUL DE CABRA FLORIDA "BUCARITO"</li>
-        <li>QUESO DE LECHE CRUDA (150 GR)</li>
-        <li>QUESO "EL BOSQUEÑO" CURADO EN OLOROSO</li>
+        {i18n.barMenu.items.map((item: string) => (
+          <li>{item}</li>
+        ))}
       </ul>
       <p class="border-b-2 border-black pt-4"></p>
       <h3
         class="text-center text-xs sm:text-sm md:text-base font-medium tracking-[.25em] pt-2"
       >
-        MOLLETES
+        {i18n.barMenu.molletes}
       </h3>
       <ul class="space-y-1 sm:space-y-2">
-        <li>COPPA JOSELITO, TOMATE Y AOVE</li>
-        <li>PALOMETA Y QUESO AZUL DE CABRA</li>
-        <li>LOMO EN MANTECA, PIMIENTOS ASADOS</li>
-        <li>CHICHARRONES, QUESO PAYOYO Y LIMA</li>
-        <li>PRINGÁ DE BERZA "GITANA"</li>
-        <li>SERRANITO IBÉRICO</li>
+        {i18n.barMenu.molletesItems.map((item: string) => (
+          <li>{item}</li>
+        ))}
       </ul>
     </div>
   </div>
@@ -74,8 +57,8 @@ import { Image } from "astro:assets";
     <Image
       src="/surtido.webp"
       class="w-full h-full object-cover"
-      alt="surtido de tapas"
-      title="surtido de tapas"
+      alt={i18n.barMenu.imgAlt}
+      title={i18n.barMenu.imgAlt}
       width={800}
       height={600}
       quality={85}
@@ -101,7 +84,6 @@ import { Image } from "astro:assets";
     opacity: 0;
   }
 
-  /* Ajustar tiempos para que el texto se retire antes de la llegada del siguiente */
   .rotating-text:nth-child(1) {
     animation-delay: 0s;
   }

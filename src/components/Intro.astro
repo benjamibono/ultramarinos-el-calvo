@@ -1,12 +1,13 @@
 ---
 import { Image } from "astro:assets";
+import { t } from "../i18n/translations";
 
-// Preload de la imagen para mejorar LCP
-const preloadImage = {
-  src: "/surtido2.webp",
-  as: "image",
-  type: "image/webp",
-};
+interface Props {
+  lang?: string;
+}
+
+const { lang = "es" } = Astro.props;
+const i18n = t(lang);
 ---
 
 <link rel="preload" href="/surtido2.webp" as="image" type="image/webp" />
@@ -17,7 +18,7 @@ const preloadImage = {
   <div class="absolute inset-0 overflow-hidden">
     <Image
       src="/surtido2.webp"
-      alt="Surtido de productos de ultramarinos"
+      alt={i18n.intro.alt}
       class="w-full h-full object-cover object-center print:object-contain"
       width={1920}
       height={1080}
@@ -33,12 +34,12 @@ const preloadImage = {
     <h1
       class="text-xs xs:text-sm sm:text-lg md:text-2xl lg:text-4xl xxl:text-6xl font-semibold mb-2 sm:mb-4"
     >
-      UN SITIO PA' COMER Y BEBER, PERO BIEN.
+      {i18n.intro.heading}
     </h1>
     <h2
       class="text-xs sm:text-base md:text-lg lg:text-xl xxl:text-3xl font-medium"
     >
-      CONSERVAS, SALAZONES, GUISOS, PRODUCTO, CHACINAS…
+      {i18n.intro.subheading}
     </h2>
   </div>
 </section>

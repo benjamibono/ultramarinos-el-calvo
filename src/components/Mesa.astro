@@ -1,5 +1,13 @@
 ---
 import { Image } from "astro:assets";
+import { t } from "../i18n/translations";
+
+interface Props {
+  lang?: string;
+}
+
+const { lang = "es" } = Astro.props;
+const i18n = t(lang);
 ---
 
 <section
@@ -11,100 +19,44 @@ import { Image } from "astro:assets";
     <h2
       class="text-lg sm:text-xl md:text-2xl font-semibold text-center tracking-[0.35em]"
     >
-      CARTA DE
+      {i18n.tableMenu.title1}
     </h2>
     <h2 class="text-2xl sm:text-3xl md:text-4xl font-semibold text-center pb-1">
-      MESA
+      {i18n.tableMenu.title2}
     </h2>
     <p class="border-b-2 border-black"></p>
     <div
       class="text-rotator text-xs sm:text-sm md:text-base font-semibold text-center tracking-[.25em] py-2 leading-relaxed"
     >
-      <span class="rotating-text">PÍDELO</span>
-      <span class="rotating-text">PRUÉBALO</span>
-      <span class="rotating-text">PREGÚNTALO</span>
-      <span class="rotating-text">MÉZCLALO</span>
-      <span class="rotating-text">CÓMETELO</span>
-      <span class="rotating-text">PERO SOBRETÓ...</span>
-      <span class="rotating-text">DISFRÚTALO</span>
+      {i18n.tableMenu.rotatingTexts.map((text: string) => (
+        <span class="rotating-text">{text}</span>
+      ))}
     </div>
     <div
       class="mt-4 text-xs font-medium sm:text-sm md:text-base tracking-[.25em] space-y-2"
     >
-      <h3
-        class="text-left text-xs sm:text-sm md:text-base font-semibold tracking-[.25em] py-2 underline"
-      >
-        PA' IR PICANDO...
-      </h3>
-      <ul class="space-y-1 sm:space-y-2">
-        <li>ENSALADILLA DE ...</li>
-        <li>HUEVAS DE CHOCO ALIÑÁS</li>
-        <li>PIRIÑACA Y CABALLA SEMICURADA</li>
-        <li>TOMATE ECOLÓGICO Y ACEITE DE AJO</li>
-        <li>ALCAUCILES, CREMA DE YEMA Y PAYOYO</li>
-        <li>CROQUETAS DE JAMÓN JOSELITO (1 UD)</li>
-        <li>SETAS SALTEADAS Y PARMENTIER</li>
-      </ul>
-      
-      <h3
-        class="text-left text-xs sm:text-sm md:text-base font-semibold tracking-[.25em] py-2 underline"
-      >
-        QUE NO SE PIERDAN LOS GUISOS...
-      </h3>
-      <ul class="space-y-1 sm:space-y-2">
-        <li>CARRILLADA AL AMONTILLADO</li>
-        <li>ALBÓNDIGAS DE VACA RETINTA</li>
-        <li>SETAS AL AJILLO</li>
-        <li>CHOCO EN SU TINTA</li>
-        <li>GAMBONES AL AJILLO</li>
-        <li>GUISO DEL DÍA</li>
-      </ul>
-      
-      <h3
-        class="text-left text-xs sm:text-sm md:text-base font-semibold tracking-[.25em] py-2 underline"
-      >
-        PRODUCTO Y ESENCIA...
-      </h3>
-      <ul class="space-y-1 sm:space-y-2">
-        <li>LOMO ALTO "LYO" 120 DÍAS MADURACIÓN</li>
-        <li>LOMO BAJO SELECCIÓN "LYO" 90</li>
-        <li>PICAÑA DE BUEY SELECCIÓN</li>
-        <li>CALAMARES DE POTERA A LA PLANCHA</li>
-        <li>CALAMARES DE POTERA FRITOS</li>
-        <li>BARRIGA DE ATÚN "GADIRA" AL ENCEBOLLADO</li>
-        <li>POLLO A LA PLANCHA AL AJILLO</li>
-      </ul>
-      
-      <h3
-        class="text-left text-xs sm:text-sm md:text-base font-semibold tracking-[.25em] py-2 underline"
-      >
-        GUARNICIONES ECOLÓGICAS
-      </h3>
-      <ul class="space-y-1 sm:space-y-2">
-        <li>PAPAS FRITAS</li>
-        <li>PIMIENTOS ASADOS AL CARBÓN</li>
-        <li>PIMIENTOS DE PADRÓN FRITOS</li>
-        <li>ENSALADA DE LECHUGA ALIÑÁ</li>
-      </ul>
-      
-      <h3
-        class="text-left text-xs sm:text-sm md:text-base font-semibold tracking-[.25em] py-2 underline"
-      >
-        PA TERMINÁ...
-      </h3>
-      <ul class="space-y-1 sm:space-y-2">
-        <li>ARROZ CON LECHE</li>
-        <li>TORRIJA Y HELADO DE LECHE MERENGADA</li>
-        <li>TARTA DE QUESO</li>
-      </ul>
+      {i18n.tableMenu.sections.map((section: { title: string; items: string[] }) => (
+        <>
+          <h3
+            class="text-left text-xs sm:text-sm md:text-base font-semibold tracking-[.25em] py-2 underline"
+          >
+            {section.title}
+          </h3>
+          <ul class="space-y-1 sm:space-y-2">
+            {section.items.map((item: string) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+        </>
+      ))}
     </div>
   </div>
   <div class="w-full lg:w-1/2 hidden lg:block">
     <Image
       src="/mesa.webp"
       class="w-full h-full object-cover"
-      alt="mesa con platos"
-      title="mesa con platos"
+      alt={i18n.tableMenu.imgAlt}
+      title={i18n.tableMenu.imgAlt}
       width={800}
       height={600}
       quality={85}
@@ -130,7 +82,6 @@ import { Image } from "astro:assets";
     opacity: 0;
   }
 
-  /* Ajustar tiempos para que el texto se retire antes de la llegada del siguiente */
   .rotating-text:nth-child(1) {
     animation-delay: 0s;
   }

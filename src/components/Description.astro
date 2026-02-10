@@ -1,5 +1,13 @@
 ---
 import { Image } from "astro:assets";
+import { t } from "../i18n/translations";
+
+interface Props {
+  lang?: string;
+}
+
+const { lang = "es" } = Astro.props;
+const i18n = t(lang);
 ---
 
 <section class="bg-[#fafaf2]">
@@ -15,8 +23,8 @@ import { Image } from "astro:assets";
         <Image
           src="/close-up.webp"
           class="object-cover rounded-lg w-full h-full xxxl:max-h-[1200px]"
-          alt="Un rinconcito de nuestro local"
-          title="Un rinconcito de nuestro local"
+          alt={i18n.description.section1.imageAlt}
+          title={i18n.description.section1.imageTitle}
           width={600}
           height={400}
           quality={75}
@@ -31,15 +39,12 @@ import { Image } from "astro:assets";
         <h2
           class="mt-2 sm:mt-4 font-semibold text-base sm:text-xl md:text-2xl lg:text-3xl xxl:text-4xl xxxl:text-6xl overflow-hidden"
         >
-          Alma del sur
+          {i18n.description.section1.title}
         </h2>
         <p
           class="mt-2 sm:mt-4 text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl xxl:text-3xl xxxl:text-5xl overflow-hidden text-balance"
         >
-          Donde cada <strong>plato</strong> es un homenaje a la tradición y al
-          <strong>producto local</strong>. Tapas que combinan el sabor de la
-          inmediatez con la profundidad del tiempo, donde la sencillez y el
-          detalle conviven en armonía.
+          <Fragment set:html={i18n.description.section1.text} />
         </p>
       </div>
       <div
@@ -48,8 +53,8 @@ import { Image } from "astro:assets";
         <Image
           src="/salon-hzt.webp"
           class="object-cover rounded-lg w-full h-full xxxl:max-h-[1200px]"
-          alt="Nuestro salón"
-          title="Nuestro salón"
+          alt={i18n.description.section2.imageAlt}
+          title={i18n.description.section2.imageTitle}
           width={600}
           height={400}
           quality={75}
@@ -62,15 +67,12 @@ import { Image } from "astro:assets";
         <h2
           class="mt-2 sm:mt-4 font-semibold text-base sm:text-xl md:text-2xl lg:text-3xl xxl:text-4xl xxxl:text-6xl overflow-hidden"
         >
-          Materia Prima
+          {i18n.description.section2.title}
         </h2>
         <p
           class="mt-2 sm:mt-4 text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl xxl:text-3xl xxxl:text-5xl overflow-hidden text-balance"
         >
-          La <strong>excelencia</strong>, seleccionada con mimo de pequeños
-          productores, es la protagonista indiscutible de cada plato.<br /> Una carta
-          que sigue el <strong>ritmo de las estaciones</strong>, respetando cada
-          ingrediente, <strong>sin artificios</strong> ni excesos.
+          <Fragment set:html={i18n.description.section2.text} />
         </p>
       </div>
       <div
@@ -79,8 +81,8 @@ import { Image } from "astro:assets";
         <Image
           src="/salon-hzt.webp"
           class="object-cover rounded-lg w-full h-full xxxl:max-h-[1200px]"
-          alt="Nuestro salón"
-          title="Nuestro salón"
+          alt={i18n.description.section2.imageAlt}
+          title={i18n.description.section2.imageTitle}
           width={600}
           height={400}
           quality={75}
@@ -93,8 +95,8 @@ import { Image } from "astro:assets";
         <Image
           src="/mesa-hzt.webp"
           class="object-cover rounded-lg w-full h-full xxxl:max-h-[1200px]"
-          alt="Una de nuestras mesas"
-          title="Una de nuestras mesas"
+          alt={i18n.description.section3.imageAlt}
+          title={i18n.description.section3.imageTitle}
           width={600}
           height={400}
           quality={75}
@@ -107,18 +109,12 @@ import { Image } from "astro:assets";
         <h2
           class="mt-2 sm:mt-4 font-semibold text-base sm:text-xl md:text-2xl lg:text-3xl xxl:text-4xl xxxl:text-6xl overflow-hidden"
         >
-          Para todos
+          {i18n.description.section3.title}
         </h2>
         <p
           class="mt-2 sm:mt-4 text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl xxl:text-3xl xxxl:text-5xl text-balance"
         >
-          El nuevo proyecto del chef <strong>Borja García</strong>, <strong
-            >Estrella Michelin</strong
-          >, acerca la <strong>alta cocina</strong> a todos los bolsillos en el corazón
-          de <strong>Puerto Real</strong>. <br /> Una experiencia que celebra la
-          <strong>tradición andaluza</strong> con calidad y autenticidad. Disfruta
-          de una experiencia culinaria única, donde cada plato cuenta una historia
-          y cada bocado es un viaje al Sur.
+          <Fragment set:html={i18n.description.section3.text} />
         </p>
       </div>
     </div>

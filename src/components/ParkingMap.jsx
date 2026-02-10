@@ -1,16 +1,18 @@
 import { useEffect, useRef } from 'react';
+import { t } from '../i18n/translations';
 
-const ParkingMap = () => {
+const ParkingMap = ({ lang = "es" }) => {
   const mapRef = useRef(null);
   const mapInstanceRef = useRef(null);
+  const i18n = t(lang);
 
   useEffect(() => {
     // Importar Leaflet dinámicamente para evitar problemas de SSR
     const initMap = async () => {
       if (typeof window === 'undefined') return;
-      
+
       const L = await import('leaflet');
-      
+
       // Configurar iconos por defecto de Leaflet
       delete L.Icon.Default.prototype._getIconUrl;
       L.Icon.Default.mergeOptions({
@@ -55,14 +57,14 @@ const ParkingMap = () => {
         .bindPopup(`
           <div class="text-center">
             <h3 class="font-bold text-sm mb-1">Ultramarinos El Calvo</h3>
-            <p class="text-xs text-gray-600 mb-2">Calle de la Plaza 149</p>
-            <a 
-              href="https://maps.google.com/?q=${restaurantLat},${restaurantLng}" 
-              target="_blank" 
+            <p class="text-xs text-gray-600 mb-2">${i18n.parking.addressPopup}</p>
+            <a
+              href="https://maps.google.com/?q=${restaurantLat},${restaurantLng}"
+              target="_blank"
               rel="noopener noreferrer"
               class="inline-block bg-blue-200 text-white text-xs px-2 py-1 rounded transition-colors"
             >
-              Abrir en Google Maps
+              ${i18n.parking.openMaps}
             </a>
           </div>
         `);
@@ -70,10 +72,10 @@ const ParkingMap = () => {
       // Zonas de aparcamiento reales de OpenStreetMap
       const parkingAreas = [
         {
-          name: 'Parking Ambulatorio',
+          name: i18n.parking.areas[0].name,
           coordinates: [
             [36.5270958, -6.1951845], // 7172745375
-            [36.5269521, -6.1945120], // 7172745377  
+            [36.5269521, -6.1945120], // 7172745377
             [36.5272719, -6.1943894], // 11377500029
             [36.5272681, -6.1943657], // 12163299831
             [36.5272612, -6.1943223], // 11377500030
@@ -83,10 +85,10 @@ const ParkingMap = () => {
             [36.5265521, -6.1953952]  // 11377500032
           ],
           color: '#22c55e',
-          description: 'Parking gratuito junto al ambulatorio - Muy cómodo'
+          description: i18n.parking.areas[0].description
         },
         {
-          name: 'Parking Pabellón Municipal',
+          name: i18n.parking.areas[1].name,
           coordinates: [
             [36.5271662, -6.1938451], // 1980992072
             [36.5271208, -6.1938621], // 6925262841
@@ -96,7 +98,7 @@ const ParkingMap = () => {
             [36.5267585, -6.1920979]  // 1980992080
           ],
           color: '#3b82f6',
-          description: 'Parking gratuito del pabellón municipal - Amplio y seguro'
+          description: i18n.parking.areas[1].description
         }
       ];
 
@@ -117,13 +119,13 @@ const ParkingMap = () => {
           <div class="text-center">
             <h3 class="font-bold text-sm mb-1">${area.name}</h3>
             <p class="text-xs text-gray-600 mb-2">${area.description}</p>
-            <a 
-              href="https://maps.google.com/?q=${centerLat},${centerLng}" 
-              target="_blank" 
+            <a
+              href="https://maps.google.com/?q=${centerLat},${centerLng}"
+              target="_blank"
               rel="noopener noreferrer"
               class="inline-block bg-blue-200 text-white text-xs px-2 py-1 rounded transition-colors"
             >
-              Abrir en Google Maps
+              ${i18n.parking.openMaps}
             </a>
           </div>
         `);
@@ -135,18 +137,18 @@ const ParkingMap = () => {
         const div = L.DomUtil.create('div', 'legend');
         div.innerHTML = `
           <div class="bg-white p-2 rounded shadow-lg text-xs">
-            <h4 class="font-bold mb-2 text-center">Parkings Disponibles</h4>
+            <h4 class="font-bold mb-2 text-center">${i18n.parking.legend}</h4>
             <div class="space-y-1">
               <div class="flex items-center">
                 <div class="w-3 h-3 bg-green-500 rounded mr-2"></div>
-                <span>Parking Ambulatorio</span>
+                <span>${i18n.parking.ambulatory}</span>
               </div>
               <div class="flex items-center">
                 <div class="w-3 h-3 bg-blue-500 rounded mr-2"></div>
-                <span>Parking Pabellón</span>
+                <span>${i18n.parking.pavilion}</span>
               </div>
             </div>
-            <p class="text-[10px] text-gray-500 mt-2 text-center">Haz clic en las zonas para más info</p>
+            <p class="text-[10px] text-gray-500 mt-2 text-center">${i18n.parking.legendTip}</p>
           </div>
         `;
         return div;
@@ -163,21 +165,22 @@ const ParkingMap = () => {
         mapInstanceRef.current = null;
       }
     };
-  }, []);
+  }, [lang, i18n]);
 
   return (
     <div className="w-full">
       <div className="text-center mb-4">
         <h3 className="text-lg sm:text-xl md:text-2xl xxl:text-4xl xxxl:text-5xl font-bold mb-2 flex items-center justify-center">
         <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-parking mr-2"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 5a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v14a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-14z" /><path d="M10 16v-8h2.667c.736 0 1.333 .895 1.333 2s-.597 2 -1.333 2h-2.667" /></svg>
-          PARKING CERCANO Y GRATUITO
+          {i18n.parking.title}
         </h3>
-        <p className="text-xs sm:text-sm md:text-base xxl:text-xl xxxl:text-2xl text-gray-600 max-w-3xl mx-auto">
-          Vivimos en el corazón del pueblo, pero aparcar puede ser complicado. <br />Te invitamos a usar estos dos parkings gratuitos cercanos para tu mayor comodidad.
-        </p>
+        <p
+          className="text-xs sm:text-sm md:text-base xxl:text-xl xxxl:text-2xl text-gray-600 max-w-3xl mx-auto"
+          dangerouslySetInnerHTML={{ __html: i18n.parking.description }}
+        />
       </div>
-      
-      <div 
+
+      <div
         ref={mapRef}
         className="w-full h-64 sm:h-80 md:h-96 xxl:h-[500px] xxxl:h-[600px] rounded-lg shadow-lg border border-gray-200"
         style={{ minHeight: '300px' }}

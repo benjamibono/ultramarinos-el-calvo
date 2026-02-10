@@ -1,5 +1,14 @@
 ---
 import ParkingMap from './ParkingMap.jsx';
+import { t } from "../i18n/translations";
+
+interface Props {
+  lang?: string;
+}
+
+const { lang = "es" } = Astro.props;
+const i18n = t(lang);
+const currentYear = new Date().getFullYear();
 ---
 
 <footer class="mb-0 bg-white">
@@ -31,14 +40,14 @@ import ParkingMap from './ParkingMap.jsx';
         <h3
           class="text-sm sm:text-base md:text-lg xxl:text-3xl xxxl:text-4xl font-bold mb-2 sm:mb-3 xxl:mb-4 xxxl:mb-6"
         >
-          HORARIO
+          {i18n.footer.schedule}
         </h3>
         <ul
           class="text-xs sm:text-sm md:text-base xxl:text-2xl xxxl:text-3xl space-y-2 xxl:space-y-3 xxxl:space-y-4"
         >
-          <li>Martes a Sábado:</li>
-          <li>12:00 - 16:00 / 21:00 - 23:30</li>
-          <li>Domingo y Lunes: Cerrado</li>
+          {i18n.footer.scheduleItems.map((item: string) => (
+            <li>{item}</li>
+          ))}
         </ul>
       </div>
       <div class="space-y-4 sm:space-y-6 xxl:space-y-8 xxxl:space-y-10">
@@ -63,7 +72,7 @@ import ParkingMap from './ParkingMap.jsx';
         <h3
           class="text-sm sm:text-base md:text-lg xxl:text-3xl xxxl:text-4xl font-bold mb-2 sm:mb-3 xxl:mb-4 xxxl:mb-6"
         >
-          DIRECCIÓN
+          {i18n.footer.address}
         </h3>
         <a
           class="transition-colors hover:scale-110 duration-300 hover:text-green-400 motion-reduce:duration-0"
@@ -73,10 +82,10 @@ import ParkingMap from './ParkingMap.jsx';
           ><p
             class="text-xs sm:text-sm md:text-base xxl:text-2xl xxxl:text-3xl"
           >
-            Calle de la Plaza 149
+            {i18n.footer.addressStreet}
           </p>
           <p class="text-xs sm:text-sm md:text-base xxl:text-2xl xxxl:text-3xl">
-            Puerto Real, Cádiz
+            {i18n.footer.addressCity}
           </p></a
         >
       </div>
@@ -101,10 +110,10 @@ import ParkingMap from './ParkingMap.jsx';
         <h3
           class="text-sm sm:text-base md:text-lg xxl:text-3xl xxxl:text-4xl font-bold mb-2 sm:mb-3 xxl:mb-4 xxxl:mb-6"
         >
-          RESERVAS
+          {i18n.footer.bookings}
         </h3>
         <p class="text-xs sm:text-sm md:text-base xxl:text-2xl xxxl:text-3xl">
-          Realiza tu reserva llamando durante el horario de apertura del restaurante.
+          {i18n.footer.bookingsText}
         </p>
         <a
           class="transition-colors hover:scale-110 duration-300 hover:text-green-400 motion-reduce:duration-0"
@@ -137,7 +146,7 @@ import ParkingMap from './ParkingMap.jsx';
         <h3
           class="text-sm sm:text-base md:text-lg xxl:text-3xl xxxl:text-4xl font-bold mb-2 sm:mb-3 xxl:mb-4 xxxl:mb-6"
         >
-          CONTACTOS
+          {i18n.footer.contacts}
         </h3>
         <div
           class="flex justify-center space-x-4 xxl:space-x-8 xxxl:space-x-12"
@@ -197,7 +206,7 @@ import ParkingMap from './ParkingMap.jsx';
   <!-- Sección del Mapa de Aparcamiento -->
   <div class="py-8 sm:py-12 md:py-16 lg:py-20 xxl:py-24 xxxl:py-32 px-4 sm:px-6 md:px-8 xxl:px-16 xxxl:px-24">
     <div class="max-w-6xl mx-auto">
-      <ParkingMap client:load />
+      <ParkingMap client:visible lang={lang} />
     </div>
   </div>
 
@@ -206,7 +215,7 @@ import ParkingMap from './ParkingMap.jsx';
       class="flex flex-col text-[10px] xs:text-xs sm:text-sm xxl:text-xl xxxl:text-2xl p-3 sm:p-4 md:p-6 xxl:p-8 xxxl:p-12 text-center justify-center lg:flex-row space-y-2 lg:space-y-0 space-x-0 lg:space-x-6 xxl:space-x-8 xxxl:space-x-12"
     >
       <li>
-        © 2024 Ultramarinos El Calvo by <strong
+        © {currentYear} Ultramarinos El Calvo by <strong
           ><a
             href="https://www.instagram.com/borgarpr/"
             class="transition-colors hover:text-green-400"
@@ -216,10 +225,10 @@ import ParkingMap from './ParkingMap.jsx';
         >
       </li>
       <li class="hidden lg:block">-</li>
-      <li>Todos los derechos reservados</li>
+      <li>{i18n.footer.copyright}</li>
       <li class="hidden lg:block">-</li>
       <li>
-        Desarrollado por <strong
+        {i18n.footer.developedBy} <strong
           ><a
             href="https://benjamibono.dev/"
             class="transition-colors hover:text-green-400"

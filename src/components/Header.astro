@@ -1,6 +1,14 @@
 ---
 import Logo from "./Logo.astro";
 import InstagramStories from "./InstagramStories";
+import { t } from "../i18n/translations";
+
+interface Props {
+  lang?: string;
+}
+
+const { lang = "es" } = Astro.props;
+const i18n = t(lang);
 ---
 
 <header class="sticky top-0 z-50 bg-white">
@@ -11,7 +19,7 @@ import InstagramStories from "./InstagramStories";
       class="flex h-16 sm:h-20 lg:h-24 xxl:h-32 xxxl:h-48 items-center justify-between"
     >
       <div class="md:flex md:items-center md:gap-12">
-        <a class="block w-[120px] xxl:w-[180px] xxxl:w-[400px]" href="/">
+        <a class="block w-[120px] xxl:w-[180px] xxxl:w-[400px]" href={i18n.header.links.home}>
           <span class="sr-only">Home</span>
           <Logo />
         </a>
@@ -40,40 +48,40 @@ import InstagramStories from "./InstagramStories";
             <li class="flex items-center">
               <a
                 class="transition hover:text-gray-500/75 whitespace-nowrap"
-                href="/"
+                href={i18n.header.links.home}
               >
-                Inicio
+                {i18n.header.home}
               </a>
             </li>
 
             <li class="relative z-50">
               <button
                 class="focus:outline-none transition-transform duration-200 transform hover:scale-105 hover:text-slate-300 whitespace-nowrap"
-                onclick="document.getElementById('carta-dropdown').classList.toggle('hidden')"
-                aria-label="Menú de carta"
+                onclick={`document.getElementById('${i18n.header.dropdownId}').classList.toggle('hidden')`}
+                aria-label={i18n.header.menuAriaLabel}
                 aria-expanded="false"
-                aria-controls="carta-dropdown"
+                aria-controls={i18n.header.dropdownId}
               >
-                Carta
+                {i18n.header.menu}
               </button>
               <ul
-                id="carta-dropdown"
+                id={i18n.header.dropdownId}
                 class="absolute hidden mt-2 w-48 xxl:w-64 xxxl:w-96 bg-white border border-gray-200 rounded shadow-lg"
               >
                 <li>
                   <a
-                    href="/carta-barreo"
+                    href={i18n.header.links.bar}
                     class="block px-4 py-2 xxl:px-6 xxl:py-4 xxxl:px-10 xxxl:py-8 hover:bg-gray-100 whitespace-nowrap"
                   >
-                    Barreo
+                    {i18n.header.menuBar}
                   </a>
                 </li>
                 <li>
                   <a
-                    href="/carta-mesa"
+                    href={i18n.header.links.table}
                     class="block px-4 py-2 xxl:px-6 xxl:py-4 xxxl:px-10 xxxl:py-8 hover:bg-gray-100 whitespace-nowrap"
                   >
-                    Mesa
+                    {i18n.header.menuTable}
                   </a>
                 </li>
               </ul>
@@ -84,26 +92,26 @@ import InstagramStories from "./InstagramStories";
                 class="transition hover:text-gray-500/75 whitespace-nowrap"
                 href="tel:+34956992222"
               >
-                Reservar
+                {i18n.header.book}
               </a>
             </li>
 
             <li>
               <a
                 class="transition hover:text-gray-500/75 whitespace-nowrap"
-                href="/contacto"
+                href={i18n.header.links.contact}
               >
-                Contacto
+                {i18n.header.contact}
               </a>
             </li>
             <li>
               <a
-                href="/en"
+                href={i18n.header.links.switchLang}
                 class="text-sm lg:text-base xxl:text-2xl xxxl:text-4xl leading-5 py-1 sm:py-2 xxl:py-3 xxxl:py-5 px-2 sm:px-3 xxl:px-5 xxxl:px-8 transition-transform duration-200 transform hover:scale-110"
-                aria-label="Switch to English"
-                title="Switch to English"
+                aria-label={i18n.header.switchLangAriaLabel}
+                title={i18n.header.switchLangTitle}
               >
-                🇬🇧
+                {i18n.header.flag}
               </a>
             </li>
           </ul>
@@ -113,7 +121,7 @@ import InstagramStories from "./InstagramStories";
           <button
             class="rounded p-2 text-gray-600 transition hover:text-gray-600/75"
             onclick="document.getElementById('mobile-menu').classList.toggle('hidden')"
-            aria-label="Abrir menú móvil"
+            aria-label={i18n.header.mobileMenuAriaLabel}
             aria-expanded="false"
             aria-controls="mobile-menu"
           >
@@ -145,21 +153,21 @@ import InstagramStories from "./InstagramStories";
                 </div>
               </li>
               <li>
-                <a class="transition hover:text-gray-500/75" href="/">
-                  Inicio
+                <a class="transition hover:text-gray-500/75" href={i18n.header.links.home}>
+                  {i18n.header.home}
                 </a>
               </li>
               <li>
                 <a
                   class="transition hover:text-gray-500/75"
-                  href="/carta-barreo"
+                  href={i18n.header.links.bar}
                 >
-                  Carta de Barreo
+                  {i18n.header.menu} {i18n.header.menuBar}
                 </a>
               </li>
               <li>
-                <a class="transition hover:text-gray-500/75" href="/carta-mesa">
-                  Carta de Mesa
+                <a class="transition hover:text-gray-500/75" href={i18n.header.links.table}>
+                  {i18n.header.menu} {i18n.header.menuTable}
                 </a>
               </li>
               <li>
@@ -167,22 +175,22 @@ import InstagramStories from "./InstagramStories";
                   class="transition hover:text-gray-500/75"
                   href="tel:+34956992222"
                 >
-                  Reservar
+                  {i18n.header.book}
                 </a>
               </li>
               <li>
-                <a class="transition hover:text-gray-500/75" href="/contacto">
-                  Contacto
+                <a class="transition hover:text-gray-500/75" href={i18n.header.links.contact}>
+                  {i18n.header.contact}
                 </a>
               </li>
               <li>
                 <a
-                  href="/en"
+                  href={i18n.header.links.switchLang}
                   class="text-sm sm:text-base xxl:text-2xl xxxl:text-4xl leading-5 py-1 sm:py-2 xxl:py-3 xxxl:py-5 px-2 sm:px-3 xxl:px-5 xxxl:px-8 transition hover:text-gray-500/75"
-                  aria-label="Cambiar a inglés"
-                  title="Cambiar a inglés"
+                  aria-label={i18n.header.switchLangAriaLabel}
+                  title={i18n.header.switchLangTitle}
                 >
-                  🇬🇧
+                  {i18n.header.flag}
                 </a>
               </li>
             </ul>
