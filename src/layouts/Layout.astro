@@ -16,6 +16,22 @@ const defaultDescription = lang === "es"
 const metaDescription = description || defaultDescription;
 const pageTitle = title.includes("ULTRAMARINOS") ? title : `${title} | Ultramarinos El Calvo`;
 const ogImage = `${siteUrl}/preview.webp`;
+
+// Hreflang mappings for bilingual pages
+const hreflangMap: Record<string, string> = {
+  "/": "/en/",
+  "/en/": "/",
+  "/contacto/": "/en/contact/",
+  "/en/contact/": "/contacto/",
+  "/carta-mesa/": "/en/table-menu/",
+  "/en/table-menu/": "/carta-mesa/",
+  "/carta-barreo/": "/en/bar-menu/",
+  "/en/bar-menu/": "/carta-barreo/",
+};
+const pathname = Astro.url.pathname.endsWith("/") ? Astro.url.pathname : `${Astro.url.pathname}/`;
+const alternatePath = hreflangMap[pathname];
+const esPath = lang === "es" ? pathname : alternatePath;
+const enPath = lang === "en" ? pathname : alternatePath;
 ---
 
 <!doctype html>
@@ -56,6 +72,79 @@ const ogImage = `${siteUrl}/preview.webp`;
     <meta name="twitter:title" content={pageTitle} />
     <meta name="twitter:description" content={metaDescription} />
     <meta name="twitter:image" content={ogImage} />
+
+    <!-- Hreflang for bilingual SEO -->
+    {esPath && <link rel="alternate" hreflang="es" href={new URL(esPath, siteUrl).href} />}
+    {enPath && <link rel="alternate" hreflang="en" href={new URL(enPath, siteUrl).href} />}
+    {esPath && <link rel="alternate" hreflang="x-default" href={new URL(esPath, siteUrl).href} />}
+
+    <!-- Restaurant Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Restaurant",
+      "name": "Ultramarinos El Calvo",
+      "image": `${siteUrl}/preview.webp`,
+      "url": siteUrl,
+      "telephone": "+34956992222",
+      "email": "ultramarinoselcalvo@gmail.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Calle de la Plaza 149",
+        "addressLocality": "Puerto Real",
+        "addressRegion": "Cádiz",
+        "postalCode": "11500",
+        "addressCountry": "ES"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 36.5283789,
+        "longitude": -6.1921405
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+          "opens": "12:00",
+          "closes": "16:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+          "opens": "21:00",
+          "closes": "23:30"
+        }
+      ],
+      "servesCuisine": ["Andalusian", "Spanish", "Mediterranean"],
+      "priceRange": "€€€",
+      "award": "Estrella Michelin",
+      "starRating": {
+        "@type": "Rating",
+        "ratingValue": "1",
+        "bestRating": "3",
+        "ratingExplanation": "Michelin Star"
+      },
+      "founder": {
+        "@type": "Person",
+        "name": "Borja García Prieto",
+        "jobTitle": "Chef"
+      },
+      "hasMenu": [
+        {
+          "@type": "Menu",
+          "name": lang === "es" ? "Carta de Barreo" : "Bar Menu",
+          "url": `${siteUrl}${lang === "es" ? "/carta-barreo" : "/en/bar-menu"}`
+        },
+        {
+          "@type": "Menu",
+          "name": lang === "es" ? "Carta de Mesa" : "Table Menu",
+          "url": `${siteUrl}${lang === "es" ? "/carta-mesa" : "/en/table-menu"}`
+        }
+      ],
+      "sameAs": [
+        "https://www.instagram.com/ultramarinoselcalvo/"
+      ],
+      "acceptsReservations": "True"
+    })} />
   </head>
 
   <body class="min-h-screen mx-auto antialiased">

@@ -2,6 +2,7 @@ import { defineConfig } from "astro/config";
 
 import tailwind from "@astrojs/tailwind";
 import react from "@astrojs/react";
+import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
 export default defineConfig({
@@ -10,7 +11,16 @@ export default defineConfig({
     tailwind(),
     react({
       include: ["**/react/**", "**/InstagramStories.jsx"],
-      ssr: false, // Desactiva SSR para componentes React si no es necesario
+      ssr: false,
+    }),
+    sitemap({
+      i18n: {
+        defaultLocale: "es",
+        locales: {
+          es: "es-ES",
+          en: "en-US",
+        },
+      },
     }),
   ],
   image: {
