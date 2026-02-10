@@ -4,14 +4,15 @@ import { createClient } from "@supabase/supabase-js";
 const supabaseUrl = import.meta.env.PUBLIC_SUPABASE_URL;
 const supabaseAnonKey = import.meta.env.PUBLIC_SUPABASE_ANON_KEY;
 
-// Verificar que las credenciales estén definidas
-if (!supabaseUrl || !supabaseAnonKey) {
-}
-
-export const supabase = createClient(supabaseUrl, supabaseAnonKey);
+// Crear cliente solo si las credenciales están definidas
+export const supabase =
+  supabaseUrl && supabaseAnonKey
+    ? createClient(supabaseUrl, supabaseAnonKey)
+    : null;
 
 // Función para obtener la URL pública de un video
 export async function getVideoUrl(fileName) {
+  if (!supabase) return null;
   try {
     const { data, error } = await supabase.storage
       .from("videos")
@@ -29,6 +30,7 @@ export async function getVideoUrl(fileName) {
 
 // Función para obtener URLs de todos los videos
 export async function getAllVideos() {
+  if (!supabase) return [];
   try {
     const { data, error } = await supabase.storage.from("videos").list();
 

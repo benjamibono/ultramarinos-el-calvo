@@ -11,6 +11,13 @@ import { translations } from "../i18n/translations";
 export async function getBarMenuItems(lang = "es") {
   const fallback = translations[lang] || translations.es;
 
+  if (!supabase) {
+    return {
+      items: fallback.barMenu.items,
+      molletesItems: fallback.barMenu.molletesItems,
+    };
+  }
+
   try {
     const { data, error } = await supabase
       .from("bar_menu_items")
@@ -52,6 +59,8 @@ export async function getBarMenuItems(lang = "es") {
  */
 export async function getTableMenuSections(lang = "es") {
   const fallback = translations[lang] || translations.es;
+
+  if (!supabase) return fallback.tableMenu.sections;
 
   try {
     const { data: sections, error: secError } = await supabase
@@ -97,6 +106,8 @@ export async function getTableMenuSections(lang = "es") {
  */
 export async function getSchedule(lang = "es") {
   const fallback = translations[lang] || translations.es;
+
+  if (!supabase) return fallback.footer.scheduleItems;
 
   try {
     const { data, error } = await supabase
