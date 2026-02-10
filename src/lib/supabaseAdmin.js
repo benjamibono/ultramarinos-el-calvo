@@ -14,12 +14,17 @@ const DEFAULT_MAX_VIDEOS = 10;
 
 export async function getMaxVideos() {
   if (!supabase) return DEFAULT_MAX_VIDEOS;
-  const { data } = await supabase
-    .from("site_settings")
-    .select("value")
-    .eq("key", "max_videos")
-    .single();
-  return data ? parseInt(data.value, 10) : DEFAULT_MAX_VIDEOS;
+  try {
+    const { data, error } = await supabase
+      .from("site_settings")
+      .select("value")
+      .eq("key", "max_videos")
+      .single();
+    if (error || !data) return DEFAULT_MAX_VIDEOS;
+    return parseInt(data.value, 10) || DEFAULT_MAX_VIDEOS;
+  } catch {
+    return DEFAULT_MAX_VIDEOS;
+  }
 }
 
 export async function setMaxVideos(n) {
