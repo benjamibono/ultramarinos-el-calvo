@@ -6,6 +6,7 @@ import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
 export default defineConfig({
+  prefetch: true,
   site: "https://www.ultramarinoselcalvo.com",
   integrations: [
     tailwind(),

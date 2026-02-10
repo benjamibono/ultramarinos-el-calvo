@@ -12,6 +12,12 @@ export default {
       overscrollBehavior: {
         none: "none",
       },
+      colors: {
+        brand: {
+          brown: '#2e211c',
+          cream: '#fafaf2',
+        },
+      },
     },
     screens: {
       xs: "320px",

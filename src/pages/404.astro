@@ -1,0 +1,30 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<Layout title="404 - Página no encontrada">
+  <Header />
+  <main class="flex flex-col items-center justify-center min-h-[60vh] text-center px-4">
+    <h1 class="text-6xl sm:text-8xl font-bold text-brand-brown mb-4">404</h1>
+    <p class="text-xl sm:text-2xl text-gray-600 mb-8">
+      Esta página no existe / This page doesn't exist
+    </p>
+    <div class="flex gap-4">
+      <a
+        href="/"
+        class="px-6 py-3 bg-brand-brown text-white rounded-lg hover:opacity-90 transition"
+      >
+        Inicio
+      </a>
+      <a
+        href="/en"
+        class="px-6 py-3 border border-brand-brown text-brand-brown rounded-lg hover:bg-brand-cream transition"
+      >
+        Home
+      </a>
+    </div>
+  </main>
+  <Footer />
+</Layout>
