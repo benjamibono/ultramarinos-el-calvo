@@ -42,7 +42,7 @@ const i18n = t(lang);
               <div
                 class="w-[40px] h-[40px] xxl:w-[60px] xxl:h-[60px] xxxl:w-[84px] xxxl:h-[84px] flex items-center justify-center mr-4 lg:mr-6 xl:mr-8 xxl:mr-16 xxxl:mr-32"
               >
-                <InstagramStories client:load />
+                <InstagramStories client:idle />
               </div>
             </li>
             <li class="flex items-center">
@@ -56,8 +56,8 @@ const i18n = t(lang);
 
             <li class="relative z-50">
               <button
-                class="focus:outline-none transition-transform duration-200 transform hover:scale-105 hover:text-slate-300 whitespace-nowrap"
-                onclick={`document.getElementById('${i18n.header.dropdownId}').classList.toggle('hidden')`}
+                class="focus:outline-none focus:ring-2 focus:ring-brand-brown focus:ring-offset-2 rounded transition-transform duration-200 transform hover:scale-105 hover:text-slate-300 whitespace-nowrap"
+                data-dropdown-toggle={i18n.header.dropdownId}
                 aria-label={i18n.header.menuAriaLabel}
                 aria-expanded="false"
                 aria-controls={i18n.header.dropdownId}
@@ -66,7 +66,7 @@ const i18n = t(lang);
               </button>
               <ul
                 id={i18n.header.dropdownId}
-                class="absolute hidden mt-2 w-48 xxl:w-64 xxxl:w-96 bg-white border border-gray-200 rounded shadow-lg"
+                class="absolute mt-2 w-48 xxl:w-64 xxxl:w-96 bg-white border border-gray-200 rounded shadow-lg transition-all duration-200 origin-top"
               >
                 <li>
                   <a
@@ -120,7 +120,7 @@ const i18n = t(lang);
         <div class="block md:hidden">
           <button
             class="rounded p-2 text-gray-600 transition hover:text-gray-600/75"
-            onclick="document.getElementById('mobile-menu').classList.toggle('hidden')"
+            data-mobile-toggle
             aria-label={i18n.header.mobileMenuAriaLabel}
             aria-expanded="false"
             aria-controls="mobile-menu"
@@ -149,7 +149,7 @@ const i18n = t(lang);
             >
               <li class="flex items-center">
                 <div class="w-[20px] xxl:w-[32px] xxxl:w-[48px]">
-                  <InstagramStories client:load />
+                  <InstagramStories client:idle />
                 </div>
               </li>
               <li>
@@ -200,3 +200,87 @@ const i18n = t(lang);
     </div>
   </div>
 </header>
+
+<script>
+  function initHeader() {
+    // Desktop dropdown
+    const dropdownBtns = document.querySelectorAll('[data-dropdown-toggle]');
+    dropdownBtns.forEach(btn => {
+      const targetId = btn.getAttribute('data-dropdown-toggle');
+      const dropdown = document.getElementById(targetId);
+      if (!dropdown) return;
+
+      // Start hidden
+      dropdown.style.opacity = '0';
+      dropdown.style.transform = 'scaleY(0)';
+      dropdown.style.pointerEvents = 'none';
+
+      btn.addEventListener('click', () => {
+        const isOpen = btn.getAttribute('aria-expanded') === 'true';
+        if (isOpen) {
+          dropdown.style.opacity = '0';
+          dropdown.style.transform = 'scaleY(0)';
+          dropdown.style.pointerEvents = 'none';
+          btn.setAttribute('aria-expanded', 'false');
+        } else {
+          dropdown.style.opacity = '1';
+          dropdown.style.transform = 'scaleY(1)';
+          dropdown.style.pointerEvents = 'auto';
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+
+    // Mobile menu
+    const mobileBtn = document.querySelector('[data-mobile-toggle]');
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (mobileBtn && mobileMenu) {
+      mobileBtn.addEventListener('click', () => {
+        const isOpen = mobileMenu.classList.toggle('hidden');
+        mobileBtn.setAttribute('aria-expanded', String(!mobileMenu.classList.contains('hidden')));
+      });
+    }
+
+    // Close on Escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        dropdownBtns.forEach(btn => {
+          const targetId = btn.getAttribute('data-dropdown-toggle');
+          const dropdown = document.getElementById(targetId);
+          if (dropdown) {
+            dropdown.style.opacity = '0';
+            dropdown.style.transform = 'scaleY(0)';
+            dropdown.style.pointerEvents = 'none';
+            btn.setAttribute('aria-expanded', 'false');
+          }
+        });
+        if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+          mobileMenu.classList.add('hidden');
+          mobileBtn?.setAttribute('aria-expanded', 'false');
+        }
+      }
+    });
+
+    // Close on outside click
+    document.addEventListener('click', (e) => {
+      dropdownBtns.forEach(btn => {
+        const targetId = btn.getAttribute('data-dropdown-toggle');
+        const dropdown = document.getElementById(targetId);
+        if (dropdown && !btn.contains(e.target) && !dropdown.contains(e.target)) {
+          dropdown.style.opacity = '0';
+          dropdown.style.transform = 'scaleY(0)';
+          dropdown.style.pointerEvents = 'none';
+          btn.setAttribute('aria-expanded', 'false');
+        }
+      });
+      if (mobileMenu && mobileBtn && !mobileBtn.contains(e.target) && !mobileMenu.contains(e.target)) {
+        mobileMenu.classList.add('hidden');
+        mobileBtn.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+
+  // Run on page load and Astro page transitions
+  initHeader();
+  document.addEventListener('astro:page-load', initHeader);
+</script>
