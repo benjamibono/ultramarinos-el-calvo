@@ -28,14 +28,10 @@ const InstagramStories = () => {
       try {
         setLoading(true);
         setError(null);
-        console.log("Cargando videos desde Supabase...");
         const videos = await getAllVideos();
-
-        console.log("Videos recibidos de Supabase:", videos);
 
         // Si no hay videos, establecer un mensaje de error
         if (!videos || videos.length === 0) {
-          console.log("No se encontraron videos en Supabase");
           setError(
             "No se encontraron videos. Verifica que los videos estén subidos al bucket 'videos' en Supabase."
           );
@@ -65,7 +61,7 @@ const InstagramStories = () => {
         // Convertir los videos a formato de stories
         const formattedStories = videos.map((video, index) => {
           // Añadir un parámetro de consulta único para evitar problemas de caché
-          const uniqueUrl = `${video.url}?index=${index}&t=${Date.now()}`;
+          const uniqueUrl = video.url;
 
           return {
             url: uniqueUrl,
@@ -80,20 +76,8 @@ const InstagramStories = () => {
           };
         });
 
-        console.log(
-          "Orden final de stories:",
-          formattedStories
-            .map((s, i) => `${i + 1}: ${s.url.split("/").pop()}`)
-            .join(", ")
-        );
         setStories(formattedStories);
-        console.log(`Videos cargados con éxito: ${formattedStories.length}`);
-        console.log(
-          "URLs de los videos:",
-          formattedStories.map((story) => story.url).join("\n")
-        );
       } catch (error) {
-        console.error("Error al cargar los videos:", error);
         setError(
           `Error al cargar los videos: ${error.message || "Error desconocido"}`
         );
@@ -108,7 +92,6 @@ const InstagramStories = () => {
   const handleClick = (e) => {
     e.preventDefault();
     e.stopPropagation();
-    console.log("Botón de stories clickado");
     setIsOpen(true);
   };
 
