@@ -11,10 +11,11 @@ export default defineConfig({
   integrations: [
     tailwind(),
     react({
-      include: ["**/react/**", "**/InstagramStories.jsx"],
+      include: ["**/react/**", "**/InstagramStories.jsx", "**/AdminPanel.jsx", "**/VideoAdminPanel.jsx"],
       ssr: false,
     }),
     sitemap({
+      filter: (page) => !page.includes("/admin"),
       i18n: {
         defaultLocale: "es",
         locales: {

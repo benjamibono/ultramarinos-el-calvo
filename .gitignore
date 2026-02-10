@@ -41,3 +41,4 @@ build/
 # npm package lock files
 yarn.lock
 pnpm-lock.yaml
+.vercel

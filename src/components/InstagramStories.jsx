@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Stories from "react-insta-stories";
-import { getAllVideos } from "../lib/supabase";
+import { getLatestVideosWithUrls } from "../lib/supabaseAdmin";
 
 // Componente optimizado para la imagen de perfil
 const ProfileImage = ({ src, alt, className }) => {
@@ -28,9 +28,8 @@ const InstagramStories = () => {
       try {
         setLoading(true);
         setError(null);
-        const videos = await getAllVideos();
+        const videos = await getLatestVideosWithUrls();
 
-        // Si no hay videos, establecer un mensaje de error
         if (!videos || videos.length === 0) {
           setError(
             "No se encontraron videos. Verifica que los videos estén subidos al bucket 'videos' en Supabase."
@@ -39,42 +38,16 @@ const InstagramStories = () => {
           return;
         }
 
-        // Títulos personalizados para cada video
-        const videoTitles = {
-          "video1.mp4": "¡Preparando la inauguración! 🍻",
-          "video2.mp4": "Volver a casa para cocinar 🏠👨‍🍳",
-          "video3.mp4": "Team Pacto prueba El Calvo 🍽️",
-          "video4.mp4": "👨‍🍳 Isaac, Cocina con buen rollo",
-          "video5.mp4": "Albóndigas que enamoran 😍",
-          "video6.mp4": "Top 3 platos favoritos 🔥",
-          "video7.mp4": "Detalles que marcan la diferencia ✨",
-          "video8.mp4": "Cocina básica, dicen... 🤔",
-          "video9.mp4": "Gracias por hacerlo posible ❤️",
-          "video10.mp4":
-            "Producto del bueno, directo del mercado a tu plato 🥘",
-          "video11.mp4": "Lucía, la reina de la sala en El Calvo 👑",
-          "video12.mp4":
-            "La mejor croqueta del mundo 🏆 Un homenaje a @canitasmaite_res 💫",
-          // Añade más títulos según necesites
-        };
-
-        // Convertir los videos a formato de stories
-        const formattedStories = videos.map((video, index) => {
-          // Añadir un parámetro de consulta único para evitar problemas de caché
-          const uniqueUrl = video.url;
-
-          return {
-            url: uniqueUrl,
-            type: "video",
-            header: {
-              heading: "Ultramarinos El Calvo",
-              subheading:
-                videoTitles[video.name] ||
-                `Video ${index + 1} de ${videos.length}`,
-              profileImage: "/icon.svg",
-            },
-          };
-        });
+        const formattedStories = videos.map((video, index) => ({
+          url: video.url,
+          type: "video",
+          header: {
+            heading: "Ultramarinos El Calvo",
+            subheading:
+              video.title || `Video ${index + 1} de ${videos.length}`,
+            profileImage: "/icon.svg",
+          },
+        }));
 
         setStories(formattedStories);
       } catch (error) {

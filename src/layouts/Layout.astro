@@ -4,9 +4,10 @@ import "@fontsource-variable/montserrat";
 interface Props {
   title: string;
   description?: string;
+  noindex?: boolean;
 }
 
-const { title, description } = Astro.props;
+const { title, description, noindex } = Astro.props;
 const lang = Astro.url.pathname.startsWith("/en") ? "en" : "es";
 const siteUrl = "https://www.ultramarinoselcalvo.com";
 const canonicalUrl = new URL(Astro.url.pathname, siteUrl).href;
@@ -47,6 +48,7 @@ const enPath = lang === "en" ? pathname : alternatePath;
       content="Ultramarinos, El Calvo, Borja García, Estrella Michelin, Conservas, Salazones, Chacinas, Puerto Real, Cádiz"
     />
     <meta name="generator" content={Astro.generator} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
     <title>{pageTitle}</title>
 
     <!-- Leaflet CSS -->
