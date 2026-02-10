@@ -1,6 +1,7 @@
 ---
 import ParkingMap from './ParkingMap.jsx';
 import { t } from "../i18n/translations";
+import { getSchedule } from "../lib/cms";
 
 interface Props {
   lang?: string;
@@ -9,6 +10,7 @@ interface Props {
 const { lang = "es" } = Astro.props;
 const i18n = t(lang);
 const currentYear = new Date().getFullYear();
+const scheduleItems = await getSchedule(lang);
 ---
 
 <footer class="mb-0 bg-white">
@@ -45,7 +47,7 @@ const currentYear = new Date().getFullYear();
         <ul
           class="text-xs sm:text-sm md:text-base xxl:text-2xl xxxl:text-3xl space-y-2 xxl:space-y-3 xxxl:space-y-4"
         >
-          {i18n.footer.scheduleItems.map((item: string) => (
+          {scheduleItems.map((item: string) => (
             <li>{item}</li>
           ))}
         </ul>
