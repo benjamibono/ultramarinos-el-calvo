@@ -53,10 +53,10 @@ const tableMenuSections = await getTableMenuSections(lang);
       ))}
     </div>
   </div>
-  <div class="w-full lg:w-1/2 hidden lg:block">
+  <div class="w-full lg:w-1/2 hidden lg:block relative min-h-[400px]">
     <Image
       src="/mesa.webp"
-      class="w-full h-full object-cover"
+      class="absolute inset-0 w-full h-full object-cover"
       alt={i18n.tableMenu.imgAlt}
       title={i18n.tableMenu.imgAlt}
       width={800}
