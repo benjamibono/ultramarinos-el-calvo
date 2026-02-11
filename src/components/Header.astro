@@ -28,7 +28,7 @@ const i18n = t(lang);
         class="flex-1 text-center mx-auto px-4 sm:px-6 lg:px-8 xxl:px-16"
       >
         <h1
-          class="text-xs sm:text-lg font-extralight lg:text-xl xl:text-2xl xxl:text-4xl xxxl:text-4xl"
+          class="text-xs sm:text-lg font-extralight lg:text-xl xl:text-2xl xxl:text-4xl xxxl:text-5xl"
         >
           Borja García Prieto
         </h1>
@@ -47,7 +47,7 @@ const i18n = t(lang);
             </li>
             <li class="flex items-center">
               <a
-                class="transition hover:text-gray-500/75 whitespace-nowrap"
+                class="transition-opacity duration-200 hover:opacity-60 whitespace-nowrap"
                 href={i18n.header.links.home}
               >
                 {i18n.header.home}
@@ -56,7 +56,7 @@ const i18n = t(lang);
 
             <li class="relative z-50">
               <button
-                class="focus:outline-none focus:ring-2 focus:ring-brand-brown focus:ring-offset-2 rounded transition-transform duration-200 transform hover:scale-105 hover:text-slate-300 whitespace-nowrap"
+                class="focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-brown focus-visible:ring-offset-2 rounded transition-opacity duration-200 hover:opacity-60 whitespace-nowrap"
                 data-dropdown-toggle={i18n.header.dropdownId}
                 aria-label={i18n.header.menuAriaLabel}
                 aria-expanded="false"
@@ -89,7 +89,7 @@ const i18n = t(lang);
 
             <li>
               <a
-                class="transition hover:text-gray-500/75 whitespace-nowrap"
+                class="transition-opacity duration-200 hover:opacity-60 whitespace-nowrap"
                 href="tel:+34956992222"
               >
                 {i18n.header.book}
@@ -98,7 +98,7 @@ const i18n = t(lang);
 
             <li>
               <a
-                class="transition hover:text-gray-500/75 whitespace-nowrap"
+                class="transition-opacity duration-200 hover:opacity-60 whitespace-nowrap"
                 href={i18n.header.links.contact}
               >
                 {i18n.header.contact}
@@ -107,7 +107,7 @@ const i18n = t(lang);
             <li>
               <a
                 href={i18n.header.links.switchLang}
-                class="text-sm lg:text-base xxl:text-2xl xxxl:text-4xl leading-5 py-1 sm:py-2 xxl:py-3 xxxl:py-5 px-2 sm:px-3 xxl:px-5 xxxl:px-8 transition-transform duration-200 transform hover:scale-110"
+                class="text-sm lg:text-base xxl:text-2xl xxxl:text-4xl leading-5 py-1 sm:py-2 xxl:py-3 xxxl:py-5 px-2 sm:px-3 xxl:px-5 xxxl:px-8 transition-opacity duration-200 hover:opacity-60"
                 aria-label={i18n.header.switchLangAriaLabel}
                 title={i18n.header.switchLangTitle}
               >
@@ -119,7 +119,7 @@ const i18n = t(lang);
 
         <div class="block md:hidden">
           <button
-            class="rounded p-2 text-gray-600 transition hover:text-gray-600/75"
+            class="rounded p-2 text-gray-600 transition-opacity duration-200 hover:opacity-60"
             data-mobile-toggle
             aria-label={i18n.header.mobileMenuAriaLabel}
             aria-expanded="false"
@@ -127,7 +127,7 @@ const i18n = t(lang);
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              class="size-5 xxl:size-8 xxxl:size-12"
+              class="size-5"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -142,51 +142,51 @@ const i18n = t(lang);
           </button>
           <div
             id="mobile-menu"
-            class="absolute right-0 bg-white mt-2 w-48 xxl:w-64 xxxl:w-96 shadow-lg rounded-md hidden z-50"
+            class="absolute right-0 bg-white mt-2 w-48 shadow-lg rounded-md hidden z-50"
           >
             <ul
-              class="flex flex-col items-start gap-3 text-sm sm:text-base xxl:text-2xl xxxl:text-4xl text-[#2e211c] p-3 sm:p-4 xxl:p-6 xxxl:p-10"
+              class="flex flex-col items-start gap-3 text-sm sm:text-base text-[#2e211c] p-3 sm:p-4"
             >
               <li class="flex items-center">
-                <div class="w-[20px] xxl:w-[32px] xxxl:w-[48px]">
+                <div class="w-[20px]">
                   <InstagramStories client:idle />
                 </div>
               </li>
               <li>
-                <a class="transition hover:text-gray-500/75" href={i18n.header.links.home}>
+                <a class="transition-opacity duration-200 hover:opacity-60" href={i18n.header.links.home}>
                   {i18n.header.home}
                 </a>
               </li>
               <li>
                 <a
-                  class="transition hover:text-gray-500/75"
+                  class="transition-opacity duration-200 hover:opacity-60"
                   href={i18n.header.links.bar}
                 >
                   {i18n.header.menu} {i18n.header.menuBar}
                 </a>
               </li>
               <li>
-                <a class="transition hover:text-gray-500/75" href={i18n.header.links.table}>
+                <a class="transition-opacity duration-200 hover:opacity-60" href={i18n.header.links.table}>
                   {i18n.header.menu} {i18n.header.menuTable}
                 </a>
               </li>
               <li>
                 <a
-                  class="transition hover:text-gray-500/75"
+                  class="transition-opacity duration-200 hover:opacity-60"
                   href="tel:+34956992222"
                 >
                   {i18n.header.book}
                 </a>
               </li>
               <li>
-                <a class="transition hover:text-gray-500/75" href={i18n.header.links.contact}>
+                <a class="transition-opacity duration-200 hover:opacity-60" href={i18n.header.links.contact}>
                   {i18n.header.contact}
                 </a>
               </li>
               <li>
                 <a
                   href={i18n.header.links.switchLang}
-                  class="text-sm sm:text-base xxl:text-2xl xxxl:text-4xl leading-5 py-1 sm:py-2 xxl:py-3 xxxl:py-5 px-2 sm:px-3 xxl:px-5 xxxl:px-8 transition hover:text-gray-500/75"
+                  class="text-sm sm:text-base leading-5 py-1 sm:py-2 px-2 sm:px-3 transition-opacity duration-200 hover:opacity-60"
                   aria-label={i18n.header.switchLangAriaLabel}
                   title={i18n.header.switchLangTitle}
                 >

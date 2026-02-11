@@ -77,7 +77,7 @@ const scheduleItems = await getSchedule(lang);
           {i18n.footer.address}
         </h3>
         <a
-          class="transition-colors hover:scale-110 duration-300 hover:text-green-400 motion-reduce:duration-0"
+          class="transition-opacity duration-300 hover:opacity-60 motion-reduce:duration-0"
           href="https://maps.app.goo.gl/znHLA57VS56vufEH8"
           target="_blank"
           rel="noopener noreferrer"
@@ -118,7 +118,7 @@ const scheduleItems = await getSchedule(lang);
           {i18n.footer.bookingsText}
         </p>
         <a
-          class="transition-colors hover:scale-110 duration-300 hover:text-green-400 motion-reduce:duration-0"
+          class="transition-opacity duration-300 hover:opacity-60 motion-reduce:duration-0"
           href="tel:+34956992222"
           ><p
             class="text-xs sm:text-sm md:text-base xxl:text-2xl xxxl:text-3xl"
@@ -156,7 +156,7 @@ const scheduleItems = await getSchedule(lang);
           <a
             title="Instagram"
             aria-label="Instagram"
-            class="focus:ring-2 focus:ring-brand-brown focus:ring-offset-2 rounded transition-transform duration-200 transform hover:scale-105 hover:text-green-400"
+            class="focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-brown focus-visible:ring-offset-2 rounded transition-opacity duration-200 hover:opacity-60"
             href="https://www.instagram.com/ultramarinoselcalvo/"
             target="_blank"
             rel="noopener noreferrer"
@@ -180,7 +180,7 @@ const scheduleItems = await getSchedule(lang);
           <a
             title="Email"
             aria-label="Email"
-            class="focus:ring-2 focus:ring-brand-brown focus:ring-offset-2 rounded transition-transform duration-200 transform hover:scale-105 hover:text-green-400"
+            class="focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-brown focus-visible:ring-offset-2 rounded transition-opacity duration-200 hover:opacity-60"
             href="mailto:ultramarinoselcalvo@gmail.com"
             target="_blank"
             rel="noopener noreferrer"
@@ -207,7 +207,7 @@ const scheduleItems = await getSchedule(lang);
 
   <!-- Sección del Mapa de Aparcamiento -->
   <div class="py-8 sm:py-12 md:py-16 lg:py-20 xxl:py-24 xxxl:py-32 px-4 sm:px-6 md:px-8 xxl:px-16 xxxl:px-24">
-    <div class="max-w-6xl mx-auto">
+    <div class="max-w-6xl xxl:max-w-[1600px] xxxl:max-w-[2400px] mx-auto">
       <ParkingMap client:visible lang={lang} />
     </div>
   </div>
@@ -220,7 +220,7 @@ const scheduleItems = await getSchedule(lang);
         © {currentYear} Ultramarinos El Calvo by <strong
           ><a
             href="https://www.instagram.com/borgarpr/"
-            class="transition-colors hover:text-green-400"
+            class="transition-opacity duration-200 hover:opacity-60"
             target="_blank"
             rel="noopener noreferrer">Borja García</a
           ></strong
@@ -233,7 +233,7 @@ const scheduleItems = await getSchedule(lang);
         {i18n.footer.developedBy} <strong
           ><a
             href="https://benjamibono.dev/"
-            class="transition-colors hover:text-green-400"
+            class="transition-opacity duration-200 hover:opacity-60"
             target="_blank"
             rel="noopener noreferrer">Benjami Bono</a
           ></strong
