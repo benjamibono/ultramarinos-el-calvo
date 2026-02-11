@@ -3,7 +3,6 @@ import { createClient } from "@supabase/supabase-js";
 
 const supabaseUrl = import.meta.env.PUBLIC_SUPABASE_URL;
 const supabaseAnonKey = import.meta.env.PUBLIC_SUPABASE_ANON_KEY;
-const deployHook = import.meta.env.PUBLIC_VERCEL_DEPLOY_HOOK;
 
 const supabase =
   supabaseUrl && supabaseAnonKey
@@ -849,16 +848,10 @@ export default function AdminPanel() {
   };
 
   const handlePublish = async () => {
-    if (!deployHook) {
-      flash(
-        "Deploy hook no configurado. Contacta al desarrollador.",
-        "error",
-      );
-      return;
-    }
     setPublishing(true);
     try {
-      await fetch(deployHook, { method: "POST" });
+      const res = await fetch("/api/deploy", { method: "POST" });
+      if (!res.ok) throw new Error("Deploy request failed");
       flash(
         "Sitio web actualizandose. Los cambios seran visibles en unos minutos.",
       );

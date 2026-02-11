@@ -13,6 +13,7 @@
     "@astrojs/react": "^4.2.1",
     "@astrojs/sitemap": "^3.7.0",
     "@astrojs/tailwind": "^5.1.2",
+    "@astrojs/vercel": "^9.0.4",
     "@fontsource-variable/montserrat": "^5.1.0",
     "@midudev/tailwind-animations": "^0.1.0",
     "@supabase/supabase-js": "^2.84.0",
