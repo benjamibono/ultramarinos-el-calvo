@@ -25,8 +25,9 @@ pnpm-debug.log*
 # jetbrains setting folder
 .idea/
 
-# local environment settings
+# IDE settings
 .vscode/
+.cursor/
 
 # temporary files
 *.tmp
