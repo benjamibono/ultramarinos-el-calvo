@@ -37,6 +37,11 @@ const barMenu = await getBarMenuItems(lang);
     <div
       class="mt-4 text-xs sm:text-sm md:text-base font-medium tracking-[.25em] space-y-2"
     >
+      <h3
+        class="text-center text-xs sm:text-sm md:text-base font-medium tracking-[.25em] pt-2"
+      >
+        {barMenu.mainTitle}
+      </h3>
       <ul class="space-y-1 sm:space-y-2">
         {barMenu.items.map((item: string) => (
           <li>{item}</li>
@@ -46,7 +51,7 @@ const barMenu = await getBarMenuItems(lang);
       <h3
         class="text-center text-xs sm:text-sm md:text-base font-medium tracking-[.25em] pt-2"
       >
-        {i18n.barMenu.molletes}
+        {barMenu.molletesTitle}
       </h3>
       <ul class="space-y-1 sm:space-y-2">
         {barMenu.molletesItems.map((item: string) => (

@@ -13,28 +13,44 @@ export async function getBarMenuItems(lang = "es") {
 
   if (!supabase) {
     return {
+      mainTitle: lang === "en" ? "MAIN DISHES" : "PLATOS PRINCIPALES",
+      molletesTitle: fallback.barMenu.molletes,
       items: fallback.barMenu.items,
       molletesItems: fallback.barMenu.molletesItems,
     };
   }
 
   try {
-    const { data, error } = await supabase
-      .from("bar_menu_items")
-      .select("name_es, name_en, category, sort_order")
-      .eq("active", true)
-      .order("sort_order", { ascending: true });
+    const [{ data: sections }, { data, error }] = await Promise.all([
+      supabase
+        .from("bar_menu_sections")
+        .select("title_es, title_en, category")
+        .eq("active", true)
+        .order("sort_order", { ascending: true }),
+      supabase
+        .from("bar_menu_items")
+        .select("name_es, name_en, category, sort_order")
+        .eq("active", true)
+        .order("sort_order", { ascending: true }),
+    ]);
 
     if (error || !data || data.length === 0) {
       return {
+        mainTitle: lang === "en" ? "MAIN DISHES" : "PLATOS PRINCIPALES",
+        molletesTitle: fallback.barMenu.molletes,
         items: fallback.barMenu.items,
         molletesItems: fallback.barMenu.molletesItems,
       };
     }
 
+    const titleKey = lang === "en" ? "title_en" : "title_es";
     const nameKey = lang === "en" ? "name_en" : "name_es";
+    const mainSection = sections?.find((s) => s.category === "main");
+    const molletesSection = sections?.find((s) => s.category === "molletes");
 
     return {
+      mainTitle: mainSection?.[titleKey] || (lang === "en" ? "MAIN DISHES" : "PLATOS PRINCIPALES"),
+      molletesTitle: molletesSection?.[titleKey] || fallback.barMenu.molletes,
       items: data
         .filter((row) => row.category === "main")
         .map((row) => row[nameKey]),
@@ -44,6 +60,8 @@ export async function getBarMenuItems(lang = "es") {
     };
   } catch {
     return {
+      mainTitle: lang === "en" ? "MAIN DISHES" : "PLATOS PRINCIPALES",
+      molletesTitle: fallback.barMenu.molletes,
       items: fallback.barMenu.items,
       molletesItems: fallback.barMenu.molletesItems,
     };

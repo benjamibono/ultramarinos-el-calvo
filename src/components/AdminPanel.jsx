@@ -259,11 +259,20 @@ function LoginForm({ onLogin }) {
 
 // ─── Barreo Tab ──────────────────────────────────────────
 
-function BarreoTab({ rows, setRows }) {
+function BarreoTab({ sections, setSections, rows, setRows }) {
   const mainItems = rows.filter((r) => r.category === "main" && !r._deleted);
   const molletes = rows.filter(
     (r) => r.category === "molletes" && !r._deleted,
   );
+
+  const updateSection = (id, field, value) => {
+    setSections((prev) =>
+      prev.map((s) => (s.id === id ? { ...s, [field]: value } : s)),
+    );
+  };
+
+  const sectionFor = (category) =>
+    sections.find((s) => s.category === category);
 
   const updateRow = (id, field, value) => {
     setRows((prev) =>
@@ -311,9 +320,33 @@ function BarreoTab({ rows, setRows }) {
     });
   };
 
-  const renderSection = (title, items, category) => (
+  const renderSection = (items, category) => {
+    const sec = sectionFor(category);
+    return (
     <div className="mb-6">
-      <h3 className="font-semibold text-[#2e211c] mb-2">{title}</h3>
+      {sec ? (
+        <div className="flex items-center gap-2 mb-2 flex-wrap">
+          <Input
+            value={sec.title_es}
+            onChange={(v) => updateSection(sec.id, "title_es", v)}
+            placeholder="Titulo ES"
+            className="flex-1 min-w-[120px] font-semibold"
+          />
+          <Input
+            value={sec.title_en}
+            onChange={(v) => updateSection(sec.id, "title_en", v)}
+            placeholder="Title EN"
+            className="flex-1 min-w-[120px]"
+          />
+          <SuggestBtn
+            esText={sec.title_es}
+            enText={sec.title_en}
+            onSuggest={(v) => updateSection(sec.id, "title_en", v)}
+          />
+        </div>
+      ) : (
+        <h3 className="font-semibold text-[#2e211c] mb-2">{category}</h3>
+      )}
       <div className="space-y-2">
         {items
           .sort((a, b) => a.sort_order - b.sort_order)
@@ -378,11 +411,12 @@ function BarreoTab({ rows, setRows }) {
       </Btn>
     </div>
   );
+  };
 
   return (
     <div>
-      {renderSection("Platos principales", mainItems, "main")}
-      {renderSection("Molletes", molletes, "molletes")}
+      {renderSection(mainItems, "main")}
+      {renderSection(molletes, "molletes")}
     </div>
   );
 }
@@ -784,6 +818,7 @@ export default function AdminPanel() {
   const [message, setMessage] = useState(null);
 
   // Data state
+  const [barreoSections, setBarreoSections] = useState([]);
   const [barreoRows, setBarreoRows] = useState([]);
   const [mesaSections, setMesaSections] = useState([]);
   const [mesaItems, setMesaItems] = useState([]);
@@ -822,12 +857,14 @@ export default function AdminPanel() {
 
   // ── Load data when logged in ──
   const loadData = useCallback(async () => {
-    const [barreo, sections, items, schedule] = await Promise.all([
+    const [barSections, barreo, sections, items, schedule] = await Promise.all([
+      supabase.from("bar_menu_sections").select("*").order("sort_order"),
       supabase.from("bar_menu_items").select("*").order("sort_order"),
       supabase.from("table_menu_sections").select("*").order("sort_order"),
       supabase.from("table_menu_items").select("*").order("sort_order"),
       supabase.from("schedule").select("*").order("sort_order"),
     ]);
+    setBarreoSections(barSections.data || []);
     setBarreoRows(barreo.data || []);
     setMesaSections(sections.data || []);
     setMesaItems(items.data || []);
@@ -851,6 +888,21 @@ export default function AdminPanel() {
       .map((r, i) => ({ ...r, sort_order: i + 1 }));
 
   const saveBarreo = async () => {
+    // Save section titles
+    for (const sec of barreoSections) {
+      if (sec.id) {
+        await supabase
+          .from("bar_menu_sections")
+          .update({
+            title_es: sec.title_es,
+            title_en: sec.title_en,
+            active: sec.active,
+            sort_order: sec.sort_order,
+          })
+          .eq("id", sec.id);
+      }
+    }
+
     // Delete removed rows
     const toDelete = barreoRows.filter((r) => r._deleted && r.id);
     for (const r of toDelete) {
@@ -1074,7 +1126,7 @@ export default function AdminPanel() {
       {/* Tab content */}
       <div className="max-w-4xl mx-auto p-4">
         {activeTab === "barreo" && (
-          <BarreoTab rows={barreoRows} setRows={setBarreoRows} />
+          <BarreoTab sections={barreoSections} setSections={setBarreoSections} rows={barreoRows} setRows={setBarreoRows} />
         )}
         {activeTab === "mesa" && (
           <MesaTab
