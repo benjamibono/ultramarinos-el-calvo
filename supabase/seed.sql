@@ -20,7 +20,11 @@ CREATE POLICY "Allow public read" ON bar_menu_items
   FOR SELECT USING (true);
 
 CREATE POLICY "Allow authenticated write" ON bar_menu_items
-  FOR ALL USING (auth.role() = 'authenticated');
+  FOR INSERT WITH CHECK ((select auth.role()) = 'authenticated');
+CREATE POLICY "Allow authenticated update" ON bar_menu_items
+  FOR UPDATE USING ((select auth.role()) = 'authenticated');
+CREATE POLICY "Allow authenticated delete" ON bar_menu_items
+  FOR DELETE USING ((select auth.role()) = 'authenticated');
 
 -- 2. TABLE MENU SECTIONS
 -- ============================================================
@@ -38,7 +42,11 @@ CREATE POLICY "Allow public read" ON table_menu_sections
   FOR SELECT USING (true);
 
 CREATE POLICY "Allow authenticated write" ON table_menu_sections
-  FOR ALL USING (auth.role() = 'authenticated');
+  FOR INSERT WITH CHECK ((select auth.role()) = 'authenticated');
+CREATE POLICY "Allow authenticated update" ON table_menu_sections
+  FOR UPDATE USING ((select auth.role()) = 'authenticated');
+CREATE POLICY "Allow authenticated delete" ON table_menu_sections
+  FOR DELETE USING ((select auth.role()) = 'authenticated');
 
 -- 3. TABLE MENU ITEMS
 -- ============================================================
@@ -51,13 +59,19 @@ CREATE TABLE table_menu_items (
   active boolean NOT NULL DEFAULT true
 );
 
+CREATE INDEX idx_table_menu_items_section_id ON table_menu_items (section_id);
+
 ALTER TABLE table_menu_items ENABLE ROW LEVEL SECURITY;
 
 CREATE POLICY "Allow public read" ON table_menu_items
   FOR SELECT USING (true);
 
 CREATE POLICY "Allow authenticated write" ON table_menu_items
-  FOR ALL USING (auth.role() = 'authenticated');
+  FOR INSERT WITH CHECK ((select auth.role()) = 'authenticated');
+CREATE POLICY "Allow authenticated update" ON table_menu_items
+  FOR UPDATE USING ((select auth.role()) = 'authenticated');
+CREATE POLICY "Allow authenticated delete" ON table_menu_items
+  FOR DELETE USING ((select auth.role()) = 'authenticated');
 
 -- 4. SCHEDULE
 -- ============================================================
@@ -75,7 +89,11 @@ CREATE POLICY "Allow public read" ON schedule
   FOR SELECT USING (true);
 
 CREATE POLICY "Allow authenticated write" ON schedule
-  FOR ALL USING (auth.role() = 'authenticated');
+  FOR INSERT WITH CHECK ((select auth.role()) = 'authenticated');
+CREATE POLICY "Allow authenticated update" ON schedule
+  FOR UPDATE USING ((select auth.role()) = 'authenticated');
+CREATE POLICY "Allow authenticated delete" ON schedule
+  FOR DELETE USING ((select auth.role()) = 'authenticated');
 
 -- ============================================================
 -- SEED DATA

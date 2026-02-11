@@ -21,6 +21,115 @@ function move(arr, from, to) {
   return copy;
 }
 
+// ─── Translation dictionary ─────────────────────────────
+
+const FOOD_DICT = {
+  // Proteins
+  ATÚN: "TUNA", ANCHOA: "ANCHOVY", ANCHOAS: "ANCHOVIES",
+  GAMBONES: "KING PRAWNS", GAMBAS: "PRAWNS", GAMBA: "PRAWN",
+  CAMARONES: "SHRIMP", LANGOSTINOS: "LANGOUSTINES",
+  BACALAO: "COD", MERLUZA: "HAKE", LUBINA: "SEA BASS",
+  DORADA: "SEA BREAM", BOQUERONES: "ANCHOVIES", SARDINAS: "SARDINES",
+  CHIPIRÓN: "BABY SQUID", CHIPIRONES: "BABY SQUID",
+  CALAMARES: "SQUID", CALAMAR: "SQUID",
+  CHOCO: "CUTTLEFISH", PULPO: "OCTOPUS",
+  ALMEJAS: "CLAMS", MEJILLONES: "MUSSELS", NAVAJAS: "RAZOR CLAMS",
+  PALOMETA: "POMFRET", PARPATANA: "JAW",
+  MARISCO: "SEAFOOD", MARISCOS: "SEAFOOD",
+  JAMÓN: "HAM", CHORIZO: "CHORIZO", SOBRASADA: "SOBRASADA",
+  LOMO: "LOIN", PANCETA: "BACON", MORCILLA: "BLACK PUDDING",
+  CARNE: "MEAT", CERDO: "PORK", BUEY: "OX",
+  VACA: "BEEF", TERNERA: "VEAL", CORDERO: "LAMB",
+  POLLO: "CHICKEN", CARRILLÁ: "PORK CHEEKS", CARRILLADA: "PORK CHEEKS",
+  COSTILLAS: "RIBS", SOLOMILLO: "TENDERLOIN",
+  PICAÑA: "PICANHA", BARRIGA: "BELLY",
+  ALBÓNDIGAS: "MEATBALLS", ALBÓNDIGA: "MEATBALL",
+  CHICHARRONES: "PORK RINDS", MOJAMA: "MOJAMA",
+  HUEVAS: "ROE", HUEVA: "ROE",
+  // Dairy & cheese
+  QUESO: "CHEESE", QUESOS: "CHEESES",
+  LECHE: "MILK", MANTEQUILLA: "BUTTER", NATA: "CREAM",
+  YOGUR: "YOGURT", HUEVO: "EGG", HUEVOS: "EGGS",
+  YEMA: "EGG YOLK", AHUMADO: "SMOKED", AHUMADA: "SMOKED",
+  // Vegetables & plants
+  TOMATE: "TOMATO", TOMATES: "TOMATOES",
+  PIMIENTOS: "PEPPERS", PIMIENTO: "PEPPER",
+  ALCACHOFA: "ARTICHOKE", ALCACHOFAS: "ARTICHOKES",
+  GUISANTES: "PEAS", PATATAS: "POTATOES", PAPAS: "POTATOES",
+  PATATA: "POTATO", PAPA: "POTATO",
+  CEBOLLA: "ONION", CEBOLLAS: "ONIONS",
+  AJO: "GARLIC", AJILLO: "GARLIC",
+  LECHUGA: "LETTUCE", ESPINACAS: "SPINACH",
+  SETAS: "MUSHROOMS", CHAMPIÑONES: "MUSHROOMS",
+  ESPÁRRAGOS: "ASPARAGUS", CALABAZA: "PUMPKIN",
+  BERENJENA: "EGGPLANT", BERENJENAS: "EGGPLANTS",
+  PUERRO: "LEEK", ZANAHORIA: "CARROT", RÁBANO: "RADISH",
+  HABAS: "BROAD BEANS", GARBANZOS: "CHICKPEAS",
+  ACEITUNAS: "OLIVES", ACEITUNA: "OLIVE",
+  HIERBABUENA: "MINT", LIMA: "LIME", LIMÓN: "LEMON",
+  ALMENDRAS: "ALMONDS", ALMENDRA: "ALMOND",
+  TRUFA: "TRUFFLE", TRUFAS: "TRUFFLES",
+  // Grains & bread
+  PAN: "BREAD", TOSTA: "TOAST", TOSTAS: "TOASTS",
+  ARROZ: "RICE", MOLLETE: "MOLLETE", MOLLETES: "MOLLETES",
+  EMPANADA: "EMPANADA", TORTILLA: "TORTILLA",
+  CROQUETA: "CROQUETTE", CROQUETAS: "CROQUETTES",
+  // Cooking & preparation
+  FRITO: "FRIED", FRITA: "FRIED", FRITOS: "FRIED", FRITAS: "FRIED",
+  PLANCHA: "GRILLED", ASADO: "ROASTED", ASADA: "ROASTED",
+  GUISO: "STEW", GUISOS: "STEWS", GUISADO: "STEWED",
+  RELLENO: "STUFFED", RELLENA: "STUFFED",
+  CURADO: "CURED", CURADA: "CURED",
+  CASERO: "HOMEMADE", CASERA: "HOMEMADE",
+  SALSA: "SAUCE", CREMA: "CREAM",
+  SECO: "DRIED", SECA: "DRIED",
+  MADURADA: "AGED", MADURADO: "AGED",
+  CRUJIENTE: "CRISPY",
+  EMULSIÓN: "EMULSION",
+  // Condiments & extras
+  ACEITE: "OIL", SAL: "SALT", PIMIENTA: "PEPPER",
+  VINAGRE: "VINEGAR", MIEL: "HONEY",
+  AZÚCAR: "SUGAR", CANELA: "CINNAMON",
+  // Descriptors
+  ESPECIALES: "SPECIAL", ESPECIAL: "SPECIAL",
+  SELECCIÓN: "SELECTION", ECOLÓGICAS: "ORGANIC",
+  TABLA: "BOARD", TRIO: "TRIO",
+  FLOR: "FLOWER",
+  // Desserts
+  TARTA: "CAKE", CHOCOLATE: "CHOCOLATE", BROWNIE: "BROWNIE",
+  HELADO: "ICE CREAM", NATILLAS: "CUSTARD", FLAN: "FLAN",
+  // Connectors (kept lowercase in output)
+  DE: "OF", DEL: "OF", CON: "WITH", EN: "IN", AL: "WITH",
+  Y: "AND", LA: "THE", EL: "THE", LOS: "THE", LAS: "THE",
+  SU: "ITS", SUS: "ITS",
+  // Schedule / common
+  LUNES: "MONDAY", MARTES: "TUESDAY", MIÉRCOLES: "WEDNESDAY",
+  JUEVES: "THURSDAY", VIERNES: "FRIDAY", SÁBADO: "SATURDAY",
+  DOMINGO: "SUNDAY",
+  CERRADO: "CLOSED", ABIERTO: "OPEN",
+  COCINA: "KITCHEN", BARRA: "BAR",
+  DESAYUNO: "BREAKFAST", ALMUERZO: "LUNCH", CENA: "DINNER",
+};
+
+function suggestTranslation(spanishText) {
+  if (!spanishText || !spanishText.trim()) return "";
+  return spanishText
+    .trim()
+    .split(/\s+/)
+    .map((word) => {
+      // Strip common punctuation for lookup, preserve it after
+      const match = word.match(/^([^a-záéíóúüñ]*)(.*?)([^a-záéíóúüñ]*)$/i);
+      if (!match) return word;
+      const [, pre, core, post] = match;
+      const upper = core.toUpperCase();
+      if (FOOD_DICT[upper]) {
+        return pre + FOOD_DICT[upper] + post;
+      }
+      return word;
+    })
+    .join(" ");
+}
+
 // ─── Shared tiny components ──────────────────────────────
 
 function Btn({ children, onClick, className = "", disabled, ...rest }) {
@@ -45,6 +154,20 @@ function Input({ value, onChange, placeholder, className = "" }) {
       placeholder={placeholder}
       className={`border border-gray-300 rounded px-2 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500 ${className}`}
     />
+  );
+}
+
+function SuggestBtn({ esText, enText, onSuggest }) {
+  if (!esText || !esText.trim() || (enText && enText.trim())) return null;
+  return (
+    <button
+      type="button"
+      onClick={() => onSuggest(suggestTranslation(esText))}
+      className="px-1.5 py-0.5 rounded-full text-[10px] font-bold bg-amber-200 text-amber-800 hover:bg-amber-300 transition-colors shrink-0"
+      title="Sugerir traduccion al ingles"
+    >
+      EN?
+    </button>
   );
 }
 
@@ -209,6 +332,11 @@ function BarreoTab({ rows, setRows }) {
                   onChange={(v) => updateRow(key, "name_en", v)}
                   placeholder="Name EN"
                   className="flex-1 min-w-[140px]"
+                />
+                <SuggestBtn
+                  esText={row.name_es}
+                  enText={row.name_en}
+                  onSuggest={(v) => updateRow(key, "name_en", v)}
                 />
                 <Toggle
                   checked={row.active}
@@ -411,6 +539,11 @@ function MesaTab({ sections, setSections, items, setItems }) {
                   placeholder="Title EN"
                   className="flex-1 min-w-[140px]"
                 />
+                <SuggestBtn
+                  esText={sec.title_es}
+                  enText={sec.title_en}
+                  onSuggest={(v) => updateSection(secKey, "title_en", v)}
+                />
                 <Toggle
                   checked={sec.active}
                   onChange={(v) => updateSection(secKey, "active", v)}
@@ -460,6 +593,11 @@ function MesaTab({ sections, setSections, items, setItems }) {
                         onChange={(v) => updateItem(itemKey, "name_en", v)}
                         placeholder="Name EN"
                         className="flex-1 min-w-[140px]"
+                      />
+                      <SuggestBtn
+                        esText={item.name_es}
+                        enText={item.name_en}
+                        onSuggest={(v) => updateItem(itemKey, "name_en", v)}
                       />
                       <Toggle
                         checked={item.active}
@@ -583,6 +721,11 @@ function HorarioTab({ rows, setRows }) {
                 placeholder="Text EN"
                 className="flex-1 min-w-[140px]"
               />
+              <SuggestBtn
+                esText={row.text_es}
+                enText={row.text_en}
+                onSuggest={(v) => updateRow(key, "text_en", v)}
+              />
               <Toggle
                 checked={row.active}
                 onChange={(v) => updateRow(key, "active", v)}
@@ -637,7 +780,6 @@ export default function AdminPanel() {
   const [session, setSession] = useState(null);
   const [checking, setChecking] = useState(true);
   const [activeTab, setActiveTab] = useState("barreo");
-  const [saving, setSaving] = useState(false);
   const [publishing, setPublishing] = useState(false);
   const [message, setMessage] = useState(null);
 
@@ -833,30 +975,21 @@ export default function AdminPanel() {
     }
   };
 
-  const handleSave = async () => {
-    setSaving(true);
-    try {
-      if (activeTab === "barreo") await saveBarreo();
-      else if (activeTab === "mesa") await saveMesa();
-      else if (activeTab === "horario") await saveHorario();
-      await loadData(); // Reload fresh data
-      flash("Cambios guardados correctamente");
-    } catch (err) {
-      flash("Error al guardar: " + err.message, "error");
-    }
-    setSaving(false);
-  };
-
   const handlePublish = async () => {
     setPublishing(true);
     try {
+      flash("Guardando y publicando...", "success");
+      await saveBarreo();
+      await saveMesa();
+      await saveHorario();
+      await loadData();
       const res = await fetch("/api/deploy", { method: "POST" });
       if (!res.ok) throw new Error("Deploy request failed");
       flash(
         "Sitio web actualizandose. Los cambios seran visibles en unos minutos.",
       );
-    } catch {
-      flash("Error al publicar. Intentalo de nuevo.", "error");
+    } catch (err) {
+      flash("Error al publicar: " + err.message, "error");
     }
     setPublishing(false);
   };
@@ -954,17 +1087,6 @@ export default function AdminPanel() {
         {activeTab === "horario" && (
           <HorarioTab rows={horarioRows} setRows={setHorarioRows} />
         )}
-
-        {/* Save button */}
-        <div className="mt-6 pt-4 border-t border-gray-200">
-          <Btn
-            onClick={handleSave}
-            disabled={saving}
-            className="bg-[#2e211c] text-white hover:bg-[#4a3830] px-6 py-2"
-          >
-            {saving ? "Guardando..." : "Guardar cambios"}
-          </Btn>
-        </div>
       </div>
     </div>
   );
