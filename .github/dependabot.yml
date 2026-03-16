@@ -5,11 +5,18 @@ updates:
     schedule:
       interval: "weekly"
       day: "monday"
+    # Ignore major version updates - they require manual migration
+    ignore:
+      - dependency-name: "*"
+        update-types: ["version-update:semver-major"]
     # Group all non-security updates into one PR instead of many
     groups:
       all-dependencies:
         patterns:
           - "*"
+        update-types:
+          - "minor"
+          - "patch"
     # Only open max 5 PRs at a time
     open-pull-requests-limit: 5
     # Auto-merge patch and minor updates
