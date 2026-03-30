@@ -12,8 +12,8 @@ const lang = Astro.url.pathname.startsWith("/en") ? "en" : "es";
 const siteUrl = "https://www.ultramarinoselcalvo.com";
 const canonicalUrl = new URL(Astro.url.pathname, siteUrl).href;
 const defaultDescription = lang === "es"
-  ? "Ultramarinos El Calvo, restaurante con Estrella Michelin del chef Borja García en Puerto Real, Cádiz. Conservas, salazones, chacinas y cocina tradicional andaluza."
-  : "Ultramarinos El Calvo, Michelin Star restaurant by chef Borja García in Puerto Real, Cádiz. Traditional Andalusian cuisine with premium conservas, cured meats and seafood.";
+  ? "Ultramarinos El Calvo, el bar de Borja García en Puerto Real, Cádiz. Lo de toda la vida muy cuidado: guisos, molletes, tapas, conservas, salazones y producto andaluz."
+  : "Ultramarinos El Calvo, chef Borja García's bar in Puerto Real, Cádiz. Traditional done right: stews, tapas, preserves, cured meats and the best Andalusian produce.";
 const metaDescription = description || defaultDescription;
 const pageTitle = title.includes("ULTRAMARINOS") ? title : `${title} | Ultramarinos El Calvo`;
 const ogImage = `${siteUrl}/preview.webp`;
@@ -45,7 +45,7 @@ const enPath = lang === "en" ? pathname : alternatePath;
     <link rel="canonical" href={canonicalUrl} />
     <meta
       name="keywords"
-      content="Ultramarinos, El Calvo, Borja García, Estrella Michelin, Conservas, Salazones, Chacinas, Puerto Real, Cádiz"
+      content="Ultramarinos, El Calvo, Borja García, Guisos, Molletes, Tapas, Conservas, Salazones, Chacinas, Puerto Real, Cádiz"
     />
     <meta name="generator" content={Astro.generator} />
     {noindex && <meta name="robots" content="noindex, nofollow" />}
@@ -117,14 +117,7 @@ const enPath = lang === "en" ? pathname : alternatePath;
         }
       ],
       "servesCuisine": ["Andalusian", "Spanish", "Mediterranean"],
-      "priceRange": "€€€",
-      "award": "Estrella Michelin",
-      "starRating": {
-        "@type": "Rating",
-        "ratingValue": "1",
-        "bestRating": "3",
-        "ratingExplanation": "Michelin Star"
-      },
+      "priceRange": "€€",
       "founder": {
         "@type": "Person",
         "name": "Borja García Prieto",

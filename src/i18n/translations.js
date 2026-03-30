@@ -39,7 +39,7 @@ export const translations = {
       },
       section3: {
         title: "Para todos",
-        text: 'El nuevo proyecto del chef <strong>Borja Garc\u00eda</strong>, <strong>Estrella Michelin</strong>, acerca la <strong>alta cocina</strong> a todos los bolsillos en el coraz\u00f3n de <strong>Puerto Real</strong>. <br /> Una experiencia que celebra la <strong>tradici\u00f3n andaluza</strong> con calidad y autenticidad. Disfruta de una experiencia culinaria \u00fanica, donde cada plato cuenta una historia y cada bocado es un viaje al Sur.',
+        text: 'El nuevo proyecto del chef <strong>Borja García</strong>, galardonado con <strong>Estrella Michelin en CEBO</strong>, acerca la <strong>buena cocina</strong> a todos los bolsillos en el corazón de <strong>Puerto Real</strong>. Lo de toda la vida, <strong>muy cuidado</strong>. <br /> Una experiencia que celebra la <strong>tradición andaluza</strong> con calidad y autenticidad. Disfruta de una experiencia culinaria única, donde cada plato cuenta una historia y cada bocado es un viaje al Sur.',
         imgAlt: "Una de nuestras mesas",
       },
     },
@@ -171,7 +171,7 @@ export const translations = {
       },
       section3: {
         title: "For Everyone",
-        text: 'The new project by chef <strong>Borja Garc\u00eda</strong>, <strong>Michelin Star</strong>, brings <strong>haute cuisine</strong> to all budgets in the heart of <strong>Puerto Real</strong>. <br /> An experience that celebrates <strong>Andalusian tradition</strong> with quality and authenticity. Enjoy a unique culinary experience, where each dish tells a story and each bite is a journey to the South.',
+        text: 'The new project by chef <strong>Borja García</strong>, awarded a <strong>Michelin Star at CEBO</strong>, brings <strong>great cooking</strong> to all budgets in the heart of <strong>Puerto Real</strong>. The classics, <strong>done right</strong>. <br /> An experience that celebrates <strong>Andalusian tradition</strong> with quality and authenticity. Enjoy a unique culinary experience, where each dish tells a story and each bite is a journey to the South.',
         imgAlt: "One of our tables",
       },
     },
