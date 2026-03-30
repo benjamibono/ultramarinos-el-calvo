@@ -1,0 +1,19 @@
+@import "tailwindcss";
+@import "@midudev/tailwind-animations";
+
+@theme {
+  --font-sans: "Montserrat Variable", ui-sans-serif, system-ui, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+  --color-brand-brown: #2e211c;
+  --color-brand-cream: #fafaf2;
+
+  --breakpoint-xs: 320px;
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: initial;
+  --breakpoint-xxl: 2560px;
+  --breakpoint-xxxl: 3840px;
+}

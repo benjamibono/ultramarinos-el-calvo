@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { t } from '../i18n/translations';
 
 const ParkingMap = ({ lang = "es" }) => {

@@ -1,6 +1,6 @@
 import { defineConfig } from "astro/config";
 
-import tailwind from "@astrojs/tailwind";
+import tailwindcss from "@tailwindcss/vite";
 import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
 import vercel from "@astrojs/vercel";
@@ -12,10 +12,8 @@ export default defineConfig({
   prefetch: true,
   site: "https://www.ultramarinoselcalvo.com",
   integrations: [
-    tailwind(),
     react({
       include: ["**/react/**", "**/InstagramStories.jsx", "**/AdminPanel.jsx", "**/VideoAdminPanel.jsx"],
-      ssr: false,
     }),
     sitemap({
       filter: (page) => !page.includes("/admin"),
@@ -35,15 +33,8 @@ export default defineConfig({
     },
   },
   vite: {
+    plugins: [tailwindcss()],
     build: {
-      rollupOptions: {
-        output: {
-          manualChunks: {
-            "react-vendor": ["react", "react-dom"],
-            stories: ["react-insta-stories"],
-          },
-        },
-      },
       minify: true,
       cssMinify: true,
     },
