@@ -22,7 +22,7 @@
     "@astrojs/vercel": "^10.0.8",
     "@fontsource-variable/montserrat": "^5.3.0",
     "@midudev/tailwind-animations": "^1.0.2",
-    "@supabase/supabase-js": "^2.110.8",
+    "@supabase/supabase-js": "^2.111.0",
     "@tailwindcss/vite": "^4.3.3",
     "astro": "^6.4.8",
     "leaflet": "^1.9.4",
