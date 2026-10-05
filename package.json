@@ -22,14 +22,14 @@
     "@astrojs/vercel": "^11.0.11",
     "@fontsource-variable/montserrat": "^5.3.0",
     "@midudev/tailwind-animations": "^1.0.2",
-    "@supabase/supabase-js": "^2.117.1",
+    "@supabase/supabase-js": "^2.117.2",
     "@tailwindcss/vite": "^4.3.3",
     "astro": "^7.3.5",
     "leaflet": "^1.9.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-insta-stories": "^2.8.0",
-    "sharp": "^0.35.4",
+    "sharp": "^0.35.5",
     "tailwindcss": "^4.2.2"
   }
 }
