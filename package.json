@@ -11,7 +11,10 @@
   },
   "overrides": {
     "path-to-regexp": "6.3.0",
-    "nanoid": "3.3.18"
+    "nanoid": "3.3.18",
+    "@vercel/nft": {
+      "glob": "^14.0.2"
+    }
   },
   "engines": {
     "node": ">=22.12.0"
@@ -19,7 +22,7 @@
   "dependencies": {
     "@astrojs/react": "^6.0.6",
     "@astrojs/sitemap": "^3.7.4",
-    "@astrojs/vercel": "^11.0.17",
+    "@astrojs/vercel": "^11.0.18",
     "@fontsource-variable/montserrat": "^5.3.0",
     "@midudev/tailwind-animations": "^1.0.2",
     "@supabase/supabase-js": "^2.118.0",
