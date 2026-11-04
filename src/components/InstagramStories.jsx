@@ -45,7 +45,7 @@ const InstagramStories = () => {
             heading: "Ultramarinos El Calvo",
             subheading:
               video.title || `Video ${index + 1} de ${videos.length}`,
-            profileImage: "/icon.svg",
+            profileImage: "/favicon-32.png",
           },
         }));
 

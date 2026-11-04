@@ -1,6 +1,7 @@
 ---
 import "@fontsource-variable/montserrat";
 import "../styles/global.css";
+import "leaflet/dist/leaflet.css";
 
 interface Props {
   title: string;
@@ -42,7 +43,8 @@ const enPath = lang === "en" ? pathname : alternatePath;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={metaDescription} />
-    <link rel="icon" type="image/svg+xml" href="/icon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="canonical" href={canonicalUrl} />
     <meta
       name="keywords"
@@ -51,14 +53,6 @@ const enPath = lang === "en" ? pathname : alternatePath;
     <meta name="generator" content={Astro.generator} />
     {noindex && <meta name="robots" content="noindex, nofollow" />}
     <title>{pageTitle}</title>
-
-    <!-- Leaflet CSS -->
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-      crossorigin=""
-    />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:url" content={canonicalUrl} />
@@ -87,6 +81,7 @@ const enPath = lang === "en" ? pathname : alternatePath;
       "@type": "Restaurant",
       "name": "Ultramarinos El Calvo",
       "image": `${siteUrl}/preview.webp`,
+      "logo": `${siteUrl}/icon-512.png`,
       "url": siteUrl,
       "telephone": "+34956992222",
       "email": "ultramarinoselcalvo@gmail.com",
@@ -128,18 +123,18 @@ const enPath = lang === "en" ? pathname : alternatePath;
         {
           "@type": "Menu",
           "name": lang === "es" ? "Carta de Barreo" : "Bar Menu",
-          "url": `${siteUrl}${lang === "es" ? "/carta-barreo" : "/en/bar-menu"}`
+          "url": `${siteUrl}${lang === "es" ? "/carta-barreo/" : "/en/bar-menu/"}`
         },
         {
           "@type": "Menu",
           "name": lang === "es" ? "Carta de Mesa" : "Table Menu",
-          "url": `${siteUrl}${lang === "es" ? "/carta-mesa" : "/en/table-menu"}`
+          "url": `${siteUrl}${lang === "es" ? "/carta-mesa/" : "/en/table-menu/"}`
         }
       ],
       "sameAs": [
         "https://www.instagram.com/ultramarinoselcalvo/"
       ],
-      "acceptsReservations": "True"
+      "acceptsReservations": true
     })} />
   </head>
 
