@@ -9,7 +9,7 @@
 -- Run in the Supabase SQL editor AFTER:
 --   1. Authentication > Providers > Email: turn OFF "Allow new users to sign up".
 --   2. Authentication > Users: delete any account that is not yours.
--- Then replace the placeholder email below and run this file.
+-- Then run this file. Applied to production on 2026-11-04.
 -- ============================================================
 
 BEGIN;
@@ -19,7 +19,9 @@ CREATE TABLE IF NOT EXISTS public.admins (
 );
 ALTER TABLE public.admins ENABLE ROW LEVEL SECURITY;  -- no policies: invisible to anon/authenticated
 
-INSERT INTO public.admins (email) VALUES ('REPLACE_WITH_ADMIN_EMAIL')
+INSERT INTO public.admins (email) VALUES
+  ('benjamibono@gmail.com'),
+  ('ultramarinoselcalvo@gmail.com')
 ON CONFLICT DO NOTHING;
 
 CREATE OR REPLACE FUNCTION public.is_admin()
@@ -44,6 +46,7 @@ BEGIN
   FOREACH t IN ARRAY ARRAY['bar_menu_items','bar_menu_sections','table_menu_sections','table_menu_items','schedule']
   LOOP
     EXECUTE format('DROP POLICY IF EXISTS "Allow authenticated write" ON public.%I', t);
+    EXECUTE format('DROP POLICY IF EXISTS "Allow authenticated insert" ON public.%I', t);
     EXECUTE format('DROP POLICY IF EXISTS "Allow authenticated update" ON public.%I', t);
     EXECUTE format('DROP POLICY IF EXISTS "Allow authenticated delete" ON public.%I', t);
     EXECUTE format('CREATE POLICY "admin insert" ON public.%I FOR INSERT TO authenticated WITH CHECK ((SELECT public.is_admin()))', t);
@@ -73,8 +76,9 @@ CREATE POLICY "admin insert" ON public.video_events FOR INSERT TO authenticated 
 CREATE POLICY "admin read" ON public.video_events FOR SELECT TO authenticated USING ((SELECT public.is_admin()));
 
 -- Storage bucket "videos": public read via public URL, admin-only writes.
--- Review existing storage policies first: Storage > Policies. Drop any that allow
--- 'authenticated' to insert/update/delete on bucket 'videos', then:
+-- Live project had these two, open to any signed-in user:
+DROP POLICY IF EXISTS "auth_upload_videos" ON storage.objects;
+DROP POLICY IF EXISTS "auth_delete_videos" ON storage.objects;
 CREATE POLICY "videos admin insert" ON storage.objects FOR INSERT TO authenticated
   WITH CHECK (bucket_id = 'videos' AND (SELECT public.is_admin()));
 CREATE POLICY "videos admin update" ON storage.objects FOR UPDATE TO authenticated
