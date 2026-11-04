@@ -1,6 +1,5 @@
 User-agent: *
 Disallow: /admin/
-Disallow: /login/
 Allow: /
 
-Sitemap: https://www.ultramarinoselcalvo.com/sitemap.xml
+Sitemap: https://www.ultramarinoselcalvo.com/sitemap-index.xml
