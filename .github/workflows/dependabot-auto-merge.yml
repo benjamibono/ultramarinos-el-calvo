@@ -1,4 +1,9 @@
-name: Auto-merge Dependabot PRs
+name: Dependabot auto-merge
+
+# Patch and minor Dependabot PRs are queued with GitHub auto-merge.
+# The default branch requires the "Vercel" status, so a PR only merges once
+# its preview build passes; a failing build leaves the PR open.
+# Major updates are never auto-merged.
 
 on: pull_request
 
@@ -8,8 +13,8 @@ permissions:
 
 jobs:
   auto-merge:
+    if: github.event.pull_request.user.login == 'dependabot[bot]'
     runs-on: ubuntu-latest
-    if: github.actor == 'dependabot[bot]'
     steps:
       - name: Dependabot metadata
         id: metadata
@@ -17,7 +22,7 @@ jobs:
         with:
           github-token: "${{ secrets.GITHUB_TOKEN }}"
 
-      - name: Auto-merge patch and minor updates
+      - name: Queue auto-merge (patch and minor only)
         if: steps.metadata.outputs.update-type != 'version-update:semver-major'
         run: gh pr merge --auto --squash "$PR_URL"
         env:
