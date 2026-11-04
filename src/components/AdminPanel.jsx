@@ -1035,8 +1035,14 @@ export default function AdminPanel() {
       await saveMesa();
       await saveHorario();
       await loadData();
-      const res = await fetch("/api/deploy", { method: "POST" });
-      if (!res.ok) throw new Error("Deploy request failed");
+      const res = await fetch("/api/deploy", {
+        method: "POST",
+        headers: { Authorization: `Bearer ${session?.access_token ?? ""}` },
+      });
+      if (!res.ok) {
+        const body = await res.json().catch(() => ({}));
+        throw new Error(body.error || `HTTP ${res.status}`);
+      }
       flash(
         "Sitio web actualizandose. Los cambios seran visibles en unos minutos.",
       );
