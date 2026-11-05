@@ -7,6 +7,9 @@ interface Props {
 
 const { lang = "es" } = Astro.props;
 const i18n = t(lang);
+const mapText = lang === "en"
+  ? { note: "This map is provided by Google, which may set cookies. It only loads if you ask for it.", button: "Show map", open: "Open in Google Maps", title: "Map: Ultramarinos El Calvo" }
+  : { note: "Este mapa lo sirve Google, que puede instalar cookies. Solo se carga si lo pides.", button: "Mostrar mapa", open: "Abrir en Google Maps", title: "Mapa: Ultramarinos El Calvo" };
 ---
 
 <section>
@@ -23,14 +26,37 @@ const i18n = t(lang);
     </h3>
     <div class="flex flex-col">
       <div class="w-full">
-        <iframe
-          class="w-full h-64 sm:h-80 md:h-96"
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3206.066960394829!2d-6.1921405!3d36.5283789!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd0dcdf149feb731%3A0x9c220b47924f078b!2sUltramarinos%20El%20Calvo!5e0!3m2!1ses!2ses!4v1734707212012!5m2!1ses!2ses"
-          title="Google Maps"
-          allowfullscreen=""
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <div
+          class="w-full h-64 sm:h-80 md:h-96 flex flex-col items-center justify-center gap-3 bg-white text-center px-4 rounded"
+          data-gmap
+          data-title={mapText.title}
+          data-src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3206.066960394829!2d-6.1921405!3d36.5283789!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd0dcdf149feb731%3A0x9c220b47924f078b!2sUltramarinos%20El%20Calvo!5e0!3m2!1ses!2ses!4v1734707212012!5m2!1ses!2ses"
+        >
+          <p class="text-sm sm:text-base max-w-md">{mapText.note}</p>
+          <button
+            type="button"
+            class="bg-green-800 hover:bg-green-900 text-white font-bold rounded-full px-5 py-2 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-green-300"
+            data-gmap-load
+          >
+            {mapText.button}
+          </button>
+          <a class="text-sm underline" href="https://maps.app.goo.gl/znHLA57VS56vufEH8" target="_blank" rel="noopener noreferrer">{mapText.open}</a>
+        </div>
       </div>
     </div>
   </div>
 </section>
+
+<script>
+  document.querySelectorAll<HTMLElement>("[data-gmap]").forEach((box) => {
+    box.querySelector("[data-gmap-load]")?.addEventListener("click", () => {
+      const f = document.createElement("iframe");
+      f.src = box.dataset.src!;
+      f.title = box.dataset.title!;
+      f.className = "w-full h-64 sm:h-80 md:h-96";
+      f.allowFullscreen = true;
+      f.referrerPolicy = "no-referrer-when-downgrade";
+      box.replaceWith(f);
+    });
+  });
+</script>
