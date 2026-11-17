@@ -2,6 +2,9 @@
 import "@fontsource-variable/montserrat";
 import "../styles/global.css";
 import "leaflet/dist/leaflet.css";
+import "../styles/booking-variants.css";
+import VariantSwitcher from "../components/booking/VariantSwitcher.astro";
+import { BOOKING, covermanagerUrl } from "../lib/booking";
 
 interface Props {
   title: string;
@@ -30,6 +33,8 @@ const hreflangMap: Record<string, string> = {
   "/en/table-menu/": "/carta-mesa/",
   "/carta-barreo/": "/en/bar-menu/",
   "/en/bar-menu/": "/carta-barreo/",
+  "/reservar/": "/en/book/",
+  "/en/book/": "/reservar/",
 };
 const pathname = Astro.url.pathname.endsWith("/") ? Astro.url.pathname : `${Astro.url.pathname}/`;
 const alternatePath = hreflangMap[pathname];
@@ -38,7 +43,13 @@ const enPath = lang === "en" ? pathname : alternatePath;
 ---
 
 <!doctype html>
-<html lang={lang} class="font-sans">
+<html
+  lang={lang}
+  class="font-sans"
+  data-reserva={BOOKING.reserva}
+  data-pie={BOOKING.pie}
+  data-estilo={BOOKING.estilo}
+>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -134,11 +145,28 @@ const enPath = lang === "en" ? pathname : alternatePath;
       "sameAs": [
         "https://www.instagram.com/ultramarinoselcalvo/"
       ],
-      "acceptsReservations": true
+      "acceptsReservations": true,
+      "potentialAction": {
+        "@type": "ReserveAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": covermanagerUrl(lang),
+          "inLanguage": lang,
+          "actionPlatform": [
+            "http://schema.org/DesktopWebPlatform",
+            "http://schema.org/MobileWebPlatform"
+          ]
+        },
+        "result": {
+          "@type": "FoodEstablishmentReservation",
+          "name": lang === "es" ? "Reserva de mesa" : "Table reservation"
+        }
+      }
     })} />
   </head>
 
   <body class="min-h-screen mx-auto antialiased">
+    {import.meta.env.DEV && <VariantSwitcher />}
     <slot />
   </body>
 </html>

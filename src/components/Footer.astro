@@ -2,6 +2,7 @@
 import ParkingMap from './ParkingMap.jsx';
 import { t } from "../i18n/translations";
 import { getSchedule } from "../lib/cms";
+import FooterBooking from "./booking/FooterBooking.astro";
 
 interface Props {
   lang?: string;
@@ -114,18 +115,7 @@ const scheduleItems = await getSchedule(lang);
         >
           {i18n.footer.bookings}
         </h3>
-        <p class="text-xs sm:text-sm md:text-base xxl:text-2xl xxxl:text-3xl">
-          {i18n.footer.bookingsText}
-        </p>
-        <a
-          class="transition-opacity duration-300 hover:opacity-60 motion-reduce:duration-0"
-          href="tel:+34956992222"
-          ><p
-            class="text-xs sm:text-sm md:text-base xxl:text-2xl xxxl:text-3xl"
-          >
-            +34 956 99 22 22
-          </p></a
-        >
+        <FooterBooking lang={lang} />
       </div>
       <div class="space-y-4 sm:space-y-6 xxl:space-y-8 xxxl:space-y-10">
         <p class="flex justify-center">

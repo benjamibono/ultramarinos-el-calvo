@@ -1,0 +1,58 @@
+---
+import { PHONE, bookingLinkAttrs, renderVariant } from "../../lib/booking";
+import { t } from "../../i18n/translations";
+
+interface Props {
+  lang?: string;
+}
+
+const { lang = "es" } = Astro.props;
+const i18n = t(lang);
+const buttonClass =
+  "inline-block bg-green-800 hover:bg-green-900 text-white font-bold rounded-full py-2 px-5 sm:px-6 xxl:py-4 xxl:px-8 xxxl:py-6 xxxl:px-12 text-xs sm:text-sm md:text-base xxl:text-2xl xxxl:text-3xl transition focus:outline-none focus-visible:ring-2 focus-visible:ring-green-300";
+---
+
+{renderVariant("pie", "fallback") && (
+  <div data-variant-pie="fallback" class="space-y-4 sm:space-y-6 xxl:space-y-8 xxxl:space-y-10">
+    <p class="text-xs sm:text-sm md:text-base xxl:text-2xl xxxl:text-3xl">
+      {i18n.booking.footerText}
+    </p>
+    <a class={buttonClass} {...bookingLinkAttrs(lang)}>
+      {i18n.booking.footerButton}
+      {renderVariant("reserva", "external") && (
+        <span class="sr-only" data-variant-reserva="external">{i18n.booking.newTab}</span>
+      )}
+    </a>
+    <a
+      class="block transition-opacity duration-300 hover:opacity-60 motion-reduce:duration-0"
+      href={PHONE.href}
+      ><p class="text-xs sm:text-sm md:text-base xxl:text-2xl xxxl:text-3xl">
+        {PHONE.label}
+      </p></a
+    >
+  </div>
+)}
+{renderVariant("pie", "online") && (
+  <div data-variant-pie="online">
+    <a class={buttonClass} {...bookingLinkAttrs(lang)}>
+      {i18n.booking.footerButton}
+      {renderVariant("reserva", "external") && (
+        <span class="sr-only" data-variant-reserva="external">{i18n.booking.newTab}</span>
+      )}
+    </a>
+  </div>
+)}
+{renderVariant("pie", "igual") && (
+  <div data-variant-pie="igual" class="space-y-4 sm:space-y-6 xxl:space-y-8 xxxl:space-y-10">
+    <p class="text-xs sm:text-sm md:text-base xxl:text-2xl xxxl:text-3xl">
+      {i18n.footer.bookingsText}
+    </p>
+    <a
+      class="transition-opacity duration-300 hover:opacity-60 motion-reduce:duration-0"
+      href="tel:+34956992222"
+      ><p class="text-xs sm:text-sm md:text-base xxl:text-2xl xxxl:text-3xl">
+        +34 956 99 22 22
+      </p></a
+    >
+  </div>
+)}

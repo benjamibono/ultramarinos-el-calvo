@@ -1,0 +1,24 @@
+/* Booking variants. <html> carries data-reserva / data-pie / data-estilo
+   (from BOOKING in src/lib/booking.js, overridden by the dev switcher).
+   Outside dev only the chosen variant's markup is rendered. */
+html:not([data-reserva="section"]) [data-variant-reserva="section"],
+html:not([data-reserva="external"]) [data-variant-reserva="external"],
+html:not([data-pie="fallback"]) [data-variant-pie="fallback"],
+html:not([data-pie="online"]) [data-variant-pie="online"],
+html:not([data-pie="igual"]) [data-variant-pie="igual"],
+html:not([data-estilo="styled"]) [data-variant-estilo="styled"] {
+  display: none;
+}
+
+/* Bare: keep the heading for screen readers only */
+html[data-estilo="bare"] [data-booking-heading] {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}

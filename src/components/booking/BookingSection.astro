@@ -1,0 +1,22 @@
+---
+import BookingPanel from "./BookingPanel.astro";
+import { BOOKING_SECTION_IDS, renderVariant } from "../../lib/booking";
+
+interface Props {
+  lang?: string;
+}
+
+const { lang = "es" } = Astro.props;
+const sectionId = BOOKING_SECTION_IDS[lang === "en" ? "en" : "es"];
+---
+
+{renderVariant("reserva", "section") && (
+  <section
+    id={sectionId}
+    data-variant-reserva="section"
+    class="bg-brand-cream scroll-mt-16 sm:scroll-mt-20 lg:scroll-mt-24 xxl:scroll-mt-32 xxxl:scroll-mt-48"
+    aria-labelledby={`${sectionId}-heading`}
+  >
+    <BookingPanel lang={lang} headingId={`${sectionId}-heading`} />
+  </section>
+)}

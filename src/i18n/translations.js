@@ -54,6 +54,18 @@ export const translations = {
       heading: "CONTACTO",
       subheading: "No dudes en contactarnos a trav\u00e9s de nuestro tel\u00e9fono y redes sociales",
     },
+    booking: {
+      pageTitle: "Reservar",
+      pageDescription: "Reserva tu mesa en Ultramarinos El Calvo, el bar de Borja Garc\u00eda en Puerto Real, C\u00e1diz.",
+      heading: "RESERVA TU MESA",
+      intro: "Elige d\u00eda, hora y n\u00famero de comensales.",
+      phoneNote: "Para grupos o reservas en el d\u00eda, ll\u00e1manos:",
+      frameTitle: "Reservas online de Ultramarinos El Calvo",
+      close: "Cerrar",
+      newTab: "(se abre en una pesta\u00f1a nueva)",
+      footerText: "Reserva online o ll\u00e1manos.",
+      footerButton: "RESERVAR ONLINE",
+    },
     footer: {
       schedule: "HORARIO",
       scheduleItems: ["Martes a S\u00e1bado:", "12:00 - 16:00 / 21:00 - 23:30", "Domingo y Lunes: Cerrado"],
@@ -185,6 +197,18 @@ export const translations = {
     contact: {
       heading: "CONTACT",
       subheading: "Don\u2019t hesitate to contact us through our phone and social media",
+    },
+    booking: {
+      pageTitle: "Book a table",
+      pageDescription: "Book a table at Ultramarinos El Calvo, chef Borja Garc\u00eda's bar in Puerto Real, C\u00e1diz.",
+      heading: "BOOK A TABLE",
+      intro: "Choose your day, time and party size.",
+      phoneNote: "For groups or same-day bookings, call us:",
+      frameTitle: "Online booking for Ultramarinos El Calvo",
+      close: "Close",
+      newTab: "(opens in a new tab)",
+      footerText: "Book online or give us a call.",
+      footerButton: "BOOK ONLINE",
     },
     footer: {
       schedule: "SCHEDULE",
