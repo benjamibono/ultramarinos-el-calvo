@@ -13,10 +13,11 @@ const i18n = t(lang);
 
 <dialog
   data-booking-dialog
+  data-booking-surface
   aria-labelledby="booking-dialog-title"
   class="fixed inset-0 m-0 h-dvh max-h-none w-screen max-w-none overflow-y-auto overscroll-contain bg-brand-cream p-0 text-brand-brown"
 >
-  <div class="sticky top-0 z-10 flex justify-end bg-brand-cream p-3 sm:p-4 xxl:p-8">
+  <div data-booking-surface class="sticky top-0 z-10 flex justify-end bg-brand-cream p-3 sm:p-4 xxl:p-8">
     <button
       type="button"
       data-booking-close

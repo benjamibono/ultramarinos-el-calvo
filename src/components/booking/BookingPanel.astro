@@ -16,6 +16,7 @@ const i18n = t(lang);
 ---
 
 <div
+  data-booking-panel
   class="mx-auto w-full max-w-[720px] px-4 sm:px-6 py-8 sm:py-12 md:py-16 xxl:py-24 xxxl:py-32 text-brand-brown"
 >
   <Heading
@@ -33,7 +34,7 @@ const i18n = t(lang);
       {i18n.booking.intro}
     </p>
   )}
-  <div class="mt-6 sm:mt-8 xxl:mt-12 overflow-hidden rounded-xl bg-white">
+  <div data-booking-card class="mt-6 sm:mt-8 xxl:mt-12 overflow-hidden rounded-xl bg-white">
     <BookingWidget lang={lang} id={frameId} loading={loading} />
   </div>
   {renderVariant("estilo", "styled") && (

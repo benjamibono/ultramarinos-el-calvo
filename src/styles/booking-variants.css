@@ -22,3 +22,16 @@ html[data-estilo="bare"] [data-booking-heading] {
   white-space: nowrap;
   border: 0;
 }
+
+/* Bare: just the widget on white, no card or frame */
+html[data-estilo="bare"] [data-booking-surface] {
+  background-color: #fff;
+}
+html[data-estilo="bare"] [data-booking-panel] {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+html[data-estilo="bare"] [data-booking-card] {
+  margin-top: 0;
+  border-radius: 0;
+}
