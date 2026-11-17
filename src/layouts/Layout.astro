@@ -2,9 +2,7 @@
 import "@fontsource-variable/montserrat";
 import "../styles/global.css";
 import "leaflet/dist/leaflet.css";
-import "../styles/booking-variants.css";
-import VariantSwitcher from "../components/booking/VariantSwitcher.astro";
-import { BOOKING, covermanagerUrl } from "../lib/booking";
+import { covermanagerUrl } from "../lib/booking";
 
 interface Props {
   title: string;
@@ -43,13 +41,7 @@ const enPath = lang === "en" ? pathname : alternatePath;
 ---
 
 <!doctype html>
-<html
-  lang={lang}
-  class="font-sans"
-  data-reserva={BOOKING.reserva}
-  data-pie={BOOKING.pie}
-  data-estilo={BOOKING.estilo}
->
+<html lang={lang} class="font-sans">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -166,7 +158,6 @@ const enPath = lang === "en" ? pathname : alternatePath;
   </head>
 
   <body class="min-h-screen mx-auto antialiased">
-    {import.meta.env.DEV && !Astro.url.pathname.startsWith("/admin") && <VariantSwitcher />}
     <slot />
   </body>
 </html>

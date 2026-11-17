@@ -2,8 +2,7 @@
 import Logo from "./Logo.astro";
 import InstagramStories from "./InstagramStories";
 import { t } from "../i18n/translations";
-import BookingModal from "./booking/BookingModal.astro";
-import { bookingLinkAttrs, renderVariant } from "../lib/booking";
+import { bookingHref } from "../lib/booking";
 
 interface Props {
   lang?: string;
@@ -92,12 +91,9 @@ const i18n = t(lang);
             <li>
               <a
                 class="transition-opacity duration-200 hover:opacity-60 whitespace-nowrap"
-                {...bookingLinkAttrs(lang)}
+                href={bookingHref(lang)}
               >
                 {i18n.header.book}
-                {renderVariant("reserva", "external") && (
-                  <span class="sr-only" data-variant-reserva="external">{i18n.booking.newTab}</span>
-                )}
               </a>
             </li>
 
@@ -178,12 +174,9 @@ const i18n = t(lang);
               <li>
                 <a
                   class="transition-opacity duration-200 hover:opacity-60"
-                  {...bookingLinkAttrs(lang)}
+                  href={bookingHref(lang)}
                 >
                   {i18n.header.book}
-                  {renderVariant("reserva", "external") && (
-                    <span class="sr-only" data-variant-reserva="external">{i18n.booking.newTab}</span>
-                  )}
                 </a>
               </li>
               <li>
@@ -207,7 +200,6 @@ const i18n = t(lang);
       </div>
     </div>
   </div>
-  {renderVariant("reserva", "modal") && <BookingModal lang={lang} />}
 </header>
 
 <script>
