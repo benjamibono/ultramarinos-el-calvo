@@ -166,7 +166,7 @@ const enPath = lang === "en" ? pathname : alternatePath;
   </head>
 
   <body class="min-h-screen mx-auto antialiased">
-    {import.meta.env.DEV && <VariantSwitcher />}
+    {import.meta.env.DEV && !Astro.url.pathname.startsWith("/admin") && <VariantSwitcher />}
     <slot />
   </body>
 </html>
