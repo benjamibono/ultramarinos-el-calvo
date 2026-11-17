@@ -2,6 +2,7 @@
 import "@fontsource-variable/montserrat";
 import "../styles/global.css";
 import "leaflet/dist/leaflet.css";
+import { covermanagerUrl } from "../lib/booking";
 
 interface Props {
   title: string;
@@ -30,6 +31,8 @@ const hreflangMap: Record<string, string> = {
   "/en/table-menu/": "/carta-mesa/",
   "/carta-barreo/": "/en/bar-menu/",
   "/en/bar-menu/": "/carta-barreo/",
+  "/reservar/": "/en/book/",
+  "/en/book/": "/reservar/",
 };
 const pathname = Astro.url.pathname.endsWith("/") ? Astro.url.pathname : `${Astro.url.pathname}/`;
 const alternatePath = hreflangMap[pathname];
@@ -134,7 +137,23 @@ const enPath = lang === "en" ? pathname : alternatePath;
       "sameAs": [
         "https://www.instagram.com/ultramarinoselcalvo/"
       ],
-      "acceptsReservations": true
+      "acceptsReservations": true,
+      "potentialAction": {
+        "@type": "ReserveAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": covermanagerUrl(lang),
+          "inLanguage": lang,
+          "actionPlatform": [
+            "http://schema.org/DesktopWebPlatform",
+            "http://schema.org/MobileWebPlatform"
+          ]
+        },
+        "result": {
+          "@type": "FoodEstablishmentReservation",
+          "name": lang === "es" ? "Reserva de mesa" : "Table reservation"
+        }
+      }
     })} />
   </head>
 

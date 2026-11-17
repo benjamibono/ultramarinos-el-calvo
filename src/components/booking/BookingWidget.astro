@@ -1,0 +1,30 @@
+---
+import { covermanagerUrl, COVERMANAGER_FRAME_ID } from "../../lib/booking";
+import { t } from "../../i18n/translations";
+
+interface Props {
+  lang?: string;
+  id?: string;
+  loading?: "eager" | "lazy";
+}
+
+const { lang = "es", id = COVERMANAGER_FRAME_ID, loading = "lazy" } = Astro.props;
+const i18n = t(lang);
+---
+
+<iframe
+  id={id}
+  data-booking-frame
+  title={i18n.booking.frameTitle}
+  src={covermanagerUrl(lang)}
+  allow="payment"
+  loading={loading}
+  height="550"
+  width="100%"
+  class="block w-full min-h-[550px] border-0"
+></iframe>
+
+<script>
+  import { initBookingFrames } from "../../lib/booking-resizer";
+  initBookingFrames();
+</script>

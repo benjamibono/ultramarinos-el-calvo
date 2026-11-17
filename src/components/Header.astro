@@ -2,6 +2,7 @@
 import Logo from "./Logo.astro";
 import InstagramStories from "./InstagramStories";
 import { t } from "../i18n/translations";
+import { bookingHref } from "../lib/booking";
 
 interface Props {
   lang?: string;
@@ -90,7 +91,7 @@ const i18n = t(lang);
             <li>
               <a
                 class="transition-opacity duration-200 hover:opacity-60 whitespace-nowrap"
-                href="tel:+34956992222"
+                href={bookingHref(lang)}
               >
                 {i18n.header.book}
               </a>
@@ -173,7 +174,7 @@ const i18n = t(lang);
               <li>
                 <a
                   class="transition-opacity duration-200 hover:opacity-60"
-                  href="tel:+34956992222"
+                  href={bookingHref(lang)}
                 >
                   {i18n.header.book}
                 </a>
