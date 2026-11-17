@@ -1,23 +1,19 @@
 ---
+import "@fontsource-variable/montserrat";
+import "../styles/global.css";
 import AdminPanel from "../components/AdminPanel.jsx";
 ---
 
 <!doctype html>
-<html lang="es">
+<html lang="es" class="font-sans">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="robots" content="noindex, nofollow" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
     <title>Admin - Ultramarinos El Calvo</title>
-    <style>
-      body {
-        margin: 0;
-        background-color: #fafaf2;
-        font-family: system-ui, -apple-system, sans-serif;
-      }
-    </style>
   </head>
-  <body>
+  <body class="m-0 bg-brand-cream text-brand-brown antialiased">
     <AdminPanel client:load />
   </body>
 </html>
