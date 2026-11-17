@@ -462,23 +462,91 @@ function TabToolbar({ missing, onFill, children }) {
   );
 }
 
-// ─── Login Form ──────────────────────────────────────────
+// ─── Login, password reset and new password ──────────────
+
+const FIELD =
+  "w-full min-h-11 rounded-lg border border-stone-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-700";
+
+// Where the reset email sends the admin back to
+const RECOVERY_PARAM = "recuperar";
+
+function AuthCard({ onSubmit, title, children }) {
+  return (
+    <main className="flex min-h-screen items-center justify-center bg-brand-cream px-4">
+      <form
+        onSubmit={onSubmit}
+        className="w-full max-w-sm rounded-xl border border-stone-200 bg-white p-6 shadow-sm sm:p-8"
+      >
+        <p className="text-center text-xs font-semibold uppercase tracking-[0.2em] text-stone-500">
+          Ultramarinos El Calvo
+        </p>
+        <h1 className="mt-1 mb-6 text-center text-2xl font-bold uppercase text-brand-brown">{title}</h1>
+        {children}
+      </form>
+    </main>
+  );
+}
+
+function Notice({ type, children }) {
+  if (!children) return null;
+  const styles = type === "error" ? "bg-red-50 text-red-800" : "bg-green-50 text-green-900";
+  return (
+    <p role={type === "error" ? "alert" : "status"} className={`mb-4 rounded-lg px-3 py-2 text-center text-sm ${styles}`}>
+      {children}
+    </p>
+  );
+}
+
+function PasswordField({ id, label, value, onChange, autoComplete, className = "mb-6" }) {
+  const [show, setShow] = useState(false);
+  return (
+    <>
+      <label htmlFor={id} className="mb-1 block text-sm font-medium text-brand-brown">
+        {label}
+      </label>
+      <div className={`relative ${className}`}>
+        <input
+          id={id}
+          type={show ? "text" : "password"}
+          autoComplete={autoComplete}
+          value={value}
+          onChange={(e) => onChange(e.target.value)}
+          required
+          className={`${FIELD} pr-12`}
+        />
+        <button
+          type="button"
+          onClick={() => setShow((v) => !v)}
+          aria-label={show ? "Ocultar contraseña" : "Mostrar contraseña"}
+          aria-pressed={show}
+          className={`absolute inset-y-0 right-0 flex w-11 items-center justify-center text-stone-500 hover:text-brand-brown ${FOCUS} rounded-r-lg`}
+        >
+          <Icon name={show ? "eyeOff" : "eye"} className="size-5" />
+        </button>
+      </div>
+    </>
+  );
+}
 
 function LoginForm() {
+  const [mode, setMode] = useState("login"); // "login" | "reset"
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
+  const [sent, setSent] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const handleSubmit = async (e) => {
+  const switchMode = (next) => {
+    setMode(next);
+    setError("");
+    setSent("");
+  };
+
+  const handleLogin = async (e) => {
     e.preventDefault();
     setError("");
     setLoading(true);
-    const { error: authError } = await supabase.auth.signInWithPassword({
-      email,
-      password,
-    });
+    const { error: authError } = await supabase.auth.signInWithPassword({ email, password });
     setLoading(false);
     if (authError) {
       setError(
@@ -489,63 +557,145 @@ function LoginForm() {
     }
   };
 
-  return (
-    <main className="flex min-h-screen items-center justify-center bg-brand-cream px-4">
-      <form
-        onSubmit={handleSubmit}
-        className="w-full max-w-sm rounded-xl border border-stone-200 bg-white p-6 shadow-sm sm:p-8"
-      >
-        <p className="text-center text-xs font-semibold uppercase tracking-[0.2em] text-stone-500">
-          Ultramarinos El Calvo
+  const handleReset = async (e) => {
+    e.preventDefault();
+    setError("");
+    setLoading(true);
+    const { error: resetError } = await supabase.auth.resetPasswordForEmail(email.trim(), {
+      redirectTo: `${window.location.origin}/admin?${RECOVERY_PARAM}=1`,
+    });
+    setLoading(false);
+    if (resetError && resetError.status === 429) {
+      setError("Has pedido demasiados enlaces. Espera unos minutos y vuelve a intentarlo.");
+    } else if (resetError && !resetError.status) {
+      setError("No se pudo enviar el enlace. Revisa tu conexión e inténtalo de nuevo.");
+    } else {
+      // Same answer whether or not the email exists
+      setSent(`Si ${email.trim()} es una cuenta de administración, te llegará un email con un enlace para crear una contraseña nueva. Revisa también la carpeta de spam.`);
+    }
+  };
+
+  const emailField = (
+    <>
+      <label htmlFor="admin-email" className="mb-1 block text-sm font-medium text-brand-brown">
+        Email
+      </label>
+      <input
+        id="admin-email"
+        type="email"
+        autoComplete="username"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        required
+        className={`mb-4 ${FIELD}`}
+      />
+    </>
+  );
+
+  const linkBtn = `mt-4 block w-full text-center text-sm text-stone-600 underline underline-offset-2 hover:text-brand-brown ${FOCUS} rounded`;
+
+  if (mode === "reset") {
+    return (
+      <AuthCard onSubmit={handleReset} title="Recuperar contraseña">
+        <Notice type="error">{error}</Notice>
+        <Notice type="success">{sent}</Notice>
+        <p className="mb-4 text-sm text-stone-600">
+          Escribe tu email y te enviaremos un enlace para crear una contraseña nueva.
         </p>
-        <h1 className="mt-1 mb-6 text-center text-2xl font-bold uppercase text-brand-brown">
-          Administración
-        </h1>
-        {error && (
-          <p role="alert" className="mb-4 rounded-lg bg-red-50 px-3 py-2 text-center text-sm text-red-800">
-            {error}
-          </p>
-        )}
-        <label htmlFor="admin-email" className="mb-1 block text-sm font-medium text-brand-brown">
-          Email
-        </label>
-        <input
-          id="admin-email"
-          type="email"
-          autoComplete="username"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-          className="mb-4 w-full min-h-11 rounded-lg border border-stone-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-700"
-        />
-        <label htmlFor="admin-password" className="mb-1 block text-sm font-medium text-brand-brown">
-          Contraseña
-        </label>
-        <div className="relative mb-6">
-          <input
-            id="admin-password"
-            type={showPassword ? "text" : "password"}
-            autoComplete="current-password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-            className="w-full min-h-11 rounded-lg border border-stone-300 py-2 pr-12 pl-3 text-sm focus:outline-none focus:ring-2 focus:ring-green-700"
-          />
-          <button
-            type="button"
-            onClick={() => setShowPassword((v) => !v)}
-            aria-label={showPassword ? "Ocultar contraseña" : "Mostrar contraseña"}
-            aria-pressed={showPassword}
-            className={`absolute inset-y-0 right-0 flex w-11 items-center justify-center text-stone-500 hover:text-brand-brown ${FOCUS} rounded-r-lg`}
-          >
-            <Icon name={showPassword ? "eyeOff" : "eye"} className="size-5" />
-          </button>
-        </div>
-        <Btn type="submit" variant="dark" disabled={loading} className="w-full min-h-11">
-          {loading ? "Entrando…" : "Entrar"}
+        {emailField}
+        <Btn type="submit" variant="dark" disabled={loading} className="mt-2 w-full min-h-11">
+          {loading ? "Enviando…" : sent ? "Reenviar enlace" : "Enviar enlace"}
         </Btn>
-      </form>
-    </main>
+        <button type="button" onClick={() => switchMode("login")} className={linkBtn}>
+          Volver a iniciar sesión
+        </button>
+      </AuthCard>
+    );
+  }
+
+  return (
+    <AuthCard onSubmit={handleLogin} title="Administración">
+      <Notice type="error">{error}</Notice>
+      {emailField}
+      <PasswordField
+        id="admin-password"
+        label="Contraseña"
+        value={password}
+        onChange={setPassword}
+        autoComplete="current-password"
+      />
+      <Btn type="submit" variant="dark" disabled={loading} className="w-full min-h-11">
+        {loading ? "Entrando…" : "Entrar"}
+      </Btn>
+      <button type="button" onClick={() => switchMode("reset")} className={linkBtn}>
+        ¿Has olvidado la contraseña?
+      </button>
+    </AuthCard>
+  );
+}
+
+function NewPasswordForm({ email, onDone, onCancel }) {
+  const [password, setPassword] = useState("");
+  const [confirm, setConfirm] = useState("");
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError("");
+    if (password.length < 8) return setError("La contraseña debe tener al menos 8 caracteres.");
+    if (password !== confirm) return setError("Las dos contraseñas no coinciden.");
+    setLoading(true);
+    const { error: updateError } = await supabase.auth.updateUser({ password });
+    setLoading(false);
+    if (updateError) {
+      setError(
+        /different from the old/i.test(updateError.message)
+          ? "La contraseña nueva tiene que ser distinta de la anterior."
+          : `No se pudo cambiar la contraseña: ${updateError.message}`,
+      );
+      return;
+    }
+    onDone();
+  };
+
+  return (
+    <AuthCard onSubmit={handleSubmit} title="Nueva contraseña">
+      <Notice type="error">{error}</Notice>
+      {email && (
+        <p className="mb-4 text-center text-sm text-stone-600">
+          Cuenta: <strong>{email}</strong>
+        </p>
+      )}
+      <input type="email" autoComplete="username" value={email || ""} readOnly hidden />
+      <PasswordField
+        id="admin-new-password"
+        label="Contraseña nueva (mínimo 8 caracteres)"
+        value={password}
+        onChange={setPassword}
+        autoComplete="new-password"
+        className="mb-4"
+      />
+      <PasswordField
+        id="admin-confirm-password"
+        label="Repite la contraseña"
+        value={confirm}
+        onChange={setConfirm}
+        autoComplete="new-password"
+      />
+      <Btn type="submit" variant="dark" disabled={loading} className="w-full min-h-11">
+        {loading ? "Guardando…" : "Guardar contraseña"}
+      </Btn>
+      {onCancel && (
+        <button
+          type="button"
+          onClick={onCancel}
+          className={`mt-4 block w-full text-center text-sm text-stone-600 underline underline-offset-2 hover:text-brand-brown ${FOCUS} rounded`}
+        >
+          Cancelar
+        </button>
+      )}
+    </AuthCard>
   );
 }
 
@@ -910,6 +1060,10 @@ function AdminApp() {
   const [mesaItems, setMesaItems] = useState([]);
   const [horarioRows, setHorarioRows] = useState([]);
   const [original, setOriginal] = useState(null);
+  // Arrived from the password-reset email
+  const [recovery, setRecovery] = useState(
+    () => typeof window !== "undefined" && new URLSearchParams(window.location.search).has(RECOVERY_PARAM),
+  );
 
   // ── Auth ──
   useEffect(() => {
@@ -919,7 +1073,10 @@ function AdminApp() {
     });
     const {
       data: { subscription },
-    } = supabase.auth.onAuthStateChange((_event, s) => setSession(s));
+    } = supabase.auth.onAuthStateChange((event, s) => {
+      if (event === "PASSWORD_RECOVERY") setRecovery(true);
+      setSession(s);
+    });
     return () => subscription.unsubscribe();
   }, []);
 
@@ -1150,7 +1307,44 @@ function AdminApp() {
     );
   }
 
-  if (!session) return <LoginForm />;
+  if (recovery && session) {
+    return (
+      <NewPasswordForm
+        email={session.user?.email}
+        onDone={() => {
+          setRecovery(false);
+          history.replaceState(null, "", window.location.pathname);
+          setStatus({ type: "success", text: "Contraseña cambiada." });
+        }}
+        onCancel={
+          new URLSearchParams(window.location.search).has(RECOVERY_PARAM) ? undefined : () => setRecovery(false)
+        }
+      />
+    );
+  }
+
+  if (!session) {
+    if (recovery) {
+      return (
+        <AuthCard title="Enlace caducado">
+          <p className="mb-6 text-center text-sm text-stone-600">
+            El enlace para cambiar la contraseña ya no es válido (caduca al poco tiempo y solo sirve una vez). Pide uno nuevo.
+          </p>
+          <Btn
+            variant="dark"
+            className="w-full min-h-11"
+            onClick={() => {
+              setRecovery(false);
+              history.replaceState(null, "", window.location.pathname);
+            }}
+          >
+            Volver
+          </Btn>
+        </AuthCard>
+      );
+    }
+    return <LoginForm />;
+  }
 
   const working = busy !== null;
   const tab = TABS.find((t) => t.key === activeTab);
@@ -1207,6 +1401,13 @@ function AdminApp() {
             >
               Vídeos
             </a>
+            <button
+              type="button"
+              onClick={() => setRecovery(true)}
+              className={`inline-flex min-h-10 items-center rounded-full px-3 text-sm hover:bg-white/10 ${FOCUS}`}
+            >
+              Cambiar contraseña
+            </button>
             <Btn variant="onDark" onClick={handleLogout}>
               Cerrar sesión
             </Btn>
