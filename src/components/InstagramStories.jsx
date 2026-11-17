@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
-import Stories from "react-insta-stories";
+import StoriesModule from "react-insta-stories";
 import { getLatestVideosWithUrls } from "../lib/supabaseAdmin";
+
+// react-insta-stories ships CommonJS only; depending on the bundler the default
+// import is the component or the module object that wraps it.
+const Stories = StoriesModule.default ?? StoriesModule;
 
 // Componente optimizado para la imagen de perfil
 const ProfileImage = ({ src, alt, className }) => {
